@@ -1,0 +1,447 @@
+/**
+ * Copyright (c) 2008  Luis Gustavo Nardin <gnardin@gmail.com>
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+options {
+	STATIC=false;
+	IGNORE_CASE=true;
+	LOOKAHEAD=1;
+	FORCE_LA_CHECK=true;
+}
+
+PARSER_BEGIN(SPARQLParser)
+
+package otservices.translator.language.sparql.parser;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import otservices.translator.language.LanguageException;
+import otservices.translator.language.LanguageInterface;
+import otservices.translator.language.sparql.SPARQLObject;
+import otservices.translator.language.sparql.LogExpr;
+import otservices.translator.language.sparql.RegExpr;
+import otservices.translator.language.sparql.RelExpr;
+import otservices.translator.language.sparql.Term;
+import otservices.translator.language.sparql.Result;
+import otservices.translator.language.sparql.Where;
+import otservices.translator.language.sparql.Filter;
+
+public class SPARQLParser implements LanguageInterface{
+	
+	private List<String> concepts = new ArrayList<String>();
+	private Filter filter = new Filter();
+	private String message = null;
+	private SPARQLObject parsedObject = new SPARQLObject();
+	private Result result = new Result();
+	private Boolean testResult = new Boolean(false);
+	private Where where = new Where();
+	
+	/**
+	 *
+	 */
+	public SPARQLParser(String message){
+		this.message = message;
+		this.testResult = new Boolean(true);
+	}
+	
+	/**
+	 *
+	 */
+	public Object getParsedObject(){		
+		return this.parsedObject;
+	}
+	
+	/**
+	 *
+	 */
+	public void run() throws LanguageException{
+		if(testResult.booleanValue()){
+			this.result.setXML(this.message);
+			this.parsedObject.setCommand(SPARQLObject.Command.RESULT);
+			this.parsedObject.addResult(this.result);
+		}else{
+			try{
+				this.parse();
+			
+				this.parsedObject.addConcepts(this.concepts);
+				this.parsedObject.addResult(this.result);
+				this.parsedObject.addWhere(this.where);
+				this.parsedObject.addFilter(this.filter);
+			}catch(ParseException pe){
+				throw new LanguageException(pe.getMessage());
+			}
+		}
+	}
+	
+	/**
+	 *
+	 */
+	public void setParsedObject(Object parsedObject){
+		if(parsedObject instanceof SPARQLObject){
+			this.parsedObject = (SPARQLObject) parsedObject;
+		}
+	}
+}
+
+PARSER_END(SPARQLParser)
+
+SKIP : {
+   " "
+|  "\t"
+|  "\n"
+|  "\r"
+}
+
+TOKEN : {
+	<SELECT:		"SELECT">
+|	<UPDATE:		"UPDATE">
+|	<WHERE:			"WHERE">
+|	<FILTER:		"FILTER">
+|	<REGEX:			"REGEX">
+|	<BOOL:			("TRUE" | "FALSE")>
+|	<VAR:			(<VAR1> | <VAR2>)>
+|	<VAR1:			"?" <STRING>>
+|	<VAR2:			"$" <STRING>>
+|	<INT:			(["0"-"9"])+>
+|	<FLOAT:			(["0"-"9"])+ "." (["0"-"9"])*>
+|	<INTP:			"+" <INT>>
+|	<INTN:			"-" <INT>>
+|	<FLOATP:		"+" <FLOAT>>
+|	<FLOATN:		"-"	<FLOAT>>
+|	<STRING:		(<PN_CHARS_U> | ["0"-"9"] | "[")(<PN_CHARS_U> | ["0"-"9"] | "." | "[" | ";" | "]")*>
+|	<PN_CHARS_U:	(<PN_CHARS_BASE> | "_")>
+|	<PN_CHARS_BASE:	(["A"-"Z"] | ["a"-"z"])>
+}
+
+void parse() :
+{}
+{ 
+  (select()
+  { this.parsedObject.setCommand(SPARQLObject.Command.SELECT); }
+  )
+  |
+  (update()
+  { this.parsedObject.setCommand(SPARQLObject.Command.UPDATE); }
+  )
+  <EOF>
+}
+
+void select() :
+{}
+{
+	<SELECT>
+	vars()
+	where()
+}
+
+void vars() :
+{
+	Token var;
+}
+{
+	( var = <VAR>
+	{ this.result.addResult(var.image); }
+	)
+	( var = <VAR>
+	{ this.result.addResult(var.image); }
+	)*
+}
+
+void where() :
+{}
+{
+	<WHERE> "{" triplesBlock() "}"
+}
+
+void triplesBlock() :
+{}
+{
+	(triplesSameSubject() | filter()) (triplesBlock())*
+}
+
+void triplesSameSubject() :
+{
+	Token concept;
+	Token var;
+}
+{
+	(<VAR> <STRING> ":" concept=<STRING> var=<VAR> ".")
+	{ this.concepts.add(concept.image.toLowerCase()); }
+	{ this.where.addWhere(var.image, concept.image.toLowerCase()); }
+}
+
+void filter() :
+{}
+{
+	<FILTER> constraint()
+}
+
+void constraint() :
+{}
+{
+	( brackettedExpression()
+|	  regex()
+	)
+}
+
+void brackettedExpression() :
+{}
+{
+	"(" conditionalOrExpression() ")"
+}
+
+void conditionalOrExpression() :
+{
+	LogExpr logExpr;
+}
+{
+	( conditionalAndExpression()
+				("||" conditionalOrExpression()
+					  { logExpr = new LogExpr();
+			  			logExpr.setLogicalOp(LogExpr.LogicalOp.OR);
+			  			this.filter.addItem(logExpr);
+					  }
+				)*
+	)
+}
+
+void conditionalAndExpression() :
+{
+	LogExpr logExpr;
+}
+{
+	( valueLogical()
+				("&&" valueLogical()
+					  { logExpr = new LogExpr();
+			  			logExpr.setLogicalOp(LogExpr.LogicalOp.AND);
+			  			this.filter.addItem(logExpr);
+					  }
+	               )*
+	)
+}
+
+void valueLogical() :
+{
+	RelExpr relExpr;
+}
+{
+(	brackettedExpression()
+|	regex()
+|	term(1)
+		(	"<"		term(2)
+			{ relExpr = new RelExpr();
+			  relExpr.setRelationalOp(RelExpr.RelationalOp.LT);
+			  this.filter.addItem(relExpr);
+			}
+		|	">"		term(2)
+			{ relExpr = new RelExpr();
+			  relExpr.setRelationalOp(RelExpr.RelationalOp.GT);
+			  this.filter.addItem(relExpr);
+			}
+		|	"="		term(2)
+			{ relExpr = new RelExpr();
+			  relExpr.setRelationalOp(RelExpr.RelationalOp.EQ);
+			  this.filter.addItem(relExpr);
+			}
+		|	"!="	term(2)
+			{ relExpr = new RelExpr();
+			  relExpr.setRelationalOp(RelExpr.RelationalOp.DIF);
+			  this.filter.addItem(relExpr);
+			}
+		|	"<="	term(2)
+			{ relExpr = new RelExpr();
+			  relExpr.setRelationalOp(RelExpr.RelationalOp.LTE);
+			  this.filter.addItem(relExpr);
+			}
+		|	">="	term(2)
+			{ relExpr = new RelExpr();
+			  relExpr.setRelationalOp(RelExpr.RelationalOp.GTE);
+			  this.filter.addItem(relExpr);
+			}
+		)*
+	)
+}
+
+void term(int position) :
+{
+	Token t;
+	Term term = new Term();
+}
+{
+	{ term = new Term(); }
+	t = <INT>
+	{ term.setType(Term.TermType.INTEGER);
+	  term.setTerm(new Integer(t.image));
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <INTP>
+	{ term.setType(Term.TermType.INTEGER);
+	  term.setTerm(new Integer(t.image));
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <INTN>
+	{ term.setType(Term.TermType.INTEGER);
+	  term.setTerm(new Integer(t.image));
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <FLOAT>
+	{ term.setType(Term.TermType.FLOAT);
+	  term.setTerm(new Float(t.image));
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <FLOATP>
+	{ term.setType(Term.TermType.FLOAT);
+	  term.setTerm(new Float(t.image));
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <FLOATN>
+	{ term.setType(Term.TermType.FLOAT);
+	  term.setTerm(new Float(t.image));
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <BOOL>
+	{ term.setType(Term.TermType.BOOLEAN);
+	  term.setTerm(new Boolean(t.image));
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <STRING>
+	{ term.setType(Term.TermType.STRING);
+	  term.setTerm(t.image);
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+|	t = <VAR>
+	{ term.setType(Term.TermType.VARIABLE);
+	  term.setTerm(t.image);
+	  if (position == 1){
+	  	term.setPosition(Term.Position.FIRST);
+	  }else if (position == 2){
+	  	term.setPosition(Term.Position.SECOND);
+	  }
+	  this.filter.addItem(term);
+	}
+}
+
+void regex() :
+{
+	Token var = null;
+	Token pattern = null;
+	RegExpr regExpr;
+}
+{
+	{ regExpr = new RegExpr(); }
+	<REGEX> "(" var = <VAR> "," pattern = <STRING> ")"
+	{ regExpr.setVariable(var.image);
+	  regExpr.setPattern(pattern.image);
+	  this.filter.addItem(regExpr);
+	}
+}
+
+void update() :
+{}
+{
+	<UPDATE>
+	sets()
+	where()
+}
+
+void sets() :
+{
+	Token t;
+	Token v;
+	Term term;
+}
+{
+	(	{ term = new Term(); }
+		t = <VAR>
+		"="
+		(
+			v = <INT>
+			{ term.setType(Term.TermType.INTEGER);
+			  term.setTerm(new Integer(v.image));
+			}
+		|	v = <INTP>
+			{ term.setType(Term.TermType.INTEGER);
+			  term.setTerm(new Integer(v.image));
+			}
+		|	v = <INTN>
+			{ term.setType(Term.TermType.INTEGER);
+			  term.setTerm(new Integer(v.image));
+			}
+		|	v = <FLOAT>
+			{ term.setType(Term.TermType.FLOAT);
+			  term.setTerm(new Float(v.image));
+			}
+		|	v = <FLOATP>
+			{ term.setType(Term.TermType.FLOAT);
+			  term.setTerm(new Float(v.image));
+			}
+		|	v = <FLOATN>
+			{ term.setType(Term.TermType.FLOAT);
+			  term.setTerm(new Float(v.image));
+			}
+		|	v = <BOOL>
+			{ term.setType(Term.TermType.BOOLEAN);
+			  term.setTerm(new Boolean(v.image));
+			}
+		|	v = <STRING>
+			{ term.setType(Term.TermType.STRING);
+			  term.setTerm(new String(v.image));
+			}
+		)
+		{ this.result.addResult(t.image, term); }
+	)+
+}

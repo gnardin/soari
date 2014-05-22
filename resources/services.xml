@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.6.0  Built on : May 17, 2011 (04:19:43 IST) -->
+<serviceGroup>
+    <service name="MapperServerWebServiceImpl">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="otservices.mapper.webservice.MapperServerWebServiceImplMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">otservices.mapper.webservice.MapperServerWebServiceImplSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="translateConcept" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://webservice.mapper.otservices">
+            <actionMapping>urn:translateConcept</actionMapping>
+            <outputActionMapping>urn:translateConceptResponse</outputActionMapping>
+        </operation>
+        <operation name="getFromMapping" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://webservice.mapper.otservices">
+            <actionMapping>urn:getFromMapping</actionMapping>
+            <outputActionMapping>urn:getFromMappingResponse</outputActionMapping>
+        </operation>
+        <operation name="getOWLFile" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://webservice.mapper.otservices">
+            <actionMapping>urn:getOWLFile</actionMapping>
+            <outputActionMapping>urn:getOWLFileResponse</outputActionMapping>
+        </operation>
+        <operation name="removeOntologyTranslation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://webservice.mapper.otservices">
+            <actionMapping>urn:removeOntologyTranslation</actionMapping>
+            <outputActionMapping>urn:removeOntologyTranslationResponse</outputActionMapping>
+        </operation>
+        <operation name="addOntologyTranslation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://webservice.mapper.otservices">
+            <actionMapping>urn:addOntologyTranslation</actionMapping>
+            <outputActionMapping>urn:addOntologyTranslationResponse</outputActionMapping>
+            <faultActionMapping faultName="MapperServerWebServiceImplRemoteException">urn:addOntologyTranslationMapperServerWebServiceImplRemoteException</faultActionMapping>
+            <faultActionMapping faultName="MapperServerWebServiceImplRemoteException_Exception">urn:addOntologyTranslationMapperServerWebServiceImplRemoteException</faultActionMapping>
+        </operation>
+        <operation name="isOntologyTranslation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://webservice.mapper.otservices">
+            <actionMapping>urn:isOntologyTranslation</actionMapping>
+            <outputActionMapping>urn:isOntologyTranslationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

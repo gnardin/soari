@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.lti.pcs.usp.br/TranslatorConfiguration"
+ xmlns:tc="http://www.lti.pcs.usp.br/TranslatorConfiguration">
+ 
+ <xsd:annotation>
+   <xsd:documentation xml:lang="en">
+     Translator Configuration XML schema
+   </xsd:documentation>
+ </xsd:annotation>
+ 
+ <xsd:element name="TranslatorConfiguration" type="tc:TranslatorConfigurationType"/>
+
+ <xsd:complexType name="TranslatorConfigurationType">
+   <xsd:sequence>
+     <xsd:element name="id" type="xsd:string"/>
+     <xsd:element name="urlMapperServer" type="xsd:string"/>
+     <xsd:element name="ontNativeName" type="xsd:string"/>
+     <xsd:element name="ontNativeVersion" type="xsd:int"/>
+     <xsd:element name="ontInterchangeName" type="xsd:string"/>
+     <xsd:element name="ontInterchangeVersion" type="xsd:int"/>
+     <xsd:element name="mapperClientClass" type="xsd:string"/>
+     <xsd:element name="internalLanguageName" type="xsd:string"/>
+     <xsd:element name="internalLanguageClass" type="xsd:string"/>
+     <xsd:element name="inputTranslationStrategyClass" type="xsd:string"/>
+     <xsd:element name="outputTranslationStrategyClass" type="xsd:string"/>
+     <xsd:element name="valueTransformationConcept" type="xsd:string"/>
+     <xsd:element name="valueTransformationClass" type="xsd:string"/>
+     <xsd:element name="reputationReasonerClass" type="xsd:string"/>
+   </xsd:sequence>
+ </xsd:complexType>
+</xsd:schema>

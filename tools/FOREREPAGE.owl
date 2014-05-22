@@ -1,0 +1,3054 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns="http://www.lti.pcs.usp.br/ReputationFuntionalOntology.owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://www.lti.pcs.usp.br/ReputationFuntionalOntology.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="ActorObservatorEffect">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="Attribution"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasEffectOn"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:ID="ResponsibilityKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Actor observator effect represents  the agent tendency to attribute internal causes to other entities’s behavior and to attribute external causes to one’s own behavior. Therefore, that effect can provoke a fundamental attribution mistake. This effect is most likely to affect our perception of an entity we know least well than of an entity we know better well </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Attribution"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasEffectOn"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Agent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An agent is something or someone that is able to execute reputation process by itself. For example: a person, an organization, a software agent.
+Um agente é algo ou alguem que tem a capacidade de executar os processos reputativos .  Por exemplo, uma pessoa, uma organização, um agente de software.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="ReputativeSkill"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasSkill"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputativeSkill"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSkill"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasReputativeRole"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="ReputationRole"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ReputativeEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationRole"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputativeRole"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NonAgent"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ResponsibilityKnowledge">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Responsability  Knowledge category was borrowed from the Functional Ontology of Law and extended to deal with attribution  instead of legal rules (primary norms).
+This category is used to define when a  reputative entity is to be held responsable for a given case.
+ Its main function is to associate a cause to a specific  behavior (a case), in order to define whether the reputative entity must be considered responsible for this case or, instead, there are circumstances that attenuate its responsibility. 
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ReputationKnowledge"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputativeKnowledge"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WorldKnowledge"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NormativeKnowledge"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="EvaluatorRole">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Evaluator role represents the one played by those entities that develop an evaluation or an evaluative belief about others as an effect of their social interactions and perceptions.  </rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ReputationRole"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="ReputationEvaluationProcess"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasReputationProcess"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="CommumKnowledge">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Conhecimento Comum é a raiz da hierarquia de conceitos  que representam o senso comum e que estão de alguma forma relacionados com o Conhecimento de Reputação. Esses conceitos se relacionam com esse conhecimento através da  classe Conceito Reputativo, que faz parte do Conhecimento do Mundo. Essa classe representa de forma abstrata e conceitual todos os elementos do senso comum que são relevantes para o Conhecimento de Reputação.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationKnowledge"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="NegativeSocialNorm">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >As normas sociais negativas são aquelas que prescrevem os comportamentos sociais inadequados. Por exemplo, "é inadequado fumar em local fechado
+". </rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:ID="hasNormativeStatus"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="InadequateStatus"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:ID="SocialNorm"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#hasNormativeStatus"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#InadequateStatus"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PositiveSocialNorm"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="MaintainerRole">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Maintainer role represents the one played by those entities that execute reputation maintenance process. In a general way, this role is played by the same entity and at the same time as evaluator role. The exception cases are those where the maintenance process is a prerogative of a  specific  entity, such as central engine responsable for reputation maintenance.
+observação: percebi a necessidade desse conceito durante a avaliação dos modelos de reputação de escopo global, nos quais o papel de avaliador é executado pelos agentes enquanto o papel de agregador / consolidador da reputaçao é  desempenhado pelos mecanismos centrais.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="ReputationMaintenanceProcess"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationRole"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="SecondaryReputation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="CollectiveReputation"/>
+              <owl:Class rdf:ID="PropagatedReputation"/>
+              <owl:Class rdf:ID="StereotypedReputation"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:ID="ReputationType"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: transformar em Defined???</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Secondary reputation designates those reputation resulting from the secondary sources of information, such as propagated information, prejudices and group related characteristics.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PrimaryReputation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Individual">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasReputationNature"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="IndividualReputation"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Agent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#IndividualReputation"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GroupOfIndividual"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An individual is a single agent. For example: a person, a robot, a software agent.
+
+
+Um individuo é um agente singular. Por exemplo, uma pessoa, um robo, um agente de software.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationRole">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputativeKnowledge"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationProcess"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationCalculationComponent"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationProperty"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Role represents those roles played by entities involved in reputative processes, such as reputation evaluation and reputation transmission.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ProductReputation">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LocationReputation"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="Object"/>
+              <owl:Class rdf:ID="Service"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isReputationNatureOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ActivityReputation"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Product reputation represents those reputations associated to products and services.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IndividualReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="EventReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="SkillReputation"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Object"/>
+                  <owl:Class rdf:about="#Service"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:ID="ReputationNature"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GroupReputation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#GroupReputation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#GroupOfIndividual"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationNature"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Group reputation represents those reputations related to the individuals or agent groups.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#EventReputation"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GroupOfIndividual"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ProductReputation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SkillReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IndividualReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LocationReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActivityReputation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ReputationPropagationComponent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Information Propagation Components represents the information components related to a reputation spread in social network.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationProperty"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationCalculationComponent"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputativeKnowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Attribution">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="InternalCause"/>
+              <owl:Class rdf:ID="ExternalCause"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isEffectedBy"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#ActorObservatorEffect"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ResponsibilityKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="TargetBehavior"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isResponsibilityAssignerFor"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ActorObservatorEffect"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isEffectedBy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isAttributionOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Case"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isAttributionOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Case"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Attribution represents the causes for which the actions (cases) are interpreted  in order to provide a causal explanation for the associated behaviors. Attribution processes are part of our inclination to impose a pattern of meaning to observed facts. Concerning reputation, one of major attribution effects is to give consistence and coherence to reputative entities cases.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="EvaluationFactor">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ReputationEvaluationProcess"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isInputOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputationCalculationComponent"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="EvaluationAttributeWeight"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationEvaluationValue"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationEvaluationAttribute"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isInputOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationEvaluationProcess"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Evaluator Factor represents the things that can influence a reputation evaluation, such as target behavior, evaluator reputation, transmitter reputation,  social relation that exists between the target entity and the evaluator entity.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="OntologyEvaluationStructure"/>
+  <owl:Class rdf:about="#ReputativeSkill">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A skill is  some ability a reputative entity can have that can be a reputation target. For example: the skill of being a teacher, the skill of being a researcher, the skill of being a painter specialist.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#SkillReputation"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputativeEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Agent"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isSkillOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSkillOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Agent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputativeRole"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="TargetRole"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#TargetRole"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputativeRole"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#SkillReputation"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReputationEsteemLevelEvaluationProcess">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation esteem level evaluation represents a  qualitative or quantitative reputation measurement  process that produces  a reputation value that cannot be described in details.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputationEvaluationProcess"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationContentEvaluationProcess"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#EventReputation">
+    <owl:disjointWith rdf:resource="#GroupReputation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LocationReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IndividualReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ProductReputation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Event reputation represents those reputation related to events in a general way. </rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#SkillReputation"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="Event"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationNature"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActivityReputation"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Event"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationCalculationComponent">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationProcess"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ReputationPropagationComponent"/>
+    <owl:disjointWith rdf:resource="#ReputationRole"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationProperty"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Calculation Component represents those components involved in the production of a reputation value.
+Reputation Calculation Component representa os componentes envolvidos no calculo de uma reputação. São eles: valor da avaliação, fatores de avaliação, atributos envolvidos na avaliação, relevancia dos atributos envolvidos.
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputativeKnowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SecondHandInformation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#PropagatedReputation"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isInformationSourceOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:ID="InformationSource"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="DirectExperience"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Observation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="GroupInheritance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Prejudice"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#PropagatedReputation"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Second Hand Information represents the information spread in the social network. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationEvaluationValue">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationType"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isReputationValueOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ReputationCalculationComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation evaluation value represents the worth of a reputation after an evaluation  process. It can be expressed  as a qualitative evaluation ( “good”; “bad”), or as a quantitative  evaluation ( 0, 1 , 2 ,10).</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasDetailIn"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ReputationEvaluationAttribute"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ReputationEvaluationProcess"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isOutputOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationEvaluationAttribute"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#EvaluationAttributeWeight"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#EvaluationFactor"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ReputationType"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationValueOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isOutputOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationEvaluationProcess"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#NormativeKnowledge">
+    <owl:disjointWith rdf:resource="#ResponsibilityKnowledge"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WorldKnowledge"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputativeKnowledge"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Normative Knowledge category was borrowed from the Functional Ontology of Law and extended to deal with social norms instead of legal rules. Its main function is to prescribe the agent behavior, through the description of the social norms. The idea is to compare the agent actual behavior with the ideal one, prescribed by the norms, and then conclude whether the norms have been observed or violated.
+O conhecimento normativo define o padrão que deve ser comparado à realidade (expressada através do caso). É formado pelas normas sociais que especificam se um determinado comportamento é adequado ou inadequado.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputationKnowledge"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationProcess">
+    <owl:disjointWith rdf:resource="#ReputationRole"/>
+    <owl:disjointWith rdf:resource="#ReputationCalculationComponent"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationProperty"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Process represents the four processes involved in reputation notion: Reputation Evaluation, Reputation Maintenance and Reputation Propagation. </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputativeKnowledge"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isAbout"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationType"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isAbout"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ReputationType"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationEvaluationProcess">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasOutput"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ReputationEvaluationValue"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationTransmissionProcess"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ReputationProcess"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#ReputationEvaluationValue"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasOutput"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Evaluation represents the process of  measuring a reputation.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isReputationProcessOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#EvaluatorRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationProcessOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#EvaluatorRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasInput"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#EvaluationFactor"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationReceptionProcess"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInput"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#EvaluationFactor"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ValueByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isOutputOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationMaintenanceProcess"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ReputationEvaluationProcess"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isOutputOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ReputationByRepage"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationValueOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ImageByRepage"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationValueOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Repage"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SkillReputation">
+    <owl:disjointWith rdf:resource="#EventReputation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LocationReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#GroupReputation"/>
+    <owl:disjointWith rdf:resource="#ProductReputation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IndividualReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActivityReputation"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ReputativeSkill"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ReputationNature"/>
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="#ReputativeSkill"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#GroupInheritance"/>
+              <owl:Class rdf:about="#SecondHandInformation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasInformationSource"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Repage"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AgentReputationByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="Activity"/>
+              <owl:Class rdf:about="#Event"/>
+              <owl:Class rdf:about="#GroupOfIndividual"/>
+              <owl:Class rdf:about="#Individual"/>
+              <owl:Class rdf:ID="Location"/>
+              <owl:Class rdf:about="#Object"/>
+              <owl:Class rdf:about="#ReputativeSkill"/>
+              <owl:Class rdf:about="#Service"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Repage"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PrimaryReputation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="DirectReputation"/>
+              <owl:Class rdf:ID="ObservedReputation"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:about="#ReputationType"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Primary reputation designates those reputations resulting from the primary sources of information, such as direct experience or observation.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#SecondaryReputation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AgentImageByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Activity"/>
+              <owl:Class rdf:about="#Event"/>
+              <owl:Class rdf:about="#GroupOfIndividual"/>
+              <owl:Class rdf:about="#Individual"/>
+              <owl:Class rdf:about="#Location"/>
+              <owl:Class rdf:about="#Object"/>
+              <owl:Class rdf:about="#ReputativeSkill"/>
+              <owl:Class rdf:about="#Service"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Repage"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputativeKnowledge">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ReputationKnowledge"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ResponsibilityKnowledge"/>
+    <owl:disjointWith rdf:resource="#NormativeKnowledge"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WorldKnowledge"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputative Knowledge is the most characteristic category in the functional ontology of reputation. It was inspired by the Reactive Knowledge from the Functional Ontology of Law. Its main function is to deal with the agent reward (good reputation) or the agent penalty (bad reputation), according to his behavior. This category models the products as well as the processes involved in the reputation notion.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TargetBehavior">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isClassifiedBy"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#SocialNorm"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Target  Behavior represents the fact that the behavior of a target entity   is taken into account during reputation evaluation process.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Attribution"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasResponsibilityAssigmentBy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#SocialNorm"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isClassifiedBy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#EvaluationFactor"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Attribution"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasResponsibilityAssigmentBy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="TargetEvaluatorSocialRelation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="TransmitterReputation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Repage">
+    <rdfs:subClassOf rdf:resource="#OntologyEvaluationStructure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Time">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Time Period represents the sucession of days and  hours that involves the notion of past, present and future.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isInputOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="HistoricalProcess"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CommumKnowledge"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InformationSource"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputativeEntity"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Prejudice">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GroupInheritance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#SecondHandInformation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#DirectExperience"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Observation"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#StereotypedReputation"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#InformationSource"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#StereotypedReputation"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Prejudice represents a dislike or a distrust of a reputative entity that is based on stereotyped information rather than on reason or experience, and that influence one's behaviour towards them.
+ </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TargetEvaluatorSocialRelation">
+    <owl:disjointWith rdf:resource="#TargetBehavior"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TransmitterReputation"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Target  Evaluator Social Relation  represents the fact that the social relation that exists between  the target agent and the evaluator agent  is taken into account during reputation evaluation process. For example, agent A told agent B the reputation of agent C. As agent A knows that agent B and agent C are friends, he will consider this information in order to accept the received information as a truth.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#EvaluationFactor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NeutralStatus">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NormativeStatus"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the Neutral status classifies actual behaviors that are not described through social norms.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InadequateStatus"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="AdequateStatus"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="TargetAgentByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationType"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasReputation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Repage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InadequateStatus">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NormativeStatus"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Inadequate status is linked to a negative norm and classifies the agent behavior as inadequate.
+O status inaadequado é aquele  que deve ser associado às normas sociais negativas, tais como "é inadequado fumar em local fechado".</rdfs:comment>
+    <owl:disjointWith rdf:resource="#NeutralStatus"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AdequateStatus"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationType">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PrimaryReputation"/>
+              <owl:Class rdf:about="#SecondaryReputation"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:about="#ReputationProperty"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Type distinguishes a reputation according to information source used in its formation, such as direct or propagated information.
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isReputationOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#TargetRole"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TargetRole"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ValuePartition"/>
+  <owl:Class rdf:about="#DirectReputation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#DirectExperience"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#DirectExperience"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#PrimaryReputation"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Direct reputation represents the ones derived from direct encounters among reputational entities.For example, a reputation derived from direct experience among agents.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ObservedReputation"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#DirectExperience">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#DirectReputation"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#InformationSource"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Direct experience represents the process of gaing knowledge about other reputative entities through interaction with them.
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#DirectReputation"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GroupInheritance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#SecondHandInformation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Observation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Prejudice"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PropagationPurpose">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PropagationContent"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PropagationForm"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#ReputationPropagationComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Propagation Purpose represents the reasons that an agent can consider before spreading a reputation. For example, an agent can decide to transmit a reputation because he agrees with its value (p.107).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SocialNorm">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NormativeStatus"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Social norm represents norms that are valid in a society and corresponds to an extension of primary norm concept from Functional Ontology of Law.
+A classe  norma social representa as normas que são consideradas válidas em uma sociedade. Essas normas podem ser positivas, quando prescrevem  comportamentos adequados, ou negativas, quando prescrevem  comportamentos inadequados.
+
+</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#PositiveSocialNorm"/>
+              <owl:Class rdf:about="#NegativeSocialNorm"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:about="#NormativeKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#PropagationContent">
+    <rdfs:subClassOf rdf:resource="#ReputationPropagationComponent"/>
+    <owl:disjointWith rdf:resource="#PropagationPurpose"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PropagationForm"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Propagation content represents the subject of the propagated information.  For example, an agent can decide to transmit a reputation about a friend or about a colleague.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#InternalCause">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ResponsibilityAssignment"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasProvoked"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Attribution"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ResponsibilityAssignment"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasProvoked"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ExternalCause"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Internal Cause represents a behavior cause which is interpreted as depending exclusively on the reputative entity. For example, agent’s motivation or agent's capacity.
+Uma causa interna atua como uma confirmação da resposabilidade da entidade reputativa em dado caso. Corresponde à Responsability Assignment da Ontologia do Direito. Dada a ocorrencia de uma causa interna, a entidade reputativa deve ser avaliada no caso, tanto positivamente (boa reputaçao), quanto negativamente (má reputação).
+
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationKnowledge">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Knowledge is the root of Functional Reputation Ontology. It represents specific knowledge about reputation, in constract with the commum knowledge. </rdfs:comment>
+    <owl:disjointWith rdf:resource="#CommumKnowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputativeEntity">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#InformationSource"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Time"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Case"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasBehaviorDescriptionIn"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CommumKnowledge"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputative entity represents all things that are able to play at least one reputative role, and in this way be evolved in a reputation process.For example, software agents, human being, corporations and objets.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Observation">
+    <owl:disjointWith rdf:resource="#DirectExperience"/>
+    <owl:disjointWith rdf:resource="#Prejudice"/>
+    <owl:disjointWith rdf:resource="#SecondHandInformation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#GroupInheritance"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#ObservedReputation"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#InformationSource"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ObservedReputation"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Observation represents the action of watching  a reputational entities interactions so as to notice things.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ObservedReputation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Observed reputation represets those reputations derived from the observation of reputational entities interactions. For example, ....</rdfs:comment>
+    <owl:disjointWith rdf:resource="#DirectReputation"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Observation"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Observation"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#PrimaryReputation"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: Transformar em Defined Class</owl:versionInfo>
+  </owl:Class>
+  <owl:Class rdf:about="#CollectiveReputation">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#StereotypedReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PropagatedReputation"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Collective reputation designed the ones reputational entities inherit from their group. For example a individual reputation derived from the individual social group.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#GroupInheritance"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#SecondaryReputation"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#GroupInheritance"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BeneficiaryAgentByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#ReputationReceptionProcess"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Repage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationTransmissionProcess">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ReputationPropagationComponent"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasPropagationComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#SecondHandInformation"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasOutput"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationProcess"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="TransmitterRole"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationProcessOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationProcessOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TransmitterRole"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationMaintenanceProcess"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ReputationPropagationComponent"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPropagationComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOutput"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#SecondHandInformation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationReceptionProcess"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ReputationEvaluationProcess"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: abrir processo em transmissão e recepção</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Transmission represents the process that deals with  passing reputation information  from one agent to another  in a social network.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationMaintenanceProcess">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="ReputationFinalValue"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOutput"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationProcessOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#MaintainerRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationProcessOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#MaintainerRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Maintenance  represents the process that deal with reputation value alterations over time. That concept involves two other process, aggregation process and historical process.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#ReputationTransmissionProcess"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationReceptionProcess"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#ReputationFinalValue"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasOutput"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationProcess"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#WorldKnowledge">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >World Knowledge category was borrowed from the Functional Ontology of Law and comprises the knowledge about the world to which the social norms are applied. Its main function is to provide a model of social behavior, which is used by the other categories.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#NormativeKnowledge"/>
+    <owl:disjointWith rdf:resource="#ResponsibilityKnowledge"/>
+    <owl:disjointWith rdf:resource="#ReputativeKnowledge"/>
+    <rdfs:subClassOf rdf:resource="#ReputationKnowledge"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ImageByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#DirectExperience"/>
+              <owl:Class rdf:about="#Observation"/>
+              <owl:Class rdf:about="#SecondHandInformation"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Repage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ExternalCause">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ResponsibilityRestriction"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasProvoked"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasProvoked"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ResponsibilityRestriction"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Attribution"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >External Cause represents  a behavior cause which is  which is interpreted as depending exclusively on external circumstances, such as opportunities or threats. 
+Uma causa externa atua como uma restrição de resposabilidade da entidade reputativa em dado caso. Corresponde à Responsability restriction da Ontologia do Direito. Dada a ocorrencia de uma causa externa, a entidade reputativa não pode ser avaliada no caso.
+</rdfs:comment>
+    <owl:disjointWith rdf:resource="#InternalCause"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Location">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#LocationReputation"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#LocationReputation"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#NonAgent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A location describes a place. For example: a city, a country, a street.
+Um Local é uma área geografica. Por exemplo, uma cidade, um estado, um país.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Event"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Activity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Event">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An event describes a happening. For example: a travel, a meeting, a communication, a party. 
+Um evento é um acontecimento. Por exemplo, uma festa como o Carnaval.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#EventReputation"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#NonAgent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Activity"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Object"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Location"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#EventReputation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ResponsibilityAssignment">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ResponsibilityRestriction"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#InternalCause"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isProvokedBy"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ResponsibilityKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isProvokedBy"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#InternalCause"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Responsability Assignment defines that a reputative entity is to be held responsible in a  case, given that this case occurred  under  a condition  interpreted as depending  on internal  causes instead of external causes.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PropagationForm">
+    <rdfs:subClassOf rdf:resource="#ReputationPropagationComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Propagation Form represents the way a reputation is spread in social network. For example, during direct interaction among the agents, or in broadcast way.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#PropagationContent"/>
+    <owl:disjointWith rdf:resource="#PropagationPurpose"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TargetRole">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ReputationRole"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputation"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#ReputationType"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Target role represents the one  played by all of the entities that act as reputation object, such as people (individuals or groups), things, products and service, places, events and activities.  
+Design note:
+- only reputative entity that plays target role can have primary reputation or secundary reputation (reputation type).
+- existential restriction on isReputativeRoleOf Reputative entity is important. KEEP IT.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputation"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ReputationType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReputationRelation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Uma relação reputativa é uma relação entre as instâncias de conceitos reputativos. Por exemplo, uma relação entre   João (membro do conceito Individuo) e  Fuma (membro do conceito Atividade), cujo nome é executa.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Case"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Circumstance"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ReputationConcept"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#CommumKnowledge"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasRelationFor"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#WorldKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasRelationFor"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#CommumKnowledge"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#AdequateStatus">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NormativeStatus"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#NeutralStatus"/>
+    <owl:disjointWith rdf:resource="#InadequateStatus"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Adequate status is associated to a positive norm and classifies an actual behavior as an adequate behavior.
+
+O status adequado é aquele  que deve ser associado às normas sociais positivas, tais como "é adequado ser pontual nas aulas".
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationConcept">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#CommumKnowledge"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasDefinitionFor"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#WorldKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Circumstance"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#ReputationRelation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Case"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Um Conceito Reputativo define as coisas do mundo, quer sejam agentes ou não agentes. Esses  conceitos representam membros do Conhecimento de Senso Comum, tais como pessoas, organizações, objetos, locais, tempo.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#CommumKnowledge"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDefinitionFor"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#EvaluationAttributeWeight">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isWeightOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#ReputationEvaluationAttribute"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationCalculationComponent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Attribute weight represents the importance an evaluator entity associates to each one of reputation target attributes. For example, price attribute is more important than quality attribute. </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isWeightOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ReputationEvaluationAttribute"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#EvaluationFactor"/>
+    <owl:disjointWith rdf:resource="#ReputationEvaluationValue"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ReputationEvaluationAttribute"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#StereotypedReputation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Prejudice"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Prejudice"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#SecondaryReputation"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Stereotyped reputation represents those reputation based on  prejudices. For example, a reputation derived from an agent characteristic, as such as race or religion.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PropagatedReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#CollectiveReputation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PropagatorAgentByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ReputationTransmissionProcess"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Repage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PropagatedReputation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#SecondHandInformation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#SecondHandInformation"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#SecondaryReputation"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Propagated reputation designates the ones derived from received information.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#StereotypedReputation"/>
+    <owl:disjointWith rdf:resource="#CollectiveReputation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LocationReputation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Location"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationNature"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Location  reputation represents those reputations  related to geographical places.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Location"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ProductReputation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActivityReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#SkillReputation"/>
+    <owl:disjointWith rdf:resource="#GroupReputation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#IndividualReputation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#EventReputation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GroupInheritance">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#CollectiveReputation"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Group Inheritance represents the fact of gaing knowledge about a reputative entitiy by knowing the characteristcs of the groups where he/she takes part. For example, an employee can inherit the reputation from the firm where works.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isInformationSourceOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#CollectiveReputation"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#InformationSource"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#DirectExperience"/>
+    <owl:disjointWith rdf:resource="#Prejudice"/>
+    <owl:disjointWith rdf:resource="#Observation"/>
+    <owl:disjointWith rdf:resource="#SecondHandInformation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AggregationProcess">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInput"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#ReputationEvaluationValue"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ReputationMaintenanceProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInput"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ReputationEvaluationValue"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Aggregation Process aggregation process represents the process that deals with impact on reputation value caused by evaluation of a reputative entity’s current behavior: a positive impact improves reputation; a neutral impact maintains the same reputation; a negative impact decreases reputation.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#HistoricalProcess"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="RecipientRole">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ReputationRole"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#ReputationReceptionProcess"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO:definir processo correspondente </owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Recipient role represents the role played by those entities that receive information about reputation.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationEvaluationAttribute">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasWeight"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#EvaluationAttributeWeight"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ReputationContentEvaluationProcess"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isDetailOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasWeight"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#EvaluationAttributeWeight"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationCalculationComponent"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isDetailOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#ReputationContentEvaluationProcess"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#EvaluationFactor"/>
+    <owl:disjointWith rdf:resource="#ReputationEvaluationValue"/>
+    <owl:disjointWith rdf:resource="#EvaluationAttributeWeight"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation attribute represents the aspects involved in a reputation evaluation. For instance,  one can consider price, quality and durability when evaluates a product reputation. Each attribute can have some characteristics, such as a  name, a description, a value.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Object">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ProductReputation"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#ProductReputation"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#NonAgent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An object describes something that is concrete and unable to act. For example, a car, a fruit.
+Um objeto é algo concreto que não tem a capacidade de executar ações. Por exemplo, um carro, uma fruta.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Event"/>
+    <owl:disjointWith rdf:resource="#Location"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Activity"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#HistoricalProcess">
+    <owl:disjointWith rdf:resource="#AggregationProcess"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Historical Process represents the process that is in charge of historical dimension of reputation value. This concept specifies the historical extension of previous reputation evaluations considered as well as the relevance associated to the most recent evaluations in spite of oldest ones.  </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Time"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInput"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInput"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Time"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ReputationMaintenanceProcess"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PositiveSocialNorm">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >As normas sociais positivas são aquelas que prescrevem os comportamentos sociais adequados. Por exemplo, "é adequado ser pontual nos compromissos". </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#hasNormativeStatus"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#AdequateStatus"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasNormativeStatus"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#AdequateStatus"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#SocialNorm"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#NegativeSocialNorm"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationProperty">
+    <owl:disjointWith rdf:resource="#ReputationCalculationComponent"/>
+    <owl:disjointWith rdf:resource="#ReputationProcess"/>
+    <owl:disjointWith rdf:resource="#ReputationRole"/>
+    <owl:disjointWith rdf:resource="#ReputationPropagationComponent"/>
+    <rdfs:subClassOf rdf:resource="#ReputativeKnowledge"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Property represents two main reputation dimensions, namely,  reputation nature and reputation type, according to reputation target entity and reputation source of information, respectivily.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#InformationSource">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Information source represents those facts that act as a source of information for a reputation definition.
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#CommumKnowledge"/>
+    <owl:disjointWith rdf:resource="#ReputativeEntity"/>
+    <owl:disjointWith rdf:resource="#Time"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationFinalValue">
+    <owl:disjointWith rdf:resource="#EvaluationFactor"/>
+    <owl:disjointWith rdf:resource="#ReputationEvaluationAttribute"/>
+    <owl:disjointWith rdf:resource="#EvaluationAttributeWeight"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ReputationMaintenanceProcess"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isOutputOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#ReputationCalculationComponent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ReputationMaintenanceProcess"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isOutputOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NormativeStatus">
+    <rdfs:subClassOf rdf:resource="#ValuePartition"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TNormative Status represents a normative classification of the actual behavior of an agent, after being compared to the social norms.  This concept corresponds to the normative status  of Functional Ontology of Law.
+Design Note: We have used the value partition pattern to defined Normative Status.  
+
+
+</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#AdequateStatus"/>
+              <owl:Class rdf:about="#InadequateStatus"/>
+              <owl:Class rdf:about="#NeutralStatus"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:about="#NormativeKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#SocialNorm"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EvaluatorAgentByRepage">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ReputationMaintenanceProcess"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#ReputationEvaluationProcess"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Repage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationContentEvaluationProcess">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ReputationEvaluationAttribute"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDetailIn"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ReputationEsteemLevelEvaluationProcess"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation content  evaluation represents a  reputation measurement  process that deals with   the attributes that contribute in its composition as well as the relevance (or weight) associated to them. So,  it is possible to describe the evaluation in terms of attributes and its weghts.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasDetailIn"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#ReputationEvaluationAttribute"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationEvaluationProcess"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Case">
+    <owl:disjointWith rdf:resource="#ReputationConcept"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#SocialNorm"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="hasCorrespondenceWith"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Circumstance"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ReputativeEntity"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isBehaviorDescriptionOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isBehaviorDescriptionOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#ReputativeEntity"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Circumstance"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasOccurredIn"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#NormativeStatus"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isClassifiedBy"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOccurredIn"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Circumstance"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ReputationRelation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A case is the description of a reputative entity "behavior" in a given circunstance. For example, an individual is smoking in a closed room.
+Um caso é a descrição do "comportamento" de uma entidade reputativa  em uma circunstancia determinada. Por exemplo, o agente fuma em uma sala fechada; o carro não anda quando chove.
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#WorldKnowledge"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#NormativeStatus"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isClassifiedBy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ResponsibilityRestriction">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Responsibility Restriction defines that a reputative entity is not held responsible in a case, given that this case occurred  under  a condition  interpreted as depending exclusively on external circumstances. In other words, is defines that a reputative entity is not responsible for a case because it was due to a external cause instead of internal cause</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#ExternalCause"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isProvokedBy"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ResponsibilityKnowledge"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isProvokedBy"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ExternalCause"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ResponsibilityAssignment"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationNature">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Nature  distinguishes reputation according to the nature of a reputational entity, such as, individual, group of individuals, product, location, event and activities.
+</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#ActivityReputation"/>
+              <owl:Class rdf:about="#EventReputation"/>
+              <owl:Class rdf:about="#GroupReputation"/>
+              <owl:Class rdf:about="#IndividualReputation"/>
+              <owl:Class rdf:about="#LocationReputation"/>
+              <owl:Class rdf:about="#ProductReputation"/>
+              <owl:Class rdf:about="#SkillReputation"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:about="#ReputationProperty"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: transformar subclasses em Defined</owl:versionInfo>
+  </owl:Class>
+  <owl:Class rdf:about="#IndividualReputation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Individual reputation represents those reputations related to persons or individual agents.
+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Individual"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#LocationReputation"/>
+    <owl:disjointWith rdf:resource="#ProductReputation"/>
+    <owl:disjointWith rdf:resource="#SkillReputation"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ActivityReputation"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Individual"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationNature"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#GroupReputation"/>
+    <owl:disjointWith rdf:resource="#EventReputation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ActivityReputation">
+    <owl:disjointWith rdf:resource="#GroupReputation"/>
+    <owl:disjointWith rdf:resource="#ProductReputation"/>
+    <owl:disjointWith rdf:resource="#SkillReputation"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Activity"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#LocationReputation"/>
+    <owl:disjointWith rdf:resource="#EventReputation"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Activity"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationNature"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Activity reputation represents those reputations related to the activities executed by agents.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#IndividualReputation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Circumstance">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A circumstance represents the situation where an agent behavior occurs. In the example "the individual John is smoking in a closed room", the circunstamce is "a closed room". 
+Uma circunstancia representa a situação na qual ocorre o comportamento de um agente. No exemplo "o individuo João fuma na sala de aula", a circunstancia corresponde a sala de aula.
+</rdfs:comment>
+    <owl:disjointWith rdf:resource="#ReputationRelation"/>
+    <owl:disjointWith rdf:resource="#ReputationConcept"/>
+    <owl:disjointWith rdf:resource="#Case"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#WorldKnowledge"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Attribution"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasImpactIn"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isOccurrenceSituationFor"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Case"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isOccurrenceSituationFor"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Case"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasImpactIn"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Attribution"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Service">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ProductReputation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A service   describes the work done or duties performed for an agent or an object. For example, a web service.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#ProductReputation"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#NonAgent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Activity"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#GroupOfIndividual">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A group is a collectivity of individuals.For example:  a corporation, a school, a group of friends.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Agent"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#GroupReputation"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#GroupReputation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Individual"/>
+  </owl:Class>
+  <owl:Class rdf:about="#NonAgent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A non-agent is something that is unable to execute reputation process. For example:an object, a place.
+
+Um não agente é algo desprovido da capacidade de executar processos reputativos.  Por exemplo: um objeto, um local.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Agent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#TargetRole"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputativeRole"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#TargetRole"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputativeRole"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ReputativeEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TransmitterReputation">
+    <rdfs:subClassOf rdf:resource="#EvaluationFactor"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Trasmitter Reputation represents the fact that the reputation of the entity that transmits the information  is taken into account during reputation evaluation process. For example, agent A told agent B the reputation of agent C. As agent A knows that agent B has a bad reputation, he will consider this information in order to accept the received information about agent C reputation as a truth.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#TargetBehavior"/>
+    <owl:disjointWith rdf:resource="#TargetEvaluatorSocialRelation"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Activity">
+    <owl:disjointWith rdf:resource="#Service"/>
+    <owl:disjointWith rdf:resource="#Object"/>
+    <owl:disjointWith rdf:resource="#Location"/>
+    <owl:disjointWith rdf:resource="#Event"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ActivityReputation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationNature"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#ActivityReputation"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#NonAgent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An activity is a task, an occupation or a habit that is executed by an agent.For example: to smoke, to ride a bike.
+Uma atividade é uma tarefa, uma ocupação ou um hábito, que é executada por um agente. Por exemplo, fumar, andar de bicicleta.
+TESTE- RETIREI A CONDIÇAO DE REPUTATION NATURE DESSA CLASSE A TITULO DE TESTE. O REASONER CONSEGUE INFERIR QUE SE ALGO TEM ACTIVITY REPUTATION (VIA NATURE) ENTAO É UMA ACTIVITY.O MODELO FICA MAIS LIMPO, MAS NAO PODEMOS INSTANCIAR ACTIVITY. COMO O REASONER NAO CLASSIFICA INSTANCIA, ACHO QUE NÀO TEM PROBLEMA. SE FOR O CASO, RETIRAR A CONDIÇÃO DE NATURE DAS DEMAIS ENTITIES.
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TransmitterRole">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ReputationRole"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#ReputationTransmissionProcess"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TODO: definir processo correspondente</owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Transmitter role represents the one played by those agents that transmit reputation information about a target entity to another agent.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ReputationReceptionProcess">
+    <owl:disjointWith rdf:resource="#ReputationEvaluationProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationProcessOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#RecipientRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#SecondHandInformation"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasInput"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Reputation Reception represents the process that deals with  getting or accepting reputation information  from one agent.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isReputationProcessOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#RecipientRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ReputationPropagationComponent"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPropagationComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ReputationMaintenanceProcess"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasInput"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#SecondHandInformation"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#ReputationProcess"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPropagationComponent"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ReputationPropagationComponent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ReputationTransmissionProcess"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#isSkillOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasSkill"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasProvoked">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between an Attribution (Internal or External Cause) and a  Responsability Restriction or a Responsability Assignment.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isProvokedBy"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasOccurredIn">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a case and a circumstance.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isOccurrenceSituationFor"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isBehaviorDescriptionOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasBehaviorDescriptionIn"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a case  and a reputative entity.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isReputativeRoleOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasReputativeRole"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies relationship between reputative roles and agents.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isProvokedBy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a  Responsability Restriction or a Responsability Assignment and an Attribution (Internal or External Cause).</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasProvoked"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasReputationNature">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isReputationNatureOf"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputation entity and a reputation nature.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isReputationOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasReputation"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a  reputation type and a reputative entity.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isDefinedThrough">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a  concept of Common Sense Knowledge and  a world concept.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasDefinitionFor"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isReputationProcessOf">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputation process and a reputative role, since a reputative role is able to perform a reputative process.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasReputationProcess"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasImpactIn">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isImpactedFor"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a Circumstance an Attribution   (Internal or External Cause) and</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasResponsibilityAssigmentBy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a Target Behavior and an Attribution.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isResponsibilityAssignerFor"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isReputationNatureOf">
+    <owl:inverseOf rdf:resource="#hasReputationNature"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputation nature and a reputation entity.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasReputation">
+    <owl:inverseOf rdf:resource="#isReputationOf"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a  reputation type and a reputative entity.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isResponsibilityAssignerFor">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between an Attribution and a Target Behavior.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasResponsibilityAssigmentBy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isInformationSourceOf">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between an  information source and a reputation type. Remember that reputation types are distinguished from each other by their information source.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasInformationSource"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasInformationSource">
+    <owl:inverseOf rdf:resource="#isInformationSourceOf"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputation type and an information source. Remember that reputation types are distinguished from each other by their information source.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasClassificationFor">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isClassifiedBy"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a normative status and a case.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="producedBy">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isAbout"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasReputationValue">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isReputationValueOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasSkill">
+    <owl:inverseOf rdf:resource="#isSkillOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isReputationValueOf">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="#hasReputationValue"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasRelationFor">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a world relation a concept of Common Sense Knowledge.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isRelatedThrough"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasBehaviorDescriptionIn">
+    <owl:inverseOf rdf:resource="#isBehaviorDescriptionOf"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a reputative entity and a case.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isRelatedThrough">
+    <owl:inverseOf rdf:resource="#hasRelationFor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a concept of Common Sense Knowledge and a world relation.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isOccurrenceSituationFor">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a circumstance and a case.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasOccurredIn"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasWeight">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  an Evaluation Attribute and its Evaluation Attribute Weight.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isWeightOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasReputativeRole">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  an agent and a reputative role.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#isReputativeRoleOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isEffectedBy">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasEffectOn"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  an Attribution and an ActorObservatorEffect.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isWeightOf">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between an Evaluation Attribute Weight and an Evaluation Attribute.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasWeight"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasOutput">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputation process and the things that are output for it. For example, transmittion process has propagated info as output; reputation  evaluation process has reputation value as output.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isOutputOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAttribution">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isAttributionOf"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a case and an Attribution (Internal or External Cause).
+</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasPropagationComponent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputation transmission process   and an reputation propagation component. </rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isPropagationComponentOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isOutputOf">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a  thing that is produced by a process and a reputation process. </rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasOutput"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isInputOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasInput"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a thing ( that is input for a process) and a reputation process.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isImpactedFor">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="#hasImpactIn"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between an Attribution   (Internal or External Cause) and Circumstance.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isPropagationComponentOf">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="#hasPropagationComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  an reputation propagation component and a reputation transmission process.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasEffectOn">
+    <owl:inverseOf rdf:resource="#isEffectedBy"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between an ActorObservatorEffect and an Attribution.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasInput">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputation process and the things that are inputs for it. For example, reception process has propagated info as input; reputation content evaluation process has reputation attributes as input.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#isInputOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isDetailOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasDetailIn"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between an Evaluation Attribute and a Reputation Content Evaluation Process.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isAbout">
+    <owl:inverseOf rdf:resource="#producedBy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isAttributionOf">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a Case and an Attribution.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="#hasAttribution"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasDefinitionFor">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a world concept and a concept of Common Sense Knowledge.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="#isDefinedThrough"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasReputationProcess">
+    <owl:inverseOf rdf:resource="#isReputationProcessOf"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a reputative role and a reputative process, since a reputative role is able to perform a reputative process.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasDetailIn">
+    <owl:inverseOf rdf:resource="#isDetailOf"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a Reputation Content Evaluation Process and the attributes that describe it.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isClassifiedBy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a case and a normative status.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="#hasClassificationFor"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ReputationEvaluationValue"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#hasNormativeStatus">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a social norm  and a normative status.</rdfs:comment>
+    <rdfs:range rdf:resource="#NormativeStatus"/>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:ID="isNormativeStatusOf"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#hasCorrespondenceWith">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a Case  and a Social Norm. It represents the matching between a Case and a Social Norm, when it occurres.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:ID="isCorrespondentTo"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#SocialNorm"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="#isCorrespondentTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between  a Social Norm and a Case.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasCorrespondenceWith"/>
+    <rdfs:domain rdf:resource="#SocialNorm"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="#isNormativeStatusOf">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      </owl:Class>
+    </rdfs:domain>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property specifies a relationship between a  normative status  and a social norm.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasNormativeStatus"/>
+  </owl:InverseFunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 125)  http://protege.stanford.edu -->

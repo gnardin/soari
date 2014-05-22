@@ -1,0 +1,18 @@
+Upload instructions sourceforge.net
+-----------------------------------
+
+Files
+=====
+
+sftp gnardin,soari@frs.sourceforge.net
+cd /home/frs/project/s/so/soari
+
+or
+
+rsync -e ssh <filename> gnardin,soari@frs.sourceforge.net:/home/frs/project/s/so/soari/<directory>/
+
+Website
+=======
+
+sftp gnardin,soari@frs.sourceforge.net
+cd /home/groups/project/s/so/soari/htdocs

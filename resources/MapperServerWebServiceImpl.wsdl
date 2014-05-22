@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.mapper.otservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax217="http://webservice.mapper.otservices/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax215="http://translationrepository.mapper.otservices/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax210="http://rmi.java/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax211="http://io.java/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://webservice.mapper.otservices" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://translationrepository.mapper.otservices/xsd">
+            <xs:complexType name="Ontology">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="type" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="uri" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="version" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.mapper.otservices/xsd">
+            <xs:complexType name="MapperList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://rmi.java/xsd" xmlns:ax213="http://io.java/xsd">
+            <xs:import namespace="http://io.java/xsd"/>
+            <xs:complexType name="RemoteException">
+                <xs:complexContent>
+                    <xs:extension base="ax211:IOException">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="cause" nillable="true" type="xs:anyType"/>
+                            <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                            <xs:element minOccurs="0" name="detail" nillable="true" type="xs:anyType"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.mapper.otservices" xmlns:ax214="http://rmi.java/xsd" xmlns:ax216="http://translationrepository.mapper.otservices/xsd" xmlns:ax218="http://webservice.mapper.otservices/xsd">
+            <xs:import namespace="http://rmi.java/xsd"/>
+            <xs:import namespace="http://translationrepository.mapper.otservices/xsd"/>
+            <xs:import namespace="http://webservice.mapper.otservices/xsd"/>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:anyType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="RemoteException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoteException" nillable="true" type="ax210:RemoteException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addOntologyTranslation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ontInterchange" nillable="true" type="ax216:Ontology"/>
+                        <xs:element minOccurs="0" name="ontNative" nillable="true" type="ax216:Ontology"/>
+                        <xs:element minOccurs="0" name="ontFile" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="dataHandler" nillable="true" type="xs:base64Binary"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addOntologyTranslationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isOntologyTranslation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ontInterchange" nillable="true" type="ax216:Ontology"/>
+                        <xs:element minOccurs="0" name="ontNative" nillable="true" type="ax216:Ontology"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isOntologyTranslationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeOntologyTranslation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ontInterchange" nillable="true" type="ax216:Ontology"/>
+                        <xs:element minOccurs="0" name="ontNative" nillable="true" type="ax216:Ontology"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeOntologyTranslationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFromMapping">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ontInterchange" nillable="true" type="ax216:Ontology"/>
+                        <xs:element minOccurs="0" name="ontNative" nillable="true" type="ax216:Ontology"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFromMappingResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOWLFile">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ontInterchange" nillable="true" type="ax216:Ontology"/>
+                        <xs:element minOccurs="0" name="ontNative" nillable="true" type="ax216:Ontology"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getOWLFileResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="translateConcept">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fromConcept" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ontFrom" nillable="true" type="ax216:Ontology"/>
+                        <xs:element minOccurs="0" name="ontTo" nillable="true" type="ax216:Ontology"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="translateConceptResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax218:MapperList"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://io.java/xsd" xmlns:ax212="http://webservice.mapper.otservices">
+            <xs:import namespace="http://webservice.mapper.otservices"/>
+            <xs:complexType name="IOException">
+                <xs:complexContent>
+                    <xs:extension base="xsd:Exception">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="translateConceptRequest">
+    <wsdl:part name="parameters" element="xsd:translateConcept">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeOntologyTranslationRequest">
+    <wsdl:part name="parameters" element="xsd:removeOntologyTranslation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RemoteException">
+    <wsdl:part name="parameters" element="xsd:RemoteException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFromMappingRequest">
+    <wsdl:part name="parameters" element="xsd:getFromMapping">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addOntologyTranslationResponse">
+    <wsdl:part name="parameters" element="xsd:addOntologyTranslationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addOntologyTranslationRequest">
+    <wsdl:part name="parameters" element="xsd:addOntologyTranslation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOWLFileResponse">
+    <wsdl:part name="parameters" element="xsd:getOWLFileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="translateConceptResponse">
+    <wsdl:part name="parameters" element="xsd:translateConceptResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFromMappingResponse">
+    <wsdl:part name="parameters" element="xsd:getFromMappingResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeOntologyTranslationResponse">
+    <wsdl:part name="parameters" element="xsd:removeOntologyTranslationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isOntologyTranslationResponse">
+    <wsdl:part name="parameters" element="xsd:isOntologyTranslationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isOntologyTranslationRequest">
+    <wsdl:part name="parameters" element="xsd:isOntologyTranslation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOWLFileRequest">
+    <wsdl:part name="parameters" element="xsd:getOWLFile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MapperServerWebServiceImplPortType">
+    <wsdl:operation name="getFromMapping">
+      <wsdl:input message="xsd:getFromMappingRequest" wsaw:Action="urn:getFromMapping">
+    </wsdl:input>
+      <wsdl:output message="xsd:getFromMappingResponse" wsaw:Action="urn:getFromMappingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isOntologyTranslation">
+      <wsdl:input message="xsd:isOntologyTranslationRequest" wsaw:Action="urn:isOntologyTranslation">
+    </wsdl:input>
+      <wsdl:output message="xsd:isOntologyTranslationResponse" wsaw:Action="urn:isOntologyTranslationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeOntologyTranslation">
+      <wsdl:input message="xsd:removeOntologyTranslationRequest" wsaw:Action="urn:removeOntologyTranslation">
+    </wsdl:input>
+      <wsdl:output message="xsd:removeOntologyTranslationResponse" wsaw:Action="urn:removeOntologyTranslationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOWLFile">
+      <wsdl:input message="xsd:getOWLFileRequest" wsaw:Action="urn:getOWLFile">
+    </wsdl:input>
+      <wsdl:output message="xsd:getOWLFileResponse" wsaw:Action="urn:getOWLFileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="translateConcept">
+      <wsdl:input message="xsd:translateConceptRequest" wsaw:Action="urn:translateConcept">
+    </wsdl:input>
+      <wsdl:output message="xsd:translateConceptResponse" wsaw:Action="urn:translateConceptResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOntologyTranslation">
+      <wsdl:input message="xsd:addOntologyTranslationRequest" wsaw:Action="urn:addOntologyTranslation">
+    </wsdl:input>
+      <wsdl:output message="xsd:addOntologyTranslationResponse" wsaw:Action="urn:addOntologyTranslationResponse">
+    </wsdl:output>
+      <wsdl:fault name="RemoteException" message="xsd:RemoteException" wsaw:Action="urn:addOntologyTranslationRemoteException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MapperServerWebServiceImplSoap12Binding" type="xsd:MapperServerWebServiceImplPortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="isOntologyTranslation">
+      <soap12:operation soapAction="urn:isOntologyTranslation" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFromMapping">
+      <soap12:operation soapAction="urn:getFromMapping" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeOntologyTranslation">
+      <soap12:operation soapAction="urn:removeOntologyTranslation" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="translateConcept">
+      <soap12:operation soapAction="urn:translateConcept" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOWLFile">
+      <soap12:operation soapAction="urn:getOWLFile" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOntologyTranslation">
+      <soap12:operation soapAction="urn:addOntologyTranslation" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="RemoteException">
+        <soap12:fault name="RemoteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MapperServerWebServiceImplHttpBinding" type="xsd:MapperServerWebServiceImplPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="isOntologyTranslation">
+      <http:operation location="MapperServerWebServiceImpl/isOntologyTranslation"/>
+      <wsdl:input>
+        <mime:content part="isOntologyTranslation" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="isOntologyTranslation" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFromMapping">
+      <http:operation location="MapperServerWebServiceImpl/getFromMapping"/>
+      <wsdl:input>
+        <mime:content part="getFromMapping" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getFromMapping" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeOntologyTranslation">
+      <http:operation location="MapperServerWebServiceImpl/removeOntologyTranslation"/>
+      <wsdl:input>
+        <mime:content part="removeOntologyTranslation" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="removeOntologyTranslation" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="translateConcept">
+      <http:operation location="MapperServerWebServiceImpl/translateConcept"/>
+      <wsdl:input>
+        <mime:content part="translateConcept" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="translateConcept" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOWLFile">
+      <http:operation location="MapperServerWebServiceImpl/getOWLFile"/>
+      <wsdl:input>
+        <mime:content part="getOWLFile" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getOWLFile" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOntologyTranslation">
+      <http:operation location="MapperServerWebServiceImpl/addOntologyTranslation"/>
+      <wsdl:input>
+        <mime:content part="addOntologyTranslation" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="addOntologyTranslation" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MapperServerWebServiceImplSoap11Binding" type="xsd:MapperServerWebServiceImplPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="isOntologyTranslation">
+      <soap:operation soapAction="urn:isOntologyTranslation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFromMapping">
+      <soap:operation soapAction="urn:getFromMapping" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeOntologyTranslation">
+      <soap:operation soapAction="urn:removeOntologyTranslation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="translateConcept">
+      <soap:operation soapAction="urn:translateConcept" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOWLFile">
+      <soap:operation soapAction="urn:getOWLFile" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOntologyTranslation">
+      <soap:operation soapAction="urn:addOntologyTranslation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="RemoteException">
+        <soap:fault name="RemoteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MapperServerWebServiceImpl">
+    <wsdl:port name="MapperServerWebServiceImplHttpSoap12Endpoint" binding="xsd:MapperServerWebServiceImplSoap12Binding">
+      <soap12:address location="http://localhost:8080/axis2/services/MapperServerWebServiceImpl"/>
+    </wsdl:port>
+    <wsdl:port name="MapperServerWebServiceImplHttpEndpoint" binding="xsd:MapperServerWebServiceImplHttpBinding">
+      <http:address location="http://localhost:8080/axis2/services/MapperServerWebServiceImpl"/>
+    </wsdl:port>
+    <wsdl:port name="MapperServerWebServiceImplHttpSoap11Endpoint" binding="xsd:MapperServerWebServiceImplSoap11Binding">
+      <soap:address location="http://localhost:8080/axis2/services/MapperServerWebServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

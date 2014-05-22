@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.lti.pcs.usp.br/OntologyMappingService"
+ xmlns:oms="http://www.lti.pcs.usp.br/OntologyMappingService">
+ 
+ <xsd:annotation>
+   <xsd:documentation xml:lang="en">
+     Ontology Mapping Service Configuration XML schema
+   </xsd:documentation>
+ </xsd:annotation>
+ 
+ <xsd:element name="OntologyMappingService" type="oms:OntologyMappingServiceType"/>
+
+ <xsd:complexType name="OntologyMappingServiceType">
+   <xsd:sequence>
+     <xsd:element name="dbXMLConfiguration" type="xsd:string"/>
+     <xsd:element name="dbXSDConfiguration" type="xsd:string"/>
+     
+     <xsd:element name="owlDirectory" type="xsd:string"/>
+     <xsd:element name="transferDirectory" type="xsd:string"/>
+   </xsd:sequence>
+ </xsd:complexType>
+</xsd:schema>

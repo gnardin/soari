@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oms:OntologyMappingService
+	xmlns:oms="http://www.lti.pcs.usp.br/OntologyMappingService" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.lti.pcs.usp.br/OntologyMappingService ontologymappingservice.xsd">
+
+	<dbXMLConfiguration>/data/workspace/soari/conf/hsqlconfiguration.xml</dbXMLConfiguration>
+	<dbXSDConfiguration>/data/workspace/soari/conf/databaseconfiguration.xsd</dbXSDConfiguration>
+
+	<owlDirectory>/data/workspace/soari/repository/ontology</owlDirectory>
+	<transferDirectory>/data/workspace/soari/repository/temp</transferDirectory>
+</oms:OntologyMappingService>
