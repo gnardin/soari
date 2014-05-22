@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.lti.pcs.usp.br/DatabaseConfiguration"
+ xmlns:dbc="http://www.lti.pcs.usp.br/DatabaseConfiguration">
+ 
+ <xsd:annotation>
+   <xsd:documentation xml:lang="en">
+     Database Configuration XML schema
+   </xsd:documentation>
+ </xsd:annotation>
+ 
+ <xsd:element name="DatabaseConfiguration" type="dbc:DatabaseConfigurationType"/>
+
+ <xsd:complexType name="DatabaseConfigurationType">
+   <xsd:sequence>
+     <xsd:element name="dbLocation" type="xsd:string"/>
+     <xsd:element name="dbName" type="xsd:string"/>
+     <xsd:element name="dbUsername" type="xsd:string"/>
+     <xsd:element name="dbPassword" type="xsd:string"/>
+   </xsd:sequence>
+ </xsd:complexType>
+</xsd:schema>

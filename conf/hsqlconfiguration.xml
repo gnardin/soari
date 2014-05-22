@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbc:DatabaseConfiguration
+	xmlns:dbc="http://www.lti.pcs.usp.br/DatabaseConfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.lti.pcs.usp.br/DatabaseConfiguration databaseconfiguration.xsd">
+
+	<dbLocation>/data/workspace/soari/repository/database</dbLocation>
+	<dbName>OntologyTranslation</dbName>
+	<dbUsername>sa</dbUsername>
+	<dbPassword />
+</dbc:DatabaseConfiguration>

@@ -1,0 +1,159 @@
+\documentclass[]{article}
+%
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage{colortbl}
+%
+\begin{document}
+%
+\section{Objetivo do Trabalho}
+\label{objetivo}
+%
+Neste trabalho, consideramos um ambiente composto por vários agentes e cada agente possui um modelo de reputação. O modelo de reputação pode ser entendido como um conjunto de atributos que tem um valor associado a eles. Esses valores são constantemente atualizados pelo agente avaliador a respeito do agente avaliado e utilizados para a tomada de decisão do primeiro em relação ao segundo.
+
+Neste ambiente, os agentes podem trocar informações sobre reputação, sendo elas: Numérica ou Simbólica. A mesma forma de comunicação é seguida por todos os agentes em uma mesma simulação. Na comunicação Numérica, os agentes consolidam os valores dos atributos sobre reputação em um único valor na faixa de 0 a 1. Na comunicação Simbólica, os agentes não precisam consolidar estes valores em um único, já que podem transmitir o atributo e seu respectivo valor numérico.
+
+Considerando um ambiente com agentes {\it Honestos} e somente um agente {\it Desonesto}, o objetivo deste trabalho foi verificar se existe uma melhora de exatidão na identificação do agente desonesto por agentes que utilizam uma maior expressividade em suas interações sobre reputação.
+
+Para tanto, utilizou-se um ambiente de simulação para avaliação de pinturas composto por inúmeros agentes que interagem entre si onde um dos agentes mentia a respeito de seu conhecimento sobre as pinturas. O cenário desta simulação é melhor descrito na seção \ref{cenario}. Este cenário foi implementado em dois ambientes de simulação, ART e FOReART, onde o ART permite somente comunicação Numérica e o FOReART possibilita comunicação Simbólica, conforme descrito na seção \ref{experimentos}.
+%
+\section{Cenário da Simulação}
+\label{cenario}
+A simulação representa uma competição iterativa entre diversos agentes relacionada a avaliação de obras de arte. Neste cenário existem dois tipos de agentes: os agentes avaliadores e os agentes clientes. Os agentes clientes contratam os agentes avaliadores para avaliarem suas pinturas. Cada agente avaliador possui conhecimento (grau de certeza) variado sobre pinturas de diferentes épocas, e para tanto, cobra um valor fixo ($Va$) para realizar a avaliação. Os agentes clientes solicitam aos agentes avaliadores a avaliação de pinturas, sendo a escolha do agente avaliador definida pelo histórico de precisão de suas avaliações anteriores.
+
+Quando um agente cliente solicita a avaliação de uma pintura de uma determinada época a um agente avaliador, este último analisa o pedido e determina se possui conhecimento suficiente para avaliá-la. Caso decida que possui o conhecimento necessário, realiza a avaliação e responde ao agente cliente. Em caso contrário, solicita a opinião de outros agentes avaliadores da sociedade. Estas opiniões, requerem o pagamento de um valor fixo ($Vo$) aos agentes provedores da opinião.
+
+O objetivo de cada agente avaliador é acumular o maior valor possível no decorrer da competição. Desta forma, quando solicitado por um agente cliente para avaliar uma pintura, o agente avaliador tenta inicialmente avaliá-la sem requisitar a opinião de outros agentes, o que lhe proporciona o maior ganho possível ($Va$ pago pelo agente cliente). No caso de solicitar a opinião de outro agente avaliador, seu ganho é reduzido pelo valor pago pela opinião ($Vo$) ao outro agente avaliador ($Va - Vo$). Porém, como o agente pode requisitar a opinião de diversos agentes ($n$), seu ganho poderá ser ainda menor ($Va - (n * Vo)$).
+
+No início de cada ciclo, o simulador aloca para cada agente avaliador uma quantidade específica de agentes clientes com base no resultado do último ciclo. No entanto, na primeira iteração, a quantidade de clientes alocados e a época das pinturas a serem avaliadas é fornecida através de um arquivo de entrada. Assim, no primeiro ciclo de simulação, todos os agentes avaliadores recebem 4 solicitações de avaliação de épocas de pinturas distintas.
+
+No início da simulação, cada agente é alimentado com o grau de certeza sobre cada uma das possíveis épocas de pintura, valor este que não se altera durante toda a simulação. Estes valores são gerados fora da plataforma de simulação de forma randômica e armazenados em um arquivo para que seja possível utilizar os mesmos dados de entrada em diferentes tipos de simulação, o que possibilitará a comparação dos resultados.
+
+\section{Experimentos Realizados}
+\label{experimentos}
+%
+Foram realizados diversos experimentos utilizando dois modelos de reputação (Repage e L.I.A.R) e duas plataformas de simulação (ART e FOReART). Estas últimas executam este mesmo cenário de simulação diferindo somente quanto ao conteúdo da informação transmitida sobre reputação entre os agentes. Enquanto na plataforma ART, a informação sobre reputação é numérica, por exemplo, 0.5, o que não permite a distinção entre os diferentes tipos de reputação, na plataforma FOReART a informação transmitida sobre reputação é simbólica e numérica, por exemplo, reputação direta=0.6, reputação indireta=0.9).
+
+Os experimentos se distinguem pela combinação de dois fatores: (1) tipos de modelo de reputação utilizados pelos agentes na simulação, e (2) forma de comunicação sobre reputação entre os agentes. Foram realizados experimentos com apenas um modelo de reputação Repage, L.I.A.R., MMH ou a combinação deles. Já as formas possíveis de comunicação entre os agentes são Numérica e Simbólica. A tabela abaixo apresenta os possíveis experimentos com a combinação destes dois fatores.
+%
+\begin{table}[ht]
+	\caption {Sumário dos Experimentos}
+	\label{table:experiments}
+	\begin{center}
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+			\textbf{ID} & \textbf{Nome do Experimento} & \textbf{Modelo} & \textbf{Forma de}\\
+			         &                       & \textbf{de Reputação}      & \textbf{Comunicação}\\
+		\hline
+			exp1   & ART/L.I.A.R. & L.I.A.R. & Numérica\\
+		\hline
+			exp2   & ART/Repage & Repage & Numérica\\
+		\hline
+			exp3   & ART/MMH & MMH & Numérica\\
+		\hline
+			exp4   & ART/L.I.A.R.-Repage/D-L.I.A.R. & L.I.A.R. e & Numérica\\
+			       &                                & Repage     & \\
+		\hline
+			exp5   & ART/L.I.A.R.-Repage/D-Repage & L.I.A.R. e & Numérica\\
+			       &                              & Repage     & \\
+		\hline
+			exp6   & ART/L.I.A.R.-MMH/D-L.I.A.R. & L.I.A.R. e & Numérica\\
+			       &                             & MMH        & \\
+		\hline
+			exp7   & ART/L.I.A.R.-MMH/D-MMH & L.I.A.R. e & Numérica\\
+			       &                        & MMH        & \\
+		\hline
+			exp8   & ART/MMH-Repage/D-MMH & MMH e  & Numérica\\
+			       &                      & Repage & \\
+		\hline
+			exp9   & ART/MMH-Repage/D-Repage & MMH e  & Numérica\\
+			       &                         & Repage & \\
+		\hline
+			exp10  & ART/Misto-D/L.I.A.R. & L.I.A.R.   & Numérica\\
+			       &                      & Repage e & \\
+			       &                      & MMH   & \\
+		\hline
+			exp11  & ART/Misto-D/Repage & L.I.A.R.   & Numérica\\
+			       &                    & Repage e & \\
+                   &                    & MMH   & \\
+        \hline
+			exp12  & ART/Misto-D/MMH & L.I.A.R.   & Numérica\\
+			       &                 & Repage e & \\
+                   &                 & MMH   & \\
+		\hline
+			exp13  & FOReART/L.I.A.R. & L.I.A.R. & Simbólica\\
+		\hline
+			exp14  & FOReART/Repage & Repage & Simbólica\\
+		\hline
+			exp15  & FOReART/MMH & MMH & Simbólica\\
+		\hline
+			exp16  & FOReART/L.I.A.R.-Repage/D-L.I.A.R. & L.I.A.R. e & Simbólica\\
+			       &                                & Repage     & \\
+		\hline
+			exp17  & FOReART/L.I.A.R.-Repage/D-Repage & L.I.A.R. e & Simbólica\\
+			       &                              & Repage     & \\
+		\hline
+			exp18  & FOReART/L.I.A.R.-MMH/D-L.I.A.R. & L.I.A.R. e & Simbólica\\
+			       &                             & MMH        & \\
+		\hline
+			exp19  & FOReART/L.I.A.R.-MMH/D-MMH & L.I.A.R. e & Simbólica\\
+			       &                        & MMH        & \\
+		\hline
+			exp20  & FOReART/MMH-Repage/D-MMH & MMH e  & Simbólica\\
+			       &                      & Repage & \\
+		\hline
+			exp21  & FOReART/MMH-Repage/D-Repage & MMH e  & Simbólica\\
+			       &                         & Repage & \\
+		\hline
+			exp22  & FOReART/Misto-D/L.I.A.R. & L.I.A.R.   & Simbólica\\
+			       &                      & Repage e & \\
+			       &                      & MMH   & \\
+		\hline
+			exp23  & FOReART/Misto-D/Repage & L.I.A.R.   & Simbólica\\
+			       &                    & Repage e & \\
+                   &                    & MMH   & \\
+        \hline
+			exp24  & FOReART/Misto-D/MMH & L.I.A.R.   & Simbólica\\
+			       &                 & Repage e & \\
+                   &                 & MMH   & \\
+		\hline
+	\end{tabular}
+	\end{center}
+\end{table}
+%
+Nos experimentos existem dois tipos de agentes: {\it Honesto} e {\it Desonesto}. Os agentes {\it Honestos} sempre respondem às solicitações somente se possuem competência sobre a época de pintura solicitada, sendo a informação transmitida coerente com o seu estado interno. Já o agente {\it Desonesto} responde a todas às solicitações, não importando sua competência; no entanto, nunca responde às solicitações com a informação coerente com o seu estado interno, e sempre tenta denegrir a imagem dos outros agentes. O comportamento do agente desonesto é portanto determinista: ele sempre responde do mesmo modo as requisições.
+
+O objetivo principal dos experimentos é identificar o valor médio da reputação atribuído pelos agentes do tipo {\it Honesto} a uma determinada época de pintura dos agentes do tipo {\it Desonesto}. A fim de possibilitar a análise, os dados iniciais de grau de certeza de épocas de pinturas e a distribuição inicial de clientes são idênticas para todos os experimentos, mas diferente para cada uma das simulações. Além disto, todos os agentes usam o mesmo modelo e parametrização em todas as simulações de todos os experimentos.
+
+Do ponto de vista formal, considere um conjunto de $n$ agentes, onde $i = \{1,2,..,n-1\}$ são agentes do tipo {\it Honesto} e $j = n$ do tipo {\it Desonesto}. Seja ainda $r_{ij}^{sk}$ o valor da reputação atribuído pelo agente $i$ ao agente $j$ no ciclo $k$ da simulação $s$. Tipicamente, o valor da reputação atribuído pelo agente $i$ ao agente $j$ na simulação $s$ corresponde à média dos valores da reputação para um conjunto de ciclos. Assim, $\displaystyle r_{ij}^{s} = \frac{\displaystyle \sum_{k=l}^{m} r_{ij}^{sk}}{m - l + 1}$, onde $l$ e $m$ representam os limites inferior e superior de ciclos respectivamente. O valor médio de reputação atribuído então pelos agentes {\it Honestos} ao agente {\it Desonesto} na simulação $s$ é $r_{j}^{s} = \frac{\displaystyle \sum_{i = 1}^{n -1} r_{ij}^{s}}{n - 1}$.
+
+Finalmente, dado um conjunto de simulações $s = \{1,...,p\}$ que compõem um experimento, o valor médio a ser testado é $r_{j} = \frac{\displaystyle \sum_{s = 1}^{p} r_{j}^{s}}{p}$.
+
+Para todos os experimentos são executadas 10 simulações distintas ($p = 10$), com 100 ciclos cada, sendo o grau de certeza dos agentes diferente em cada uma das simulações. Cada simulação é composta  por 21 agentes ($n = 21$), sendo 20 do tipo {\it Honesto} e 01 do tipo {\it Desonesto} ($i = [1,20]$ e $j = 21$). O valor médio e desvio padrão da reputação atribuído ao agente {\it Desonesto} por cada agente {\it Honesto} utiliza os valores obtidos no último ciclo da simulação ($l = 100$ e $m = 100$).
+
+\section{Análise dos Resultados}
+\label{analise}
+Para análise dos resultados, adotou-se o teste de hipóteses não-paramétrico denominado {\it Teste da Soma das Ordens} de Wilcoxon ({\it Wilcoxon's Rank Sum Test}). Esta escolha baseou-se no fato de nem todos os dados a serem testados terem distribuição normal (usado Teste de Shapiro-Wilk).
+
+Para a análise dos resultados com relação ao efeito da expressividade na comunicação dos agentes, são verificados se os valores dos atributos dos experimentos que se comunicam numericamente (sem expressividade) são maiores do que os que se comunicam simbolicamente (com expressividade). Assim, deseja-se comparar os atributos obtidos nos pares de experimentos (1,13), (2,14), (3,15), (4,16), (5,17), (6,18), (7,19), (8,20), (9,21), (10,22), (11,23) e (12,24).
+
+Para tanto, assume-se que quanto maior o valor do atributo, maior é a reputação de um agente perante a outro. Assim, como se deseja demonstrar que uma comunicação mais expressiva possibilita uma melhor exatidão na identificação da reputação de agentes, as seguintes hipóteses são formuladas:
+
+\begin{description}
+\item {\bf Hipóteses} O valor médio do atributo $X$ do modelo de reputação do experimento ART é maior que o valor médio do mesmo atributo do experimento FOReART. Essa hipótese, do ponto de vista do atributo do modelo de reputação, é expressa matematicamente como segue:
+
+$Q_{ART}^{X}\:\:$ \textgreater $\:\:Q_{FOReART}^{X}$
+
+Para validar a hipótese, realiza-se o teste:
+
+$H0$: $Q_{ART}^{X}\:\: \leq \:\:Q_{FOReART}^{X}$
+
+$H1$: $Q_{ART}^{X}\:\:$ \textgreater $\:\:Q_{FOReART}^{X}$
+%
+\end{description}
+%
+Com base nesta metodologia, foram realizadas análises para determinar o efeito causado pela heterogeneidade na comunicação (Numérica x Simbólica). Portanto, para determinar o efeito causado pela heterogeneidade na comunicação, os resultados obtidos nos experimentos foram testados em pares, quais sejam, (1,13), (2,14), (3,15), (4,16), (5,17), (6,18), (7,19), (8,20), (9,21), (10,22), (11,23) e (12,24).
+%
+\end{document}

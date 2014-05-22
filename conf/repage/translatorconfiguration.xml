@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tc:TranslatorConfiguration
+	xmlns:tc="http://www.lti.pcs.usp.br/TranslatorConfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.lti.pcs.usp.br/TranslatorConfiguration translatorconfiguration.xsd">
+
+	<id>repageAgent</id>
+	<urlMapperServer>http://localhost:8080/axis2/services/MapperServerWebService</urlMapperServer>
+	<ontNativeName>REPAGE</ontNativeName>
+	<ontNativeVersion>1</ontNativeVersion>
+	<ontInterchangeName>FORE</ontInterchangeName>
+	<ontInterchangeVersion>1</ontInterchangeVersion>
+	<mapperClientClass>otservices.translator.mapperserverclient.ws.MapperClientWebService</mapperClientClass>
+	<internalLanguageName>SPARQL</internalLanguageName>
+	<internalLanguageClass>otservices.translator.language.sparql.SPARQLFactory</internalLanguageClass>
+	<inputTranslationStrategyClass>otservices.translator.strategy.impl.HeuristicStrategy</inputTranslationStrategyClass>
+	<outputTranslationStrategyClass>otservices.translator.strategy.impl.ZeroInputNAll</outputTranslationStrategyClass>
+	<valueTransformationConcept>ValueByRepage</valueTransformationConcept>
+	<valueTransformationClass>otservices.translator.valuetransformation.art.RepageFOREValueTransformation</valueTransformationClass>
+	<reputationReasonerClass>otservices.translator.reputationreasoner.impl.repage.RepageReputationReasoner</reputationReasonerClass>
+</tc:TranslatorConfiguration>

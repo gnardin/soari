@@ -1,0 +1,69 @@
+----- LIAR -----
+SELECT ?name ?value ?dibrp ?context
+WHERE{ ?x reputation:DirectInteractionBasedReputationByLIAR ?dibrp .
+?x reputation:AgentName ?name .
+?x reputation:FacetByLIAR ?context .
+?x reputation:ReputationValuebyLIAR ?value .
+FILTER (REGEX(?name,A) && REGEX(?context,ERA1) && (?dibrp = true)) }
+
+SELECT ?name ?value ?iibrp ?context
+WHERE{ ?x reputation:IndirectInteractionBasedReputationByLIAR ?iibrp .
+?x reputation:AgentName ?name .
+?x reputation:FacetByLIAR ?context .
+?x reputation:ReputationValuebyLIAR ?value .
+FILTER (REGEX(?name,A) && REGEX(?context,ERA1) && (?iibrp = true)) }
+
+SELECT ?name ?value ?rprcbrp ?context
+WHERE{ ?x reputation:ReputationRecommendationBasedReputationByLIAR ?rprcbrp .
+?x reputation:AgentName ?name .
+?x reputation:FacetByLIAR ?context .
+?x reputation:ReputationValuebyLIAR ?value .
+FILTER (REGEX(?name,A) && REGEX(?context,ERA1) && (?rprcbrp = true)) }
+
+----- REPAGE -----
+SELECT ?name ?value ?image ?imagecontext
+WHERE{ ?x reputation:imagebyrepage ?image .
+?x reputation:AgentName ?name .
+?x reputation:agentimagebyrepage ?imagecontext .
+?x reputation:valuebyrepage ?value .
+FILTER (REGEX(?name,B) && REGEX(?imagecontext,ERA1) && (?image = true)) }
+
+SELECT ?name ?value ?rep ?imagecontext
+WHERE{ ?x reputation:reputationbyrepage ?rep .
+?x reputation:AgentName ?name .
+?x reputation:agentreputationbyrepage ?imagecontext .
+?x reputation:valuebyrepage ?value .
+FILTER (REGEX(?name,B) && REGEX(?imagecontext,ERA1) && (?rep = true)) }
+
+----- TYPOLOGY -----
+SELECT ?name ?value ?idrep ?context
+WHERE{ ?x reputation:InteractionDerivedReputationByTypology ?idrep .
+?x reputation:AgentName ?name .
+?x reputation:ContextByTypology ?context .
+?x reputation:ReputationValueByTypology ?value .
+FILTER (REGEX(?name,A) && REGEX(?context,ERA1) && (?idrep = true)) }
+
+SELECT ?name ?value ?obrep ?context
+WHERE{ ?x reputation:ObservedReputationByTypology ?obrep .
+?x reputation:AgentName ?name .
+?x reputation:ContextByTypology ?context .
+?x reputation:ReputationValueByTypology ?value .
+FILTER (REGEX(?name,A) && REGEX(?context,ERA1) && (?obrep = true)) }
+
+SELECT ?name ?value ?proprep ?context
+WHERE{ ?x reputation:PropagatedReputationByTypology ?proprep .
+?x reputation:AgentName ?name .
+?x reputation:ContextByTypology ?context .
+?x reputation:ReputationValueByTypology ?value .
+FILTER (REGEX(?name,A) && REGEX(?context,ERA1) && (?proprep = true)) }
+
+
+
+
+
+UPDATE ?value=0.8
+WHERE{ ?x reputation:DirectInteractionBasedReputationByLIAR ?dibrp .
+?x reputation:AgentName ?name .
+?x reputation:FacetByLIAR ?context .
+?x reputation:ReputationValuebyLIAR ?value .
+FILTER (REGEX(?name,A) && REGEX(?context,ERA1) && (?dibrp = true)) }

@@ -1,0 +1,4 @@
+urlid translation
+url jdbc:hsqldb:file:../repository/database/OntologyTranslation
+username sa
+password
