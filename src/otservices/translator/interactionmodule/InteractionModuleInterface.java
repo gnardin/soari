@@ -22,11 +22,7 @@ import otservices.translator.TranslatorController;
 import otservices.translator.language.LanguageException;
 import otservices.translator.language.ObjectInterface;
 
-<<<<<<< HEAD
 public abstract class InteractionModuleInterface implements TranslatorConstants {
-=======
-public abstract class InteractionModuleInterface implements TranslatorConstants{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	private TranslatorController	translatorController	= null;
 	
@@ -40,19 +36,11 @@ public abstract class InteractionModuleInterface implements TranslatorConstants{
 	 * @param none
 	 * @return true - if it is connected / false - otherwise
 	 */
-<<<<<<< HEAD
 	public Boolean isConnected() {
 		return this.isConnected;
 	}
 	
 	
-=======
-	public Boolean isConnected(){
-		return this.isConnected;
-	}
-	
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Set the Translator Controller related to this Interaction Module
 	 * 
@@ -60,26 +48,16 @@ public abstract class InteractionModuleInterface implements TranslatorConstants{
 	 *          Translator Controller class
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public void setTranslatorController(TranslatorController translatorController) {
 		if(translatorController != null) {
 			if(translatorController.isConnected()) {
-=======
-	public void setTranslatorController(TranslatorController translatorController){
-		if(translatorController != null){
-			if(translatorController.isConnected()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				this.translatorController = translatorController;
 				this.isConnected = new Boolean(true);
 			}
 		}
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Process a incoming message
 	 * 
@@ -100,17 +78,12 @@ public abstract class InteractionModuleInterface implements TranslatorConstants{
 	 * @return Translated received message
 	 */
 	public String inMessage(String sender, String language, String ontology,
-<<<<<<< HEAD
 			Integer version, Integer msgType, String message, String reply) {
-=======
-			Integer version, Integer msgType, String message, String reply){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		ObjectInterface msg = null;
 		
 		if((msgType.intValue() == TranslatorConstants.FAULT)
 				|| (msgType.intValue() == TranslatorConstants.INFORM)
-<<<<<<< HEAD
 				|| (msgType.intValue() == TranslatorConstants.RESULT)) {
 			try {
 				msg = this.translatorController.receiveReputationMessage(sender,
@@ -123,20 +96,6 @@ public abstract class InteractionModuleInterface implements TranslatorConstants{
 						language, ontology, version, message, reply);
 				
 			} catch(LanguageException le) {
-=======
-				|| (msgType.intValue() == TranslatorConstants.RESULT)){
-			try{
-				msg = this.translatorController.receiveReputationMessage(sender,
-						language, ontology, version, message, reply);
-			}catch(LanguageException le){
-			}
-		}else if(msgType.intValue() == TranslatorConstants.REQUEST){
-			try{
-				msg = this.translatorController.receiveReputationMessage(sender,
-						language, ontology, version, message, reply);
-				
-			}catch(LanguageException le){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				
 				// Returns the same message indicating occurred a Language
 				// Exception
@@ -149,22 +108,14 @@ public abstract class InteractionModuleInterface implements TranslatorConstants{
 		}
 		
 		String result = "";
-<<<<<<< HEAD
 		if(msg != null) {
-=======
-		if(msg != null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			result = msg.getMessage();
 		}
 		
 		return result;
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Process a outgoing message
 	 * 
@@ -183,10 +134,6 @@ public abstract class InteractionModuleInterface implements TranslatorConstants{
 	 * @return Translated sent message
 	 */
 	public void outMessage(String[] receivers, String language, String ontology,
-<<<<<<< HEAD
 			Integer version, Integer msgType, String message, String reply) {
-=======
-			Integer version, Integer msgType, String message, String reply){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	}
 }

@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
  * Copyright (c) 2008 Luis Gustavo Nardin <gnardin@gmail.com>
-=======
- * Copyright (c) 2008  Luis Gustavo Nardin <gnardin@gmail.com>
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,11 +8,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-<<<<<<< HEAD
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-=======
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -28,11 +20,7 @@ package otservices.translator.valuetransformation.art;
 import otservices.translator.valuetransformation.ValueTransformationInterface;
 
 public abstract class FOREValueTransformation implements
-<<<<<<< HEAD
 		ValueTransformationInterface {
-=======
-		ValueTransformationInterface{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	public static final Integer	VB			= new Integer(0);
 	
@@ -52,35 +40,20 @@ public abstract class FOREValueTransformation implements
 	 * (2x - 1) / 10
 	 * 
 	 */
-<<<<<<< HEAD
 	private Float cm(Float x) {
 		return new Float((2 * x - 1) / 10);
 	}
 	
 	
-=======
-	private Float cm(Float x){
-		return new Float((2 * x - 1) / 10);
-	}
-	
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * 
 	 * 1/10 * Ei (2i - 1) Xi
 	 * 
 	 */
-<<<<<<< HEAD
 	public Float fromFOREtoReal() {
 		float cm = 0;
 		float aux = 0;
 		for(int i = 1; i <= 5; i++) {
-=======
-	public Float fromFOREtoReal(){
-		float cm = 0;
-		float aux = 0;
-		for(int i = 1; i <= 5; i++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			aux = ((2 * i) - 1) * this.values[i - 1].floatValue();
 			cm = cm + aux;
 		}
@@ -89,19 +62,11 @@ public abstract class FOREValueTransformation implements
 		return new Float(cm);
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public void fromRealtoFORE(Float realValue) {
-=======
-
-	/**
-	 * 
-	 */
-	public void fromRealtoFORE(Float realValue){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		int i1 = Math.min(this.convertIndex(realValue).intValue(), this
 				.convertIndex(new Float(Math.max(realValue - 0.1, 0))).intValue());
 		
@@ -115,19 +80,13 @@ public abstract class FOREValueTransformation implements
 		
 		values[i1 - 1] = new Float(p);
 		values[i2 - 1] = new Float(1 - p);
-<<<<<<< HEAD
 		for(int i = 0; i < 5; i++) {
 			if((i != (i1 - 1)) && (i != (i2 - 1))) {
-=======
-		for(int i = 0; i < 5; i++){
-			if ((i != (i1 - 1)) && (i != (i2 - 1))){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				values[i] = new Float(0);
 			}
 		}
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
@@ -145,44 +104,17 @@ public abstract class FOREValueTransformation implements
 		} else if((aux > 0.6) && (aux <= 0.8)) {
 			result = new Integer(4);
 		} else if((aux > 0.8) && (aux <= 1)) {
-=======
-
-	/**
-	 * 
-	 */
-	private Integer convertIndex(Float realValue){
-		Integer result = 1;
-		float aux = realValue.floatValue();
-		
-		if ((aux >= 0) && (aux <= 0.2)){
-			result = new Integer(1);
-		}else if ((aux > 0.2) && (aux <= 0.4)){
-			result = new Integer(2);
-		}else if ((aux > 0.4) && (aux <= 0.6)){
-			result = new Integer(3);
-		}else if ((aux > 0.6) && (aux <= 0.8)){
-			result = new Integer(4);
-		}else if ((aux > 0.8) && (aux <= 1)){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			result = new Integer(5);
 		}
 		
 		return result;
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public void setValues(Float vb, Float b, Float n, Float g, Float vg) {
-=======
-
-	/**
-	 * 
-	 */
-	public void setValues(Float vb, Float b, Float n, Float g, Float vg){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		values = new Float[5];
 		values[VB.intValue()] = vb;
 		values[B.intValue()] = b;
@@ -191,55 +123,30 @@ public abstract class FOREValueTransformation implements
 		values[VG.intValue()] = vg;
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public void setValues(Float[] values) {
 		for(int i = 0; i < 5; i++) {
-=======
-
-	/**
-	 * 
-	 */
-	public void setValues(Float[] values){
-		for(int i = 0; i < 5; i++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.values[i] = values[i];
 		}
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public Boolean setValues(String strValues) {
-=======
-
-	/**
-	 * 
-	 */
-	public Boolean setValues(String strValues){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = new Boolean(false);
 		
 		strValues = strValues.substring(1, strValues.length() - 1);
 		String[] v = strValues.split(";");
-<<<<<<< HEAD
 		if(v.length == 5) {
 			for(int i = 0; i < v.length; i++) {
 				try {
 					values[i] = new Float(v[i]);
 				} catch(NumberFormatException nfe) {
-=======
-		if (v.length == 5){
-			for(int i = 0; i < v.length; i++){
-				try{
-					values[i] = new Float(v[i]);
-				}catch(NumberFormatException nfe){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					continue;
 				}
 			}
@@ -248,19 +155,11 @@ public abstract class FOREValueTransformation implements
 		return result;
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public String toString() {
-=======
-
-	/**
-	 * 
-	 */
-	public String toString(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return "[" + values[VB.intValue()].toString().substring(0, 3) + ";"
 				+ values[B.intValue()].toString().substring(0, 3) + ";"
 				+ values[N.intValue()].toString().substring(0, 3) + ";"

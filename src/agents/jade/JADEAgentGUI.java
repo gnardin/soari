@@ -17,7 +17,6 @@
  */
 package agents.jade;
 
-<<<<<<< HEAD
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -31,21 +30,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-=======
-import agents.jade.JADEAgent;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 
 /**
  * 
  */
-<<<<<<< HEAD
 public class JADEAgentGUI extends JFrame {
-=======
-public class JADEAgentGUI extends JFrame{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// Default window X and Y position
 	public final Integer	DEFAULT_POSX	= new Integer(0);
@@ -88,11 +77,7 @@ public class JADEAgentGUI extends JFrame{
 	 *          Start Y-axis of the graphical window
 	 */
 	public JADEAgentGUI(JADEAgent agent, String agentName, Integer posX,
-<<<<<<< HEAD
 			Integer posY) {
-=======
-			Integer posY){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.agent = agent;
 		
 		if(posX != null)
@@ -103,35 +88,21 @@ public class JADEAgentGUI extends JFrame{
 		
 		this.setTitle(agentName);
 		
-<<<<<<< HEAD
 		try {
 			this.guiInit();
 		} catch(Exception e) {
-=======
-		try{
-			this.guiInit();
-		}catch(Exception e){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			e.printStackTrace();
 		}
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Creates the agent graphical user interface
 	 * 
 	 * @param none
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public void guiInit() throws Exception {
-=======
-	public void guiInit() throws Exception{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Container pane = this.getContentPane();
 		
 		// Defining the Main Pane properties
@@ -165,19 +136,11 @@ public class JADEAgentGUI extends JFrame{
 		
 		// Defining clear Send Button properties
 		queryButton.setText("Send");
-<<<<<<< HEAD
 		queryButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if((String) agentCombo.getSelectedItem() != null) {
-=======
-		queryButton.addActionListener(new ActionListener(){
-			
-			@Override
-			public void actionPerformed(ActionEvent e){
-				if((String) agentCombo.getSelectedItem() != null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					agent.send((String) agentCombo.getSelectedItem(), textArea.getText());
 				}
 			}
@@ -186,17 +149,10 @@ public class JADEAgentGUI extends JFrame{
 		
 		// Defining Clear results Button properties
 		clearButton.setText("Clear");
-<<<<<<< HEAD
 		clearButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-=======
-		clearButton.addActionListener(new ActionListener(){
-			
-			@Override
-			public void actionPerformed(ActionEvent e){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				textArea.setText("");
 				logArea.setText("");
 			}
@@ -216,11 +172,7 @@ public class JADEAgentGUI extends JFrame{
 		pane.add(logScroll, BorderLayout.SOUTH);
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Write a message into the Communication Log text area
 	 * 
@@ -228,19 +180,11 @@ public class JADEAgentGUI extends JFrame{
 	 *          Message to be written
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public void logWrite(final String message) {
 		SwingUtilities.invokeLater(new Runnable() {
 			
 			@Override
 			public void run() {
-=======
-	public void logWrite(final String message){
-		SwingUtilities.invokeLater(new Runnable(){
-			
-			@Override
-			public void run(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logArea.append(message + "\r\n");
 			}
 		});

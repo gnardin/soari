@@ -24,11 +24,7 @@ import otservices.translator.TranslatorConstants;
 import otservices.translator.interactionmodule.InteractionModuleInterface;
 
 public class JADEInteractionModule extends InteractionModuleInterface implements
-<<<<<<< HEAD
 		TranslatorConstants {
-=======
-		TranslatorConstants{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	JADEAgent	agent	= null;
 	
@@ -36,23 +32,15 @@ public class JADEInteractionModule extends InteractionModuleInterface implements
 	/**
 	 * 
 	 */
-<<<<<<< HEAD
 	public JADEInteractionModule() {
 	}
 	
 	
-=======
-	public JADEInteractionModule(){
-	}
-	
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * 
 	 */
 	@Override
 	public void outMessage(String[] receivers, String language, String ontology,
-<<<<<<< HEAD
 			Integer version, Integer msgType, String message, String replyWith) {
 		
 		if(agent != null) {
@@ -71,26 +59,6 @@ public class JADEInteractionModule extends InteractionModuleInterface implements
 			
 			if(receivers != null) {
 				for(int i = 0; i < receivers.length; i++) {
-=======
-			Integer version, Integer msgType, String message, String replyWith){
-		
-		if(agent != null){
-			ACLMessage msg = null;
-			if(msgType.intValue() == REQUEST.intValue()){
-				msg = new ACLMessage(ACLMessage.REQUEST);
-			}else if(msgType.intValue() == INFORM.intValue()){
-				msg = new ACLMessage(ACLMessage.INFORM);
-			}else if(msgType.intValue() == RESULT.intValue()){
-				msg = new ACLMessage(ACLMessage.CONFIRM);
-			}else if(msgType.intValue() == FAULT.intValue()){
-				msg = new ACLMessage(ACLMessage.FAILURE);
-			}else{
-				msg = new ACLMessage(ACLMessage.NOT_UNDERSTOOD);
-			}
-			
-			if(receivers != null){
-				for(int i = 0; i < receivers.length; i++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					msg.addReceiver(new AID(receivers[i], AID.ISLOCALNAME));
 				}
 				msg.setReplyWith(replyWith);
@@ -103,19 +71,11 @@ public class JADEInteractionModule extends InteractionModuleInterface implements
 		}
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public void setJADEAgent(JADEAgent agent) {
-=======
-
-	/**
-	 * 
-	 */
-	public void setJADEAgent(JADEAgent agent){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.agent = agent;
 	}
 }

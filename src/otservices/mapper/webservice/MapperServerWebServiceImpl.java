@@ -27,23 +27,12 @@ import java.rmi.RemoteException;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import org.apache.log4j.Logger;
-<<<<<<< HEAD
 import otservices.mapper.MapperController;
 import otservices.mapper.translationrepository.Ontology;
 import otservices.util.configuration.ConfigurationParser;
 
 public class MapperServerWebServiceImpl implements
 		MapperServerWebServiceInterface {
-=======
-import otservices.mapper.translationrepository.Ontology;
-import otservices.mapper.webservice.MapperList;
-import otservices.mapper.webservice.MapperServerWebServiceInterface;
-import otservices.mapper.MapperController;
-import otservices.util.configuration.ConfigurationParser;
-
-public class MapperServerWebServiceImpl implements
-		MapperServerWebServiceInterface{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// Responsible for the logging
 	private static Logger	logger	= Logger
@@ -64,11 +53,7 @@ public class MapperServerWebServiceImpl implements
 	 * @param none
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public MapperServerWebServiceImpl() throws Exception {
-=======
-	public MapperServerWebServiceImpl() throws Exception{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		ConfigurationParser conf = new ConfigurationParser(
 				"mapperserverwebservice.xml", "mapperserverwebservice.xsd");
@@ -99,11 +84,7 @@ public class MapperServerWebServiceImpl implements
 	@Override
 	public Boolean addOntologyTranslation(Ontology ontInterchange,
 			Ontology ontNative, String ontFile, DataHandler dataHandler)
-<<<<<<< HEAD
 			throws RemoteException {
-=======
-			throws RemoteException{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = new Boolean(false);
 		
 		logger.debug("Entered MapperServerWebServiceImpl addOntologyTranslation");
@@ -115,22 +96,14 @@ public class MapperServerWebServiceImpl implements
 		logger.debug("Saving file " + filename + " to "
 				+ this.mapperController.getTransferDirectory());
 		
-<<<<<<< HEAD
 		try {
-=======
-		try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(
 					absoluteFilename));
 			BufferedInputStream in = new BufferedInputStream(
 					dataHandler.getInputStream());
 			
 			byte[] buffer = new byte[256];
-<<<<<<< HEAD
 			while(true) {
-=======
-			while(true){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				int bytesRead = in.read(buffer);
 				if(bytesRead == -1)
 					break;
@@ -150,15 +123,9 @@ public class MapperServerWebServiceImpl implements
 			
 			new File(absoluteFilename).delete();
 			
-<<<<<<< HEAD
 		} catch(FileNotFoundException fnfe) {
 			logger.error("FileNotFoundException Message " + fnfe);
 		} catch(IOException ioe) {
-=======
-		}catch(FileNotFoundException fnfe){
-			logger.error("FileNotFoundException Message " + fnfe);
-		}catch(IOException ioe){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("IOException Message " + ioe);
 		}
 		
@@ -177,11 +144,7 @@ public class MapperServerWebServiceImpl implements
 	 *         relation
 	 */
 	@Override
-<<<<<<< HEAD
 	public String[] getFromMapping(Ontology ontInterchange, Ontology ontNative) {
-=======
-	public String[] getFromMapping(Ontology ontInterchange, Ontology ontNative){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger.debug("Entered MapperServerWebServiceImpl getFromMapping");
 		
@@ -205,11 +168,7 @@ public class MapperServerWebServiceImpl implements
 	 *         relation in OWL format
 	 */
 	@Override
-<<<<<<< HEAD
 	public DataHandler getOWLFile(Ontology ontInterchange, Ontology ontNative) {
-=======
-	public DataHandler getOWLFile(Ontology ontInterchange, Ontology ontNative){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger.debug("Entered MapperServerWebServiceImpl getOWLFile");
 		
@@ -219,11 +178,7 @@ public class MapperServerWebServiceImpl implements
 		logger.debug("Calling mapperController.getOWLFile");
 		
 		String file = this.mapperController.getOWLFile(ontInterchange, ontNative);
-<<<<<<< HEAD
 		if(file != null) {
-=======
-		if(file != null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("OWL File = " + file);
 			
 			return new DataHandler(new FileDataSource(file));
@@ -245,11 +200,7 @@ public class MapperServerWebServiceImpl implements
 	 */
 	@Override
 	public Boolean isOntologyTranslation(Ontology ontInterchange,
-<<<<<<< HEAD
 			Ontology ontNative) {
-=======
-			Ontology ontNative){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger.debug("Entered MapperServerWebServiceImpl isOntologyTranslation");
 		
@@ -275,11 +226,7 @@ public class MapperServerWebServiceImpl implements
 	 */
 	@Override
 	public Boolean removeOntologyTranslation(Ontology ontInterchange,
-<<<<<<< HEAD
 			Ontology ontNative) {
-=======
-			Ontology ontNative){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger
 				.debug("Entered MapperServerWebServiceImpl removeOntologyTranslation");
@@ -308,11 +255,7 @@ public class MapperServerWebServiceImpl implements
 	 */
 	@Override
 	public MapperList translateConcept(String fromConcept, Ontology ontFrom,
-<<<<<<< HEAD
 			Ontology ontTo) {
-=======
-			Ontology ontTo){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger.debug("Entered MapperServerWebServiceImpl translateConcept");
 		

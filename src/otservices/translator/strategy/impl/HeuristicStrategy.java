@@ -33,11 +33,7 @@ import otservices.mapper.translationrepository.Ontology;
 import otservices.translator.mapperserverclient.ws.MapperClientWebServiceInterface;
 import otservices.translator.strategy.TranslationStrategyInterface;
 
-<<<<<<< HEAD
 public class HeuristicStrategy implements TranslationStrategyInterface {
-=======
-public class HeuristicStrategy implements TranslationStrategyInterface{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// OWL Filename
 	private String													filename;
@@ -73,17 +69,10 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 	/**
 	 * 
 	 */
-<<<<<<< HEAD
 	private Boolean getOWLFile() {
 		Boolean result = new Boolean(false);
 		
 		if(mapperClient.isConnected().booleanValue()) {
-=======
-	private Boolean getOWLFile(){
-		Boolean result = new Boolean(false);
-		
-		if(mapperClient.isConnected().booleanValue()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			Ontology ontInterchange = new Ontology();
 			ontInterchange.setUri(this.ontInterchangeName);
@@ -93,7 +82,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 			ontNative.setUri(this.ontNativeName);
 			ontNative.setVersion(this.ontNativeVersion);
 			
-<<<<<<< HEAD
 			if(!(new File(this.filename)).exists()) {
 				
 				try {
@@ -111,25 +99,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 						.createJenaOWLModelFromInputStream(new FileInputStream(
 								this.filename));
 			} catch(Exception e) {
-=======
-			if(!(new File(this.filename)).exists()){
-				
-				try{
-					result = mapperClient.getOWLFile(ontInterchange, ontNative,
-							this.filename);
-				}catch(Exception e){
-					result = new Boolean(false);
-				}
-			}else{
-				result = new Boolean(true);
-			}
-			
-			try{
-				this.owlModel = ProtegeOWL
-						.createJenaOWLModelFromInputStream(new FileInputStream(
-								this.filename));
-			}catch(Exception e){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				result = new Boolean(false);
 			}
 		}
@@ -141,27 +110,16 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 	/**
 	 * 
 	 */
-<<<<<<< HEAD
 	private String getClassNameMatches(String name) {
-=======
-	private String getClassNameMatches(String name){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean found = new Boolean(false);
 		String className = null;
 		
 		Collection classes = owlModel.getUserDefinedOWLNamedClasses();
 		for(Iterator it = classes.iterator(); (it.hasNext() && !found
-<<<<<<< HEAD
 				.booleanValue());) {
 			OWLNamedClass cls = (OWLNamedClass) it.next();
 			
 			if(cls.getName().toLowerCase().contains(name.toLowerCase())) {
-=======
-				.booleanValue());){
-			OWLNamedClass cls = (OWLNamedClass) it.next();
-			
-			if(cls.getName().toLowerCase().contains(name.toLowerCase())){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				found = new Boolean(true);
 				className = cls.getName();
 			}
@@ -174,7 +132,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 	 * 
 	 */
 	@Override
-<<<<<<< HEAD
 	public String[] run(String concept, String[] translations) {
 		String[] result = new String[0];
 		
@@ -187,29 +144,11 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 				
 				// Check if the concept was not translated before
 				if(!newMap.containsKey(concept.toLowerCase())) {
-=======
-	public String[] run(String concept, String[] translations){
-		String[] result = new String[0];
-		
-		if(translations == null){
-			translations = new String[0];
-		}
-		
-		if(isOK.booleanValue()){
-			if(translations.length == 0){
-				
-				// Check if the concept was not translated before
-				if(!newMap.containsKey(concept.toLowerCase())){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					
 					// Find the first correct concept name in the OWL
 					// model
 					String matchedClass = getClassNameMatches(concept);
-<<<<<<< HEAD
 					if(matchedClass != null) {
-=======
-					if(matchedClass != null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						// Remove Namespace
 						matchedClass = matchedClass
 								.substring(matchedClass.indexOf("#") + 1);
@@ -221,16 +160,11 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 						
 						// Try find sub and super match concepts
 						result = this.runSubClasses(matchedClass, new Boolean(true));
-<<<<<<< HEAD
 						if(result.length == 0) {
-=======
-						if(result.length == 0){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							result = this.runSuperClasses(matchedClass);
 						}
 						
 						// If does not find
-<<<<<<< HEAD
 						if(result.length != 0) {
 							this.newMap.put(matchedClass.toLowerCase(), result);
 						}
@@ -239,25 +173,11 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 					result = this.newMap.get(concept.toLowerCase());
 				}
 			} else if(translations.length > 0) {
-=======
-						if(result.length != 0){
-							this.newMap.put(matchedClass.toLowerCase(), result);
-						}
-					}
-				}else{
-					result = this.newMap.get(concept.toLowerCase());
-				}
-			}else if(translations.length > 0){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				result = translations;
 			}
 		}
 		
-<<<<<<< HEAD
 		if(result.length == 0) {
-=======
-		if(result.length == 0){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			result = new String[1];
 			result[0] = concept;
 		}
@@ -269,7 +189,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 	/**
 	 * 
 	 */
-<<<<<<< HEAD
 	private String[] runSubClasses(String concept, Boolean depth) {
 		String[] result = null;
 		
@@ -281,19 +200,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 				className = ((RDFSClass) i.next()).getName().toLowerCase();
 				
 				if(!className.startsWith("@")) {
-=======
-	private String[] runSubClasses(String concept, Boolean depth){
-		String[] result = null;
-		
-		OWLNamedClass owlClass = owlModel.getOWLNamedClass(concept);
-		if(owlClass != null){
-			List<String> list = new ArrayList<String>();
-			String className;
-			for(Iterator i = owlClass.getSubclasses(false).iterator(); i.hasNext();){
-				className = ((RDFSClass) i.next()).getName().toLowerCase();
-				
-				if(!className.startsWith("@")){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					
 					// Remove Namespace
 					className = className.substring(className.indexOf("#") + 1);
@@ -304,7 +210,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 					// .getDefaultNamespace().length());
 					
 					// Look for the subclass into the newMap
-<<<<<<< HEAD
 					if(this.newMap.containsKey(className)) {
 						result = this.newMap.get(className);
 						
@@ -319,22 +224,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 							result = this.originalMap.get(className);
 							
 							for(int x = 0; x < result.length; x++) {
-=======
-					if(this.newMap.containsKey(className)){
-						result = this.newMap.get(className);
-						
-						for(int x = 0; x < result.length; x++){
-							list.add(result[x]);
-						}
-						
-					}else{
-						
-						// Look for the subclass into the originalMap
-						if(this.originalMap.containsKey(className)){
-							result = this.originalMap.get(className);
-							
-							for(int x = 0; x < result.length; x++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								list.add(result[x]);
 							}
 						}
@@ -343,17 +232,10 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 			}
 			
 			// If it does not find a subclass translation
-<<<<<<< HEAD
 			if((list.size() == 0) && (depth.booleanValue())) {
 				for(Iterator i = owlClass.getSubclasses(false).iterator(); i.hasNext();) {
 					className = ((RDFSClass) i.next()).getName();
 					if(!className.startsWith("@")) {
-=======
-			if((list.size() == 0) && (depth.booleanValue())){
-				for(Iterator i = owlClass.getSubclasses(false).iterator(); i.hasNext();){
-					className = ((RDFSClass) i.next()).getName();
-					if(!className.startsWith("@")){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						// Remove Namespace
 						className = className.substring(className.indexOf("#") + 1);
 						
@@ -365,38 +247,23 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 						
 						result = this.runSubClasses(className, new Boolean(false));
 						
-<<<<<<< HEAD
 						for(int x = 0; x < result.length; x++) {
-=======
-						for(int x = 0; x < result.length; x++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							list.add(result[x]);
 						}
 					}
 				}
 			}
 			
-<<<<<<< HEAD
 			if(list.size() > 0) {
 				result = new String[list.size()];
 				int c = 0;
 				for(Iterator<String> i = list.iterator(); i.hasNext(); c++) {
-=======
-			if(list.size() > 0){
-				result = new String[list.size()];
-				int c = 0;
-				for(Iterator<String> i = list.iterator(); i.hasNext(); c++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					result[c] = i.next();
 				}
 			}
 		}
 		
-<<<<<<< HEAD
 		if(result == null) {
-=======
-		if(result == null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			result = new String[0];
 		}
 		
@@ -407,7 +274,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 	/**
 	 * 
 	 */
-<<<<<<< HEAD
 	private String[] runSuperClasses(String concept) {
 		String[] result = null;
 		
@@ -418,18 +284,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 				className = ((RDFSClass) i.next()).getName();
 				
 				if(!className.startsWith("@")) {
-=======
-	private String[] runSuperClasses(String concept){
-		String[] result = null;
-		
-		OWLNamedClass owlClass = this.owlModel.getOWLNamedClass(concept);
-		if(owlClass != null){
-			String className;
-			for(Iterator i = owlClass.getSuperclasses(false).iterator(); i.hasNext();){
-				className = ((RDFSClass) i.next()).getName();
-				
-				if(!className.startsWith("@")){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					// Remove Namespace
 					className = className.substring(className.indexOf("#") + 1);
 					
@@ -438,7 +292,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 					// className = className.substring(this.owlModel.getNamespaceManager()
 					// .getDefaultNamespace().length());
 					
-<<<<<<< HEAD
 					if(this.newMap.containsKey(className.toLowerCase())) {
 						result = this.newMap.get(className.toLowerCase());
 					} else {
@@ -446,15 +299,6 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 						if(this.originalMap.containsKey(className.toLowerCase())) {
 							result = this.originalMap.get(className.toLowerCase());
 						} else {
-=======
-					if(this.newMap.containsKey(className.toLowerCase())){
-						result = this.newMap.get(className.toLowerCase());
-					}else{
-						
-						if(this.originalMap.containsKey(className.toLowerCase())){
-							result = this.originalMap.get(className.toLowerCase());
-						}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							result = this.runSuperClasses(className);
 						}
 					}
@@ -462,11 +306,7 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 			}
 		}
 		
-<<<<<<< HEAD
 		if(result == null) {
-=======
-		if(result == null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			result = new String[0];
 		}
 		
@@ -480,11 +320,7 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 	@Override
 	public void setWebServices(String ontInterchangeName,
 			Integer ontInterchangeVersion, String ontNativeName,
-<<<<<<< HEAD
 			Integer ontNativeVersion, MapperClientWebServiceInterface mapperClient) {
-=======
-			Integer ontNativeVersion, MapperClientWebServiceInterface mapperClient){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		this.mapperClient = mapperClient;
 		this.ontInterchangeName = ontInterchangeName;
@@ -495,11 +331,7 @@ public class HeuristicStrategy implements TranslationStrategyInterface{
 		this.filename = this.ontInterchangeName + this.ontNativeName + ".owl";
 		
 		isOK = this.getOWLFile();
-<<<<<<< HEAD
 		if(isOK.booleanValue()) {
-=======
-		if(isOK.booleanValue()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			Ontology ontInterchange = new Ontology();
 			ontInterchange.setUri(this.ontInterchangeName);
 			ontInterchange.setVersion(this.ontInterchangeVersion);

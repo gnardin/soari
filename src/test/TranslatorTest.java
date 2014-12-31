@@ -7,11 +7,7 @@ import otservices.translator.reputationreasoner.impl.ARTDecision;
 
 public class TranslatorTest {
 	
-<<<<<<< HEAD
 	public static void main(String[] args) throws Exception {
-=======
-	public static void main(String[] args) throws Exception{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		// Source Translation Controller
 		String xml = "/data/workspace/soari/conf/liar/translatorconfiguration.xml";
 		String xsd = "/data/workspace/soari/conf/liar/translatorconfiguration.xsd";
@@ -56,12 +52,8 @@ public class TranslatorTest {
 		 * message = "UPDATE ?value=10 ?l=20 " +
 		 * "WHERE{ ?x reputation:DirectReputation ?drep ." +
 		 * "       ?x reputation:AgentName ?name ." +
-<<<<<<< HEAD
 		 * "       ?x reputation:ReputationFinalVAlue ?value ." +
 		 * "       FILTER (((?A = true) && (?B = true) && (?C = true)) || ((?D = true) && ((?E = true) || (?F = true))))}"
-=======
-		 * "       ?x reputation:ReputationFinalVAlue ?value ." +"       FILTER (((?A = true) && (?B = true) && (?C = true)) || ((?D = true) && ((?E = true) || (?F = true))))}"
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		 * ;
 		 */
 		

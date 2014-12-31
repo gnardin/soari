@@ -20,18 +20,12 @@ package otservices.translator.strategy.impl;
 import otservices.translator.mapperserverclient.ws.MapperClientWebServiceInterface;
 import otservices.translator.strategy.TranslationStrategyInterface;
 
-<<<<<<< HEAD
 public class ZeroInputNAll implements TranslationStrategyInterface {
 	
-=======
-public class ZeroInputNAll implements TranslationStrategyInterface{
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * 
 	 */
 	@Override
-<<<<<<< HEAD
 	public String[] run(String concept, String[] translations) {
 		String[] result = new String[1];
 		
@@ -45,32 +39,12 @@ public class ZeroInputNAll implements TranslationStrategyInterface{
 	}
 	
 	
-=======
-	public String[] run(String concept, String[] translations){
-		String[] result = new String[1];
-
-		if (translations == null){
-			result[0] = concept;
-		}else
-			if (translations.length > 0){
-				result = translations;
-			}
-
-		return result;
-	}
-
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * 
 	 */
 	@Override
 	public void setWebServices(String ontInterchangeName,
 			Integer ontInterchangeVersion, String ontNativeName,
-<<<<<<< HEAD
 			Integer ontNativeVersion, MapperClientWebServiceInterface mapperClient) {
-=======
-			Integer ontNativeVersion, MapperClientWebServiceInterface mapperClient){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	}
 }

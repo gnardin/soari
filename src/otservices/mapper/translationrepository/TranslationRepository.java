@@ -27,11 +27,7 @@ import otservices.util.database.DatabaseHSQLImpl;
 import otservices.util.database.DatabaseInterface;
 import otservices.util.database.SQLStatementInterface;
 
-<<<<<<< HEAD
 public class TranslationRepository {
-=======
-public class TranslationRepository{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// Database Configuration
 	private ConfigurationParser	databaseConfiguration	= null;
@@ -55,11 +51,7 @@ public class TranslationRepository{
 	 *          Database configuration parameters
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public TranslationRepository(ConfigurationParser databaseConfiguration) {
-=======
-	public TranslationRepository(ConfigurationParser databaseConfiguration){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.databaseConfiguration = databaseConfiguration;
 		
 		logger.debug("databaseConfiguration is set");
@@ -73,13 +65,8 @@ public class TranslationRepository{
 	 * @param none
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public void run() {
 		if(databaseConfiguration != null) {
-=======
-	public void run(){
-		if(databaseConfiguration != null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("Setting up database");
 			
 			db = new DatabaseHSQLImpl();
@@ -102,11 +89,7 @@ public class TranslationRepository{
 	 * @param none
 	 * @return true - if it is connected; false - otherwise
 	 */
-<<<<<<< HEAD
 	public Boolean isConnected() {
-=======
-	public Boolean isConnected(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		logger.debug("Database Connected = " + this.conn.toString());
 		
 		return this.conn;
@@ -121,16 +104,11 @@ public class TranslationRepository{
 	 *          statement
 	 * @return Number of records affected
 	 */
-<<<<<<< HEAD
 	public Integer delete(Object where) {
-=======
-	public Integer delete(Object where){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Integer result = new Integer(0);
 		
 		logger.debug("TranslationRepository DELETE");
 		
-<<<<<<< HEAD
 		if(where instanceof Ontology) {
 			SQLStatementInterface expSQL = new OntologySQLStatement();
 			result = db.update(expSQL.delete(where));
@@ -141,18 +119,6 @@ public class TranslationRepository{
 			SQLStatementInterface expSQL = new OntTranslationSQLStatement();
 			result = db.update(expSQL.delete(where));
 		} else {
-=======
-		if(where instanceof Ontology){
-			SQLStatementInterface expSQL = new OntologySQLStatement();
-			result = db.update(expSQL.delete(where));
-		}else if(where instanceof OntRelation){
-			SQLStatementInterface expSQL = new OntRelationSQLStatement();
-			result = db.update(expSQL.delete(where));
-		}else if(where instanceof OntTranslation){
-			SQLStatementInterface expSQL = new OntTranslationSQLStatement();
-			result = db.update(expSQL.delete(where));
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger
 					.error("[DELETE] WHERE is not an instance of any of the objects that can be treated");
 		}
@@ -168,16 +134,11 @@ public class TranslationRepository{
 	 *          Record to be inserted
 	 * @return Number of records affected
 	 */
-<<<<<<< HEAD
 	public Integer insert(Object reg) {
-=======
-	public Integer insert(Object reg){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Integer result = new Integer(0);
 		
 		logger.debug("TranslationRepository INSERT");
 		
-<<<<<<< HEAD
 		if(reg instanceof Ontology) {
 			SQLStatementInterface expSQL = new OntologySQLStatement();
 			result = db.update(expSQL.insert(reg));
@@ -188,18 +149,6 @@ public class TranslationRepository{
 			SQLStatementInterface expSQL = new OntTranslationSQLStatement();
 			result = db.update(expSQL.insert(reg));
 		} else {
-=======
-		if(reg instanceof Ontology){
-			SQLStatementInterface expSQL = new OntologySQLStatement();
-			result = db.update(expSQL.insert(reg));
-		}else if(reg instanceof OntRelation){
-			SQLStatementInterface expSQL = new OntRelationSQLStatement();
-			result = db.update(expSQL.insert(reg));
-		}else if(reg instanceof OntTranslation){
-			SQLStatementInterface expSQL = new OntTranslationSQLStatement();
-			result = db.update(expSQL.insert(reg));
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger
 					.error("[INSERT] REG is not an instance of any of the objects that can be treated");
 		}
@@ -217,16 +166,11 @@ public class TranslationRepository{
 	 * @return List of records found in the database
 	 */
 	@SuppressWarnings("unchecked")
-<<<<<<< HEAD
 	public List select(Object where) {
-=======
-	public List select(Object where){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		List result = new ArrayList();
 		
 		logger.debug("TranslationRepository SELECT");
 		
-<<<<<<< HEAD
 		try {
 			if(where instanceof Ontology) {
 				SQLStatementInterface expSQL = new OntologySQLStatement();
@@ -235,16 +179,6 @@ public class TranslationRepository{
 				if(rs != null) {
 					Ontology reg;
 					while(rs.next()) {
-=======
-		try{
-			if(where instanceof Ontology){
-				SQLStatementInterface expSQL = new OntologySQLStatement();
-				ResultSet rs = db.query(expSQL.select(where));
-				
-				if(rs != null){
-					Ontology reg;
-					while(rs.next()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						reg = new Ontology();
 						reg.setId(new Integer(rs.getInt("ID")));
 						reg.setType(new Integer(rs.getInt("ONTTYPE")));
@@ -255,7 +189,6 @@ public class TranslationRepository{
 						result.add(reg);
 					}
 				}
-<<<<<<< HEAD
 			} else if(where instanceof OntRelation) {
 				SQLStatementInterface expSQL = new OntRelationSQLStatement();
 				ResultSet rs = db.query(expSQL.select(where));
@@ -263,15 +196,6 @@ public class TranslationRepository{
 				if(rs != null) {
 					OntRelation reg;
 					while(rs.next()) {
-=======
-			}else if(where instanceof OntRelation){
-				SQLStatementInterface expSQL = new OntRelationSQLStatement();
-				ResultSet rs = db.query(expSQL.select(where));
-				
-				if(rs != null){
-					OntRelation reg;
-					while(rs.next()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						reg = new OntRelation();
 						reg.setId(new Integer(rs.getInt("ID")));
 						reg.setInterchangeOntology(new Integer(rs.getInt("ONTINTERCHANGE")));
@@ -281,7 +205,6 @@ public class TranslationRepository{
 						result.add(reg);
 					}
 				}
-<<<<<<< HEAD
 			} else if(where instanceof OntTranslation) {
 				SQLStatementInterface expSQL = new OntTranslationSQLStatement();
 				ResultSet rs = db.query(expSQL.select(where));
@@ -289,15 +212,6 @@ public class TranslationRepository{
 				if(rs != null) {
 					OntTranslation reg;
 					while(rs.next()) {
-=======
-			}else if(where instanceof OntTranslation){
-				SQLStatementInterface expSQL = new OntTranslationSQLStatement();
-				ResultSet rs = db.query(expSQL.select(where));
-				
-				if(rs != null){
-					OntTranslation reg;
-					while(rs.next()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						reg = new OntTranslation();
 						reg.setId(new Integer(rs.getInt("ID")));
 						reg.setRelationID(new Integer(rs.getInt("ONTRELID")));
@@ -307,19 +221,11 @@ public class TranslationRepository{
 						result.add(reg);
 					}
 				}
-<<<<<<< HEAD
 			} else {
 				logger
 						.error("[SELECT] WHERE is not an instance of any of the objects that can be treated");
 			}
 		} catch(SQLException sqle) {
-=======
-			}else{
-				logger
-						.error("[SELECT] WHERE is not an instance of any of the objects that can be treated");
-			}
-		}catch(SQLException sqle){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("SQLException Message " + sqle);
 		}
 		
@@ -333,21 +239,12 @@ public class TranslationRepository{
 	 * @param none
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public void shutdown() {
 		if(db.isConnected()) {
 			logger.debug("Disconnected successfully");
 			
 			db.shutdown();
 		} else {
-=======
-	public void shutdown(){
-		if(db.isConnected()){
-			logger.debug("Disconnected successfully");
-			
-			db.shutdown();
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("It was not connected");
 		}
 	}
@@ -363,16 +260,11 @@ public class TranslationRepository{
 	 *          Parameters that will be updated in the records filtered
 	 * @return Number of records affected
 	 */
-<<<<<<< HEAD
 	public Integer update(Object where, Object values) {
-=======
-	public Integer update(Object where, Object values){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Integer result = new Integer(0);
 		
 		logger.debug("TranslationRepository UPDATE");
 		
-<<<<<<< HEAD
 		if((where instanceof Ontology) && (values instanceof Ontology)) {
 			SQLStatementInterface expSQL = new OntologySQLStatement();
 			result = db.update(expSQL.update(where, values));
@@ -384,19 +276,6 @@ public class TranslationRepository{
 			SQLStatementInterface expSQL = new OntTranslationSQLStatement();
 			result = db.update(expSQL.update(where, values));
 		} else {
-=======
-		if((where instanceof Ontology) && (values instanceof Ontology)){
-			SQLStatementInterface expSQL = new OntologySQLStatement();
-			result = db.update(expSQL.update(where, values));
-		}else if((where instanceof OntRelation) && (values instanceof OntRelation)){
-			SQLStatementInterface expSQL = new OntRelationSQLStatement();
-			result = db.update(expSQL.update(where, values));
-		}else if((where instanceof OntTranslation)
-				&& (values instanceof OntTranslation)){
-			SQLStatementInterface expSQL = new OntTranslationSQLStatement();
-			result = db.update(expSQL.update(where, values));
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger
 					.error("[UPDATE] WHERE or VALUES are not an instance of any of the objects that can be treated");
 		}

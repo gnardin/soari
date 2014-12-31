@@ -34,11 +34,7 @@ import otservices.mapper.translationrepository.Ontology;
 import otservices.mapper.webservice.MapperServerWebServiceImplStub;
 import otservices.mapper.webservice.RemoteExceptionException0;
 
-<<<<<<< HEAD
 public class MapperClientWebService implements MapperClientWebServiceInterface {
-=======
-public class MapperClientWebService implements MapperClientWebServiceInterface{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// Indicate if the client is pointing to a server
 	private Boolean													connected	= new Boolean(false);
@@ -61,11 +57,7 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 * @param none
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public MapperClientWebService() {
-=======
-	public MapperClientWebService(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	}
 	
 	
@@ -76,11 +68,7 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 *          Web Service URL
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public MapperClientWebService(String url) {
-=======
-	public MapperClientWebService(String url){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.url = url;
 	}
 	
@@ -99,7 +87,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 */
 	@Override
 	public Boolean addOntologyTranslation(Ontology ontInterchange,
-<<<<<<< HEAD
 			Ontology ontNative, String ontFile) {
 		Boolean result = new Boolean(false);
 		
@@ -107,15 +94,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 			
 			if(new File(ontFile).exists()) {
 				try {
-=======
-			Ontology ontNative, String ontFile){
-		Boolean result = new Boolean(false);
-		
-		if((ontInterchange != null) && (ontNative != null) && (ontFile != null)){
-			
-			if(new File(ontFile).exists()){
-				try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					MapperServerWebServiceImplStub.Ontology ontI = this
 							.copyOntology(ontInterchange);
 					MapperServerWebServiceImplStub.Ontology ontN = this
@@ -131,21 +109,12 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 							.addOntologyTranslation(add);
 					
 					result = new Boolean(response.get_return());
-<<<<<<< HEAD
 				} catch(RemoteException re) {
 					logger.error("RemoteException Message " + re);
 				} catch(RemoteExceptionException0 ree0) {
 					logger.error("RemoteExceptionException0 Message " + ree0);
 				}
 			} else {
-=======
-				}catch(RemoteException re){
-					logger.error("RemoteException Message " + re);
-				}catch(RemoteExceptionException0 ree0){
-					logger.error("RemoteExceptionException0 Message " + ree0);
-				}
-			}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.error("FileNotFoundException Message = File name = " + ontFile);
 			}
 		}
@@ -161,7 +130,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 * @return true - if successfully connected / false - otherwise
 	 */
 	@Override
-<<<<<<< HEAD
 	public Boolean connect() {
 		Boolean result = new Boolean(false);
 		
@@ -174,33 +142,13 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 			}
 		} else {
 			if(this.url == null) {
-=======
-	public Boolean connect(){
-		Boolean result = new Boolean(false);
-		
-		if((this.url != null) && (!this.isConnected().booleanValue())){
-			try{
-				this.stub = new MapperServerWebServiceImplStub(this.url);
-				result = new Boolean(true);
-			}catch(AxisFault af){
-				logger.error("AxisFault Message " + af);
-			}
-		}else{
-			if(this.url == null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("URL is NULL");
 			}
 		}
 		
-<<<<<<< HEAD
 		if(result.booleanValue()) {
 			logger.debug("Client is connected");
 		} else {
-=======
-		if(result.booleanValue()){
-			logger.debug("Client is connected");
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("Client is not connected");
 		}
 		this.connected = result;
@@ -216,11 +164,7 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 *          Source ontology
 	 * @return Target ontology
 	 */
-<<<<<<< HEAD
 	private MapperServerWebServiceImplStub.Ontology copyOntology(Ontology ontIn) {
-=======
-	private MapperServerWebServiceImplStub.Ontology copyOntology(Ontology ontIn){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		MapperServerWebServiceImplStub.Ontology ontOut = new MapperServerWebServiceImplStub.Ontology();
 		
 		if(ontIn.getId() != null)
@@ -249,11 +193,7 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 * @return none
 	 */
 	@Override
-<<<<<<< HEAD
 	public void disconnect() {
-=======
-	public void disconnect(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.url = null;
 		this.stub = null;
 		this.connected = new Boolean(false);
@@ -275,19 +215,11 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 */
 	@Override
 	public Map<String, String[]> getInterchangeNativeMapping(
-<<<<<<< HEAD
 			Ontology ontInterchange, Ontology ontNative) {
 		Map<String, String[]> result = null;
 		
 		if((ontInterchange != null) && (ontNative != null)) {
 			try {
-=======
-			Ontology ontInterchange, Ontology ontNative){
-		Map<String, String[]> result = null;
-		
-		if((ontInterchange != null) && (ontNative != null)){
-			try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				MapperServerWebServiceImplStub.Ontology ontI = this
 						.copyOntology(ontInterchange);
 				MapperServerWebServiceImplStub.Ontology ontN = this
@@ -302,21 +234,13 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 				
 				String[] fromConcepts = response.get_return();
 				
-<<<<<<< HEAD
 				if(fromConcepts.length > 0) {
-=======
-				if(fromConcepts.length > 0){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					result = new HashMap<String, String[]>();
 					
 					MapperServerWebServiceImplStub.TranslateConcept translate = new MapperServerWebServiceImplStub.TranslateConcept();
 					translate.setOntFrom(ontI);
 					translate.setOntTo(ontN);
-<<<<<<< HEAD
 					for(int i = 0; i < fromConcepts.length; i++) {
-=======
-					for(int i = 0; i < fromConcepts.length; i++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						translate.setFromConcept(fromConcepts[i]);
 						
 						MapperServerWebServiceImplStub.TranslateConceptResponse transResponse = stub
@@ -327,34 +251,19 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 						
 						result.put(fromConcepts[i], toConcepts.getList());
 					}
-<<<<<<< HEAD
 				} else {
 					logger.debug("There is no concepts for translation");
 				}
 			} catch(RemoteException re) {
-=======
-				}else{
-					logger.debug("There is no concepts for translation");
-				}
-			}catch(RemoteException re){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				System.out.println(re);
 				re.printStackTrace();
 				logger.debug("RemoteException Message " + re);
 			}
-<<<<<<< HEAD
 		} else {
 			if(ontInterchange == null) {
 				logger.debug("Ontology ontInterchange is NULL");
 			}
 			if(ontNative == null) {
-=======
-		}else{
-			if(ontInterchange == null){
-				logger.debug("Ontology ontInterchange is NULL");
-			}
-			if(ontNative == null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology ontNative is NULL");
 			}
 		}
@@ -376,19 +285,11 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 */
 	@Override
 	public Boolean getOWLFile(Ontology ontInterchange, Ontology ontNative,
-<<<<<<< HEAD
 			String owlFilename) {
 		Boolean result = new Boolean(false);
 		
 		if((ontInterchange != null) && (ontNative != null)) {
 			try {
-=======
-			String owlFilename){
-		Boolean result = new Boolean(false);
-		
-		if((ontInterchange != null) && (ontNative != null)){
-			try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				MapperServerWebServiceImplStub.Ontology ontI = this
 						.copyOntology(ontInterchange);
 				MapperServerWebServiceImplStub.Ontology ontN = this
@@ -410,11 +311,7 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 						new FileOutputStream(owlFilename));
 				
 				byte[] buffer = new byte[256];
-<<<<<<< HEAD
 				while(true) {
-=======
-				while(true){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					int bytesRead = in.read(buffer);
 					if(bytesRead == -1)
 						break;
@@ -431,7 +328,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 				
 				result = new Boolean(true);
 				
-<<<<<<< HEAD
 			} catch(FileNotFoundException fnfe) {
 				logger.error("FileNotFoundException Message " + fnfe);
 			} catch(IOException ioe) {
@@ -442,18 +338,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 				logger.debug("Ontology ontInterchange is NULL");
 			}
 			if(ontNative == null) {
-=======
-			}catch(FileNotFoundException fnfe){
-				logger.error("FileNotFoundException Message " + fnfe);
-			}catch(IOException ioe){
-				logger.error("IOException Message " + ioe);
-			}
-		}else{
-			if(ontInterchange == null){
-				logger.debug("Ontology ontInterchange is NULL");
-			}
-			if(ontNative == null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology ontNative is NULL");
 			}
 		}
@@ -468,11 +352,7 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 * @return true - if it is connected / false - otherwise
 	 */
 	@Override
-<<<<<<< HEAD
 	public Boolean isConnected() {
-=======
-	public Boolean isConnected(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		if(this.connected.booleanValue())
 			logger.debug("WebService is connected");
@@ -495,19 +375,11 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 */
 	@Override
 	public Boolean isOntologyTranslation(Ontology ontInterchange,
-<<<<<<< HEAD
 			Ontology ontNative) {
 		Boolean result = new Boolean(false);
 		
 		if((ontInterchange != null) && (ontNative != null)) {
 			try {
-=======
-			Ontology ontNative){
-		Boolean result = new Boolean(false);
-		
-		if((ontInterchange != null) && (ontNative != null)){
-			try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				MapperServerWebServiceImplStub.Ontology ontI = this
 						.copyOntology(ontInterchange);
 				MapperServerWebServiceImplStub.Ontology ontN = this
@@ -521,7 +393,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 						.isOntologyTranslation(is);
 				
 				result = new Boolean(response.get_return());
-<<<<<<< HEAD
 			} catch(RemoteException re) {
 				logger.error("RemoteException Message " + re);
 			}
@@ -530,16 +401,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 				logger.debug("Ontology ontInterchange is NULL");
 			}
 			if(ontNative == null) {
-=======
-			}catch(RemoteException re){
-				logger.error("RemoteException Message " + re);
-			}
-		}else{
-			if(ontInterchange == null){
-				logger.debug("Ontology ontInterchange is NULL");
-			}
-			if(ontNative == null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology ontNative is NULL");
 			}
 		}
@@ -561,19 +422,11 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 */
 	@Override
 	public Boolean removeOntologyTranslation(Ontology ontInterchange,
-<<<<<<< HEAD
 			Ontology ontNative) {
 		Boolean result = new Boolean(false);
 		
 		if((ontInterchange != null) && (ontNative != null)) {
 			try {
-=======
-			Ontology ontNative){
-		Boolean result = new Boolean(false);
-		
-		if((ontInterchange != null) && (ontNative != null)){
-			try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				MapperServerWebServiceImplStub.Ontology ontI = this
 						.copyOntology(ontInterchange);
 				MapperServerWebServiceImplStub.Ontology ontN = this
@@ -587,7 +440,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 						.removeOntologyTranslation(remove);
 				
 				result = new Boolean(response.get_return());
-<<<<<<< HEAD
 			} catch(RemoteException re) {
 				logger.debug("RemoteException Message " + re);
 			}
@@ -596,16 +448,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 				logger.debug("Ontology ontInterchange is NULL");
 			}
 			if(ontNative == null) {
-=======
-			}catch(RemoteException re){
-				logger.debug("RemoteException Message " + re);
-			}
-		}else{
-			if(ontInterchange == null){
-				logger.debug("Ontology ontInterchange is NULL");
-			}
-			if(ontNative == null){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology ontNative is NULL");
 			}
 		}
@@ -622,11 +464,7 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 * @return none
 	 */
 	@Override
-<<<<<<< HEAD
 	public void setURL(String url) {
-=======
-	public void setURL(String url){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.url = url;
 	}
 	
@@ -645,19 +483,11 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 	 */
 	@Override
 	public String[] translateConcept(String fromConcept, Ontology ontFrom,
-<<<<<<< HEAD
 			Ontology ontTo) {
 		
 		String[] result = null;
 		
 		try {
-=======
-			Ontology ontTo){
-		
-		String[] result = null;
-		
-		try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			MapperServerWebServiceImplStub.Ontology ontF = this.copyOntology(ontFrom);
 			MapperServerWebServiceImplStub.Ontology ontT = this.copyOntology(ontTo);
 			
@@ -677,7 +507,6 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 			// This part of the code detects when the result should be NULL,
 			// despite it is not indicating so. Its a trick to workaround an Web
 			// Service problem when receiving an object as a response back
-<<<<<<< HEAD
 			if(result.length == 1) {
 				if(result[0] == null) {
 					logger.debug("translateConcept Result = NULL");
@@ -686,25 +515,11 @@ public class MapperClientWebService implements MapperClientWebServiceInterface{
 				} else {
 					logger.debug("translateConcept Result(s)");
 					for(int i = 0; i < result.length; i++) {
-=======
-			if(result.length == 1){
-				if(result[0] == null){
-					logger.debug("translateConcept Result = NULL");
-					
-					result = null;
-				}else{
-					logger.debug("translateConcept Result(s)");
-					for(int i = 0; i < result.length; i++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						logger.debug(result[i]);
 					}
 				}
 			}
-<<<<<<< HEAD
 		} catch(RemoteException re) {
-=======
-		}catch(RemoteException re){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("RemoteException Message " + re);
 		}
 		

@@ -3,19 +3,11 @@
  */
 package otservices.util;
 
-<<<<<<< HEAD
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-=======
-import java.io.IOException;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 
 /**
  * Utility for making deep copies (vs. clone()'s shallow copies) of objects.
@@ -28,24 +20,14 @@ import java.io.ObjectInputStream;
  * 
  * A later version of this class includes some minor optimizations.
  */
-<<<<<<< HEAD
 public class ObjectCopy {
-=======
-public class ObjectCopy{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * Returns a copy of the object, or null if the object cannot be serialized.
 	 */
-<<<<<<< HEAD
 	public static Object copy(Object orig) {
 		Object obj = null;
 		try {
-=======
-	public static Object copy(Object orig){
-		Object obj = null;
-		try{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			// Write the object out to a byte array
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			ObjectOutputStream out = new ObjectOutputStream(bos);
@@ -58,15 +40,9 @@ public class ObjectCopy{
 			ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(
 					bos.toByteArray()));
 			obj = in.readObject();
-<<<<<<< HEAD
 		} catch(IOException e) {
 			e.printStackTrace();
 		} catch(ClassNotFoundException cnfe) {
-=======
-		}catch(IOException e){
-			e.printStackTrace();
-		}catch(ClassNotFoundException cnfe){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			cnfe.printStackTrace();
 		}
 		return obj;

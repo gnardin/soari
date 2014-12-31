@@ -19,16 +19,8 @@ package otservices.util.configuration;
 
 import java.io.File;
 import org.apache.log4j.Logger;
-<<<<<<< HEAD
 
 public class ConfigurationParser {
-=======
-import otservices.util.configuration.ConfigurationFileInvalidException;
-import otservices.util.configuration.ConfigurationFileNotFoundException;
-import otservices.util.configuration.ConfigurationHandler;
-
-public class ConfigurationParser{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// XML configuration file name
 	private String								xmlConfigurationFilename	= null;
@@ -50,17 +42,10 @@ public class ConfigurationParser{
 	 * @param none
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public ConfigurationParser() {
 	}
 	
 	
-=======
-	public ConfigurationParser(){
-	}
-	
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Initializes the configuration parsing
 	 * 
@@ -73,15 +58,9 @@ public class ConfigurationParser{
 	public ConfigurationParser(String xmlConfigurationFilename,
 			String xsdConfigurationFilename)
 			throws ConfigurationFileInvalidException,
-<<<<<<< HEAD
 			ConfigurationFileNotFoundException {
 		if(((new File(xmlConfigurationFilename)).exists())
 				&& ((new File(xsdConfigurationFilename)).exists())) {
-=======
-			ConfigurationFileNotFoundException{
-		if(((new File(xmlConfigurationFilename)).exists())
-				&& ((new File(xsdConfigurationFilename)).exists())){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.xmlConfigurationFilename = xmlConfigurationFilename;
 			this.xsdConfigurationFilename = xsdConfigurationFilename;
 			
@@ -91,11 +70,7 @@ public class ConfigurationParser{
 					+ this.xsdConfigurationFilename);
 			
 			this.parse();
-<<<<<<< HEAD
 		} else {
-=======
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error(xmlConfigurationFilename + " and/or "
 					+ xsdConfigurationFilename + " does not exist");
 			
@@ -107,11 +82,7 @@ public class ConfigurationParser{
 		}
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns the content of a parameter
 	 * 
@@ -120,22 +91,14 @@ public class ConfigurationParser{
 	 * @return Element content
 	 */
 	public Object get(String elementName)
-<<<<<<< HEAD
 			throws ConfigurationElementNotFoundException {
-=======
-			throws ConfigurationElementNotFoundException{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger.debug("Getting content of element name = " + elementName);
 		
 		Object value = null;
 		if(conf != null)
 			value = conf.getElement(elementName);
-<<<<<<< HEAD
 		else {
-=======
-		else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("Element " + elementName + " not found");
 			
 			throw new ConfigurationElementNotFoundException("Element " + elementName
@@ -147,22 +110,14 @@ public class ConfigurationParser{
 		return value;
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Return the XML configuration filename
 	 * 
 	 * @param none
 	 * @return Configuration filename
 	 */
-<<<<<<< HEAD
 	public String getXMLFilename() {
-=======
-	public String getXMLFilename(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger.debug("XML Configuration Filename = "
 				+ this.xmlConfigurationFilename);
@@ -170,22 +125,14 @@ public class ConfigurationParser{
 		return this.xmlConfigurationFilename;
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Return the XSD configuration schema specification filename
 	 * 
 	 * @param none
 	 * @return XSD configuration schema specification filename
 	 */
-<<<<<<< HEAD
 	public String getXSDFilename() {
-=======
-	public String getXSDFilename(){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		logger.debug("XSD Configuration Schema Specification Filename = "
 				+ this.xsdConfigurationFilename);
@@ -193,11 +140,7 @@ public class ConfigurationParser{
 		return this.xsdConfigurationFilename;
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Parses the XML file
 	 * 
@@ -205,20 +148,12 @@ public class ConfigurationParser{
 	 * @return none
 	 * @throws ConfigurationFileInvalidException
 	 */
-<<<<<<< HEAD
 	public void parse() throws ConfigurationFileInvalidException {
-=======
-	public void parse() throws ConfigurationFileInvalidException{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		conf = new ConfigurationHandler(this.xmlConfigurationFilename,
 				this.xsdConfigurationFilename);
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Set the configuration filename
 	 * 
@@ -228,22 +163,13 @@ public class ConfigurationParser{
 	 * @throws ConfigurationFileNotFoundException
 	 */
 	public void setXMLFilename(String xmlConfigurationFilename)
-<<<<<<< HEAD
 			throws ConfigurationFileNotFoundException {
 		if((new File(xmlConfigurationFilename)).exists()) {
-=======
-			throws ConfigurationFileNotFoundException{
-		if((new File(xmlConfigurationFilename)).exists()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.xmlConfigurationFilename = xmlConfigurationFilename;
 			
 			logger.debug("XML Configuration Filename = "
 					+ this.xmlConfigurationFilename);
-<<<<<<< HEAD
 		} else {
-=======
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("XML Configuration Filename = " + xmlConfigurationFilename
 					+ " does not exist");
 			
@@ -251,11 +177,7 @@ public class ConfigurationParser{
 		}
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Set the XSD schema specification filename
 	 * 
@@ -265,22 +187,13 @@ public class ConfigurationParser{
 	 * @throws ConfigurationFileNotFoundException
 	 */
 	public void setXSDFilename(String xsdConfigurationFilename)
-<<<<<<< HEAD
 			throws ConfigurationFileNotFoundException {
 		if((new File(xsdConfigurationFilename)).exists()) {
-=======
-			throws ConfigurationFileNotFoundException{
-		if((new File(xsdConfigurationFilename)).exists()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.xsdConfigurationFilename = xsdConfigurationFilename;
 			
 			logger.debug("XSD Configuration Schema Specification Filename = "
 					+ this.xsdConfigurationFilename);
-<<<<<<< HEAD
 		} else {
-=======
-		}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("XSD Configuration Schema Specification Filename = "
 					+ xsdConfigurationFilename + " does not exist");
 			

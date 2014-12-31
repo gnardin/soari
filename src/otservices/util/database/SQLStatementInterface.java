@@ -17,22 +17,14 @@
  */
 package otservices.util.database;
 
-<<<<<<< HEAD
 public interface SQLStatementInterface {
-=======
-public interface SQLStatementInterface{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * 
 	 */
 	public SQLExpressionHSQLImpl insert(Object reg);
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Construct the delete statement
 	 * 
@@ -42,11 +34,7 @@ public interface SQLStatementInterface{
 	 */
 	public SQLExpressionHSQLImpl delete(Object where);
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Construct the select statement
 	 * 
@@ -56,11 +44,7 @@ public interface SQLStatementInterface{
 	 */
 	public SQLExpressionHSQLImpl select(Object where);
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Construct the update statement
 	 * 

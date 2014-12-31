@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
  * Copyright (c) 2008 Luis Gustavo Nardin <gnardin@gmail.com>
-=======
- * Copyright (c) 2008  Luis Gustavo Nardin <gnardin@gmail.com>
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,11 +8,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-<<<<<<< HEAD
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-=======
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -39,7 +31,6 @@ public class Filter implements Serializable {
 	/**
 	 * 
 	 */
-<<<<<<< HEAD
 	public List<Object> getFilter() {
 		return this.filter;
 	}
@@ -57,25 +48,6 @@ public class Filter implements Serializable {
 	 * 
 	 */
 	public Boolean evalute(Map<String, Term> varValue) {
-=======
-	public List<Object> getFilter(){
-		return this.filter;
-	}
-	
-
-	/**
-	 * 
-	 */
-	public void addItem(Object item){
-		this.filter.add(item);
-	}
-	
-
-	/**
-	 * 
-	 */
-	public Boolean evalute(Map<String, Term> varValue){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = null;
 		
 		Iterator<Object> iFilter = this.filter.iterator();
@@ -86,7 +58,6 @@ public class Filter implements Serializable {
 		RelExpr auxRelExpr;
 		RegExpr auxRegExpr;
 		LogExpr auxLogExpr;
-<<<<<<< HEAD
 		while(iFilter.hasNext()) {
 			e = iFilter.next();
 			if(e instanceof Term) {
@@ -97,18 +68,6 @@ public class Filter implements Serializable {
 				}
 			} else if(e instanceof RelExpr) {
 				if((auxTerm1 != null) && (auxTerm2 != null)) {
-=======
-		while(iFilter.hasNext()){
-			e = iFilter.next();
-			if (e instanceof Term){
-				if (((Term) e).getPosition() == Term.Position.FIRST){
-					auxTerm1 = (Term) e;
-				}else if (((Term) e).getPosition() == Term.Position.SECOND){
-					auxTerm2 = (Term) e;
-				}
-			}else if (e instanceof RelExpr){
-				if ((auxTerm1 != null) && (auxTerm2 != null)){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					auxRelExpr = (RelExpr) e;
 					auxRelExpr.setTerm1(auxTerm1);
 					auxRelExpr.setTerm2(auxTerm2);
@@ -117,7 +76,6 @@ public class Filter implements Serializable {
 				}
 				auxTerm1 = null;
 				auxTerm2 = null;
-<<<<<<< HEAD
 			} else if(e instanceof RegExpr) {
 				auxRegExpr = (RegExpr) e;
 				
@@ -130,20 +88,6 @@ public class Filter implements Serializable {
 					auxList.remove(0);
 					auxList.add(auxLogExpr);
 				} else if(auxList.size() > 1) {
-=======
-			}else if (e instanceof RegExpr){
-				auxRegExpr = (RegExpr) e;
-				
-				auxList.add(auxRegExpr);
-			}else if (e instanceof LogExpr){
-				auxLogExpr = (LogExpr) e;
-				
-				if (auxList.size() == 1){
-					auxLogExpr.addExpression(auxList.get(0));
-					auxList.remove(0);
-					auxList.add(auxLogExpr);
-				}else if (auxList.size() > 1){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					auxLogExpr.addExpression(auxList.get(auxList.size() - 1));
 					auxLogExpr.addExpression(auxList.get(auxList.size() - 2));
 					auxList.remove(auxList.size() - 1);
@@ -153,15 +97,9 @@ public class Filter implements Serializable {
 			}
 		}
 		
-<<<<<<< HEAD
 		if(auxList.size() == 1) {
 			e = auxList.get(0);
 			if(e instanceof LogExpr) {
-=======
-		if (auxList.size() == 1){
-			e = auxList.get(0);
-			if (e instanceof LogExpr){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				result = ((LogExpr) e).evaluate(varValue);
 			}
 		}
@@ -169,19 +107,11 @@ public class Filter implements Serializable {
 		return result;
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public Object getItem(String variable) {
-=======
-
-	/**
-	 * 
-	 */
-	public Object getItem(String variable){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Object result = null;
 		
 		RegExpr reg;
@@ -192,7 +122,6 @@ public class Filter implements Serializable {
 		Object o;
 		Boolean found = new Boolean(false);
 		for(Iterator<Object> i = this.filter.iterator(); (i.hasNext() && (!found
-<<<<<<< HEAD
 				.booleanValue()));) {
 			
 			o = i.next();
@@ -211,26 +140,6 @@ public class Filter implements Serializable {
 						term2 = (Term) i.next();
 						
 						if(i.hasNext()) {
-=======
-				.booleanValue()));){
-			
-			o = i.next();
-			if (o instanceof RegExpr){
-				reg = (RegExpr) o;
-				if (reg.getVariable().equals(variable)){
-					result = reg;
-					found = new Boolean(true);
-				}
-			}else if (o instanceof Term){
-				term1 = (Term) o;
-				if ((term1.getPosition() == Term.Position.FIRST)
-						&& (term1.getType() == Term.TermType.VARIABLE)){
-					
-					if ((((String) term1.getTerm()).equals(variable)) && (i.hasNext())){
-						term2 = (Term) i.next();
-						
-						if (i.hasNext()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							rel = (RelExpr) i.next();
 							rel.setTerm1(term1);
 							rel.setTerm2(term2);
@@ -246,7 +155,6 @@ public class Filter implements Serializable {
 		return result;
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
@@ -266,36 +174,11 @@ public class Filter implements Serializable {
 					returnValue.setTerm(relExpr.getTerm2().getTerm());
 					returnValue.setTerm(relExpr.getTerm2().getType());
 				} else if(relExpr.getTerm2().getType() == Term.TermType.VARIABLE) {
-=======
-
-	/**
-	 * 
-	 */
-	public Term getValue(String variable){
-		Term returnValue = null;
-		
-		Object item = this.getItem(variable);
-		if (item != null){
-			returnValue = new Term();
-			
-			if (item instanceof RelExpr){
-				
-				RelExpr relExpr = (RelExpr) item;
-				
-				if (relExpr.getTerm1().getType() == Term.TermType.VARIABLE){
-					returnValue.setTerm(relExpr.getTerm2().getTerm());
-					returnValue.setTerm(relExpr.getTerm2().getType());
-				}else if (relExpr.getTerm2().getType() == Term.TermType.VARIABLE){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					returnValue.setTerm(relExpr.getTerm1().getTerm());
 					returnValue.setTerm(relExpr.getTerm1().getType());
 				}
 				
-<<<<<<< HEAD
 			} else if(item instanceof RegExpr) {
-=======
-			}else if (item instanceof RegExpr){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				
 				RegExpr regExpr = (RegExpr) item;
 				
@@ -307,19 +190,11 @@ public class Filter implements Serializable {
 		return returnValue;
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
 	 */
 	public void updateConcepts(MapTable varMap) {
-=======
-
-	/**
-	 * 
-	 */
-	public void updateConcepts(MapTable varMap){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		List<Object> newFilter = new ArrayList<Object>();
 		
 		Iterator<Object> iFilter = this.filter.iterator();
@@ -345,7 +220,6 @@ public class Filter implements Serializable {
 		LogExpr andExpr = new LogExpr();
 		andExpr.setLogicalOp(LogExpr.LogicalOp.AND);
 		
-<<<<<<< HEAD
 		while(iFilter.hasNext()) {
 			element = iFilter.next();
 			if(element instanceof Term) {
@@ -381,54 +255,13 @@ public class Filter implements Serializable {
 						for(int x = 0; x < newVars.length; x++) {
 							term = new Term();
 							if(term1.getType() == Term.TermType.VARIABLE) {
-=======
-		while(iFilter.hasNext()){
-			element = iFilter.next();
-			if (element instanceof Term){
-				term = (Term) element;
-				if (term.getPosition() == Term.Position.FIRST){
-					term1 = term;
-				}else if (term.getPosition() == Term.Position.SECOND){
-					term2 = term;
-				}
-			}else if (element instanceof RelExpr){
-				
-				if (((term1.getType() == Term.TermType.VARIABLE) && (term2.getType() != Term.TermType.VARIABLE))
-						|| ((term1.getType() != Term.TermType.VARIABLE) && (term2.getType() == Term.TermType.VARIABLE))){
-					
-					newVars = null;
-					if (term1.getType() == Term.TermType.VARIABLE){
-						contain = new Boolean(varMap.contains(MapRow.FieldType.SOURCEVAR,
-								(String) term1.getTerm()));
-						if (contain.booleanValue()){
-							newVars = varMap.get(MapRow.FieldType.SOURCEVAR, (String) term1
-									.getTerm(), MapRow.FieldType.TARGETVAR);
-						}
-					}else if (term2.getType() == Term.TermType.VARIABLE){
-						contain = new Boolean(varMap.contains(MapRow.FieldType.SOURCEVAR,
-								(String) term2.getTerm()));
-						if (contain.booleanValue()){
-							newVars = varMap.get(MapRow.FieldType.SOURCEVAR, (String) term2
-									.getTerm(), MapRow.FieldType.TARGETVAR);
-						}
-					}
-					
-					if ((newVars != null) && (contain.booleanValue())){
-						for(int x = 0; x < newVars.length; x++){
-							term = new Term();
-							if (term1.getType() == Term.TermType.VARIABLE){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								term.setPosition(Term.Position.FIRST);
 								term.setType(Term.TermType.VARIABLE);
 								term.setTerm(newVars[x]);
 								newFilter.add(term);
 								newFilter.add(term2);
 								newFilter.add(element);
-<<<<<<< HEAD
 							} else if(term2.getType() == Term.TermType.VARIABLE) {
-=======
-							}else if (term2.getType() == Term.TermType.VARIABLE){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								newFilter.add(term1);
 								term.setPosition(Term.Position.FIRST);
 								term.setType(Term.TermType.VARIABLE);
@@ -437,7 +270,6 @@ public class Filter implements Serializable {
 								newFilter.add(element);
 							}
 							
-<<<<<<< HEAD
 							if(x != 0) {
 								newFilter.add(andExpr);
 							}
@@ -445,64 +277,33 @@ public class Filter implements Serializable {
 					} else if((newVars == null) && (contain.booleanValue())) {
 						termRemoved = new Boolean(true);
 					} else if(!contain.booleanValue()) {
-=======
-							if (x != 0){
-								newFilter.add(andExpr);
-							}
-						}
-					}else if ((newVars == null) && (contain.booleanValue())){
-						termRemoved = new Boolean(true);
-					}else if (!contain.booleanValue()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						newFilter.add(term1);
 						newFilter.add(term2);
 						newFilter.add(element);
 					}
-<<<<<<< HEAD
 				} else if((term1.getType() == Term.TermType.VARIABLE)
 						&& (term2.getType() == Term.TermType.VARIABLE)) {
 					
 					containTerm1 = new Boolean(varMap.contains(
 							MapRow.FieldType.SOURCEVAR, (String) term1.getTerm()));
 					if(containTerm1.booleanValue()) {
-=======
-				}else if ((term1.getType() == Term.TermType.VARIABLE)
-						&& (term2.getType() == Term.TermType.VARIABLE)){
-					
-					containTerm1 = new Boolean(varMap.contains(
-							MapRow.FieldType.SOURCEVAR, (String) term1.getTerm()));
-					if (containTerm1.booleanValue()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						newVarsTerm1 = varMap.get(MapRow.FieldType.SOURCEVAR,
 								(String) term1.getTerm(), MapRow.FieldType.TARGETVAR);
 					}
 					
 					containTerm2 = new Boolean(varMap.contains(
 							MapRow.FieldType.SOURCEVAR, (String) term2.getTerm()));
-<<<<<<< HEAD
 					if(containTerm2.booleanValue()) {
-=======
-					if (containTerm2.booleanValue()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						newVarsTerm2 = varMap.get(MapRow.FieldType.SOURCEVAR,
 								(String) term2.getTerm(), MapRow.FieldType.TARGETVAR);
 					}
 					
-<<<<<<< HEAD
 					if(containTerm1.booleanValue() && containTerm2.booleanValue()) {
 						
 						if((newVarsTerm1 != null) && (newVarsTerm2 != null)) {
 							
 							for(int x = 0; x < newVarsTerm1.length; x++) {
 								for(int y = 0; y < newVarsTerm2.length; y++) {
-=======
-					if (containTerm1.booleanValue() && containTerm2.booleanValue()){
-						
-						if ((newVarsTerm1 != null) && (newVarsTerm2 != null)){
-							
-							for(int x = 0; x < newVarsTerm1.length; x++){
-								for(int y = 0; y < newVarsTerm2.length; y++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 									term1 = new Term();
 									term1.setPosition(Term.Position.FIRST);
 									term1.setType(Term.TermType.VARIABLE);
@@ -515,16 +316,11 @@ public class Filter implements Serializable {
 									newFilter.add(term2);
 									newFilter.add(element);
 									
-<<<<<<< HEAD
 									if((x != 0) || (y != 0)) {
-=======
-									if ((x != 0) || (y != 0)){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 										newFilter.add(andExpr);
 									}
 								}
 							}
-<<<<<<< HEAD
 						} else {
 							termRemoved = new Boolean(true);
 						}
@@ -532,15 +328,6 @@ public class Filter implements Serializable {
 					} else if(containTerm1.booleanValue()) {
 						if(newVarsTerm1 != null) {
 							for(int x = 0; x < newVarsTerm1.length; x++) {
-=======
-						}else{
-							termRemoved = new Boolean(true);
-						}
-						
-					}else if (containTerm1.booleanValue()){
-						if (newVarsTerm1 != null){
-							for(int x = 0; x < newVarsTerm1.length; x++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								term = new Term();
 								term.setPosition(Term.Position.FIRST);
 								term.setType(Term.TermType.VARIABLE);
@@ -549,7 +336,6 @@ public class Filter implements Serializable {
 								newFilter.add(term2);
 								newFilter.add(element);
 								
-<<<<<<< HEAD
 								if(x != 0) {
 									newFilter.add(andExpr);
 								}
@@ -560,18 +346,6 @@ public class Filter implements Serializable {
 					} else if(containTerm2.booleanValue()) {
 						if(newVarsTerm2 != null) {
 							for(int x = 0; x < newVarsTerm2.length; x++) {
-=======
-								if (x != 0){
-									newFilter.add(andExpr);
-								}
-							}
-						}else{
-							termRemoved = new Boolean(true);
-						}
-					}else if (containTerm2.booleanValue()){
-						if (newVarsTerm2 != null){
-							for(int x = 0; x < newVarsTerm2.length; x++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								newFilter.add(term1);
 								term = new Term();
 								term.setPosition(Term.Position.FIRST);
@@ -580,24 +354,15 @@ public class Filter implements Serializable {
 								newFilter.add(term);
 								newFilter.add(element);
 								
-<<<<<<< HEAD
 								if(x != 0) {
 									newFilter.add(andExpr);
 								}
 							}
 						} else {
-=======
-								if (x != 0){
-									newFilter.add(andExpr);
-								}
-							}
-						}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							termRemoved = new Boolean(true);
 						}
 					}
 				}
-<<<<<<< HEAD
 			} else if(element instanceof RegExpr) {
 				if(varMap.contains(MapRow.FieldType.SOURCEVAR,
 						((RegExpr) element).getVariable())) {
@@ -607,23 +372,11 @@ public class Filter implements Serializable {
 							auxRegExpr.getVariable(), MapRow.FieldType.TARGETVAR);
 					
 					for(int x = 0; x < newVars.length; x++) {
-=======
-			}else if (element instanceof RegExpr){
-				if (varMap.contains(MapRow.FieldType.SOURCEVAR, ((RegExpr) element)
-						.getVariable())){
-					
-					auxRegExpr = (RegExpr) element;
-					newVars = varMap.get(MapRow.FieldType.SOURCEVAR, auxRegExpr
-							.getVariable(), MapRow.FieldType.TARGETVAR);
-					
-					for(int x = 0; x < newVars.length; x++){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						newRegExpr = new RegExpr();
 						newRegExpr.setVariable(newVars[x]);
 						newRegExpr.setPattern(auxRegExpr.getPattern());
 						
 						newFilter.add(newRegExpr);
-<<<<<<< HEAD
 						if(x != (newVars.length - 1)) {
 							newFilter.add(andExpr);
 						}
@@ -639,23 +392,6 @@ public class Filter implements Serializable {
 					termRemoved = new Boolean(false);
 				}
 			} else {
-=======
-						if (x != (newVars.length - 1)){
-							newFilter.add(andExpr);
-						}
-					}
-				}else{
-					newFilter.add((RegExpr) element);
-				}
-				
-			}else if (element instanceof LogExpr){
-				if (!termRemoved.booleanValue()){
-					newFilter.add(element);
-				}else{
-					termRemoved = new Boolean(false);
-				}
-			}else{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				newFilter.add(element);
 			}
 		}
@@ -663,7 +399,6 @@ public class Filter implements Serializable {
 		this.filter = newFilter;
 	}
 	
-<<<<<<< HEAD
 	
 	/**
 	 * 
@@ -684,28 +419,6 @@ public class Filter implements Serializable {
 				} else if(o instanceof RelExpr) {
 					System.out.println("RelExpr " + ((RelExpr) o).getRelationalOp());
 				} else if(o instanceof Term) {
-=======
-
-	/**
-	 * 
-	 */
-	public void print(){
-		System.out.println("============= Filters =============");
-		if (this.filter != null){
-			Iterator<Object> l = this.filter.iterator();
-			Object o;
-			while(l.hasNext()){
-				o = l.next();
-				
-				if (o instanceof LogExpr){
-					System.out.println("LogExpr " + ((LogExpr) o).getLogicalOp());
-				}else if (o instanceof RegExpr){
-					System.out.println("RegExpr " + ((RegExpr) o).getVariable() + " "
-							+ ((RegExpr) o).getPattern());
-				}else if (o instanceof RelExpr){
-					System.out.println("RelExpr " + ((RelExpr) o).getRelationalOp());
-				}else if (o instanceof Term){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					System.out.println("Term " + ((Term) o).getTerm() + "  "
 							+ ((Term) o).getPosition());
 				}

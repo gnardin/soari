@@ -27,11 +27,7 @@ import otservices.mapper.translationrepository.TranslationRepository;
 import otservices.util.configuration.ConfigurationElementNotFoundException;
 import otservices.util.configuration.ConfigurationParser;
 
-<<<<<<< HEAD
 public class Classifier {
-=======
-public class Classifier{
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// Classifier configuration
 	private ConfigurationParser		classifierConfiguration	= null;
@@ -54,17 +50,10 @@ public class Classifier{
 	 * @param none
 	 * @return none
 	 */
-<<<<<<< HEAD
 	protected Classifier() {
 	}
 	
 	
-=======
-	protected Classifier(){
-	}
-	
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Initializes the classifier
 	 * 
@@ -75,11 +64,7 @@ public class Classifier{
 	 * @return none
 	 */
 	public Classifier(ConfigurationParser classifierConfiguration,
-<<<<<<< HEAD
 			TranslationRepository translationRepository) {
-=======
-			TranslationRepository translationRepository){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		this.classifierConfiguration = classifierConfiguration;
 		this.translationRepository = translationRepository;
@@ -88,11 +73,7 @@ public class Classifier{
 		logger.debug("Classifier Initialized");
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Classifies an ontology and add its result to the translation repository
 	 * 
@@ -101,43 +82,25 @@ public class Classifier{
 	 *          ontologies to classify and the file that contain its mappings
 	 * @return none
 	 */
-<<<<<<< HEAD
 	public void classify(OntRelation ontRelation) {
-=======
-	public void classify(OntRelation ontRelation){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		this.reasoner.setOWL(this.getOWLDirectory() + "/"
 				+ ontRelation.getFilename());
 		
 		this.reasoner.connect();
 		
-<<<<<<< HEAD
 		if(this.reasoner.isConnected().booleanValue()) {
 			
 			if(this.reasoner.classify().booleanValue()) {
-=======
-		if(this.reasoner.isConnected().booleanValue()){
-			
-			if(this.reasoner.classify().booleanValue()){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				List<String> allAssertedClasses = (List<String>) this.reasoner
 						.getAllAssertedClasses();
 				
 				List<String> inferredClasses;
-<<<<<<< HEAD
 				for(String fromConcept : allAssertedClasses) {
 					inferredClasses = (List<String>) this.reasoner
 							.getInferredClasses(fromConcept);
 					
 					for(String inferred : inferredClasses) {
-=======
-				for(String fromConcept : allAssertedClasses){
-					inferredClasses = (List<String>) this.reasoner
-							.getInferredClasses(fromConcept);
-					
-					for(String inferred : inferredClasses){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						OntTranslation ontTranslation = new OntTranslation();
 						ontTranslation.setRelationID(ontRelation.getId());
 						ontTranslation.setFromConcept(fromConcept.toLowerCase());
@@ -156,18 +119,13 @@ public class Classifier{
 		}
 	}
 	
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns the OWL directory repository path
 	 * 
 	 * @param none
 	 * @return OWL directory path
 	 */
-<<<<<<< HEAD
 	public String getOWLDirectory() {
 		String owlDirectory = null;
 		
@@ -175,15 +133,6 @@ public class Classifier{
 			owlDirectory = ((String) (this.classifierConfiguration
 					.get("owlDirectory")));
 		} catch(ConfigurationElementNotFoundException cenfe) {
-=======
-	public String getOWLDirectory(){
-		String owlDirectory = null;
-		
-		try{
-			owlDirectory = ((String) (this.classifierConfiguration
-					.get("owlDirectory")));
-		}catch(ConfigurationElementNotFoundException cenfe){
->>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("ConfigurationElementNotFoundException Message " + cenfe);
 		}
 		
