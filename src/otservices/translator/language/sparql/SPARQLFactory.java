@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * Copyright (c) 2008 Luis Gustavo Nardin <gnardin@gmail.com>
+=======
+ * Copyright (c) 2008  Luis Gustavo Nardin <gnardin@gmail.com>
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -8,7 +12,11 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+<<<<<<< HEAD
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+=======
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -18,10 +26,15 @@
 package otservices.translator.language.sparql;
 
 import java.io.ByteArrayInputStream;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 import otservices.translator.language.LanguageFactory;
 import otservices.translator.language.LanguageInterface;
 import otservices.translator.language.sparql.parser.SPARQLParser;
 
+<<<<<<< HEAD
 public class SPARQLFactory implements LanguageFactory {
 	
 	/**
@@ -39,6 +52,26 @@ public class SPARQLFactory implements LanguageFactory {
 			}
 		}
 		
+=======
+public class SPARQLFactory implements LanguageFactory{
+
+	/**
+	 * 
+	 */
+	public LanguageInterface createParser(Object message){
+		LanguageInterface result = null;
+
+		if(message instanceof String){
+			String msg = (String) message;
+			if((msg.startsWith("UPDATE")) || (msg.startsWith("SELECT"))){
+				result = new SPARQLParser(new ByteArrayInputStream(msg
+						.getBytes()));
+			}else{
+				result = new SPARQLParser(msg);
+			}
+		}
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return result;
 	}
 }

@@ -22,11 +22,18 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+<<<<<<< HEAD
 import org.apache.log4j.Logger;
 import otservices.mapper.translationrepository.Ontology;
 import otservices.translator.interactionmodule.InteractionModuleInterface;
 import otservices.translator.language.LanguageException;
 import otservices.translator.language.LanguageFactory;
+=======
+import otservices.mapper.translationrepository.Ontology;
+import otservices.translator.interactionmodule.InteractionModuleInterface;
+import otservices.translator.language.LanguageFactory;
+import otservices.translator.language.LanguageException;
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 import otservices.translator.language.LanguageInterface;
 import otservices.translator.language.ObjectInterface;
 import otservices.translator.language.sparql.SPARQLObject;
@@ -34,11 +41,20 @@ import otservices.translator.mapperserverclient.ws.MapperClientWebServiceInterfa
 import otservices.translator.reputationreasoner.ReputationReasonerInterface;
 import otservices.translator.strategy.TranslationStrategyInterface;
 import otservices.translator.valuetransformation.ValueTransformationInterface;
+<<<<<<< HEAD
 import otservices.util.ObjectCopy;
 import otservices.util.configuration.ConfigurationParser;
 import otservices.util.log.Log;
 
 public class TranslatorController implements TranslatorConstants {
+=======
+import otservices.util.configuration.ConfigurationParser;
+import otservices.util.log.Log;
+import otservices.util.ObjectCopy;
+import org.apache.log4j.Logger;
+
+public class TranslatorController implements TranslatorConstants{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// TranslatorController configuration values
 	private ConfigurationParser							confTranslator;
@@ -119,12 +135,21 @@ public class TranslatorController implements TranslatorConstants {
 	 * @throws Exception
 	 */
 	public TranslatorController(String XMLFilename, String XSDFilename,
+<<<<<<< HEAD
 			String logFilename) throws Exception {
 		
 		// Initialize the logging
 		try {
 			new Log(logFilename);
 		} catch(java.io.FileNotFoundException e) {
+=======
+			String logFilename) throws Exception{
+		
+		// Initialize the logging
+		try{
+			new Log(logFilename);
+		}catch(java.io.FileNotFoundException e){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			e.printStackTrace();
 		}
 		
@@ -218,7 +243,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return none
 	 */
+<<<<<<< HEAD
 	public void clearStack() {
+=======
+	public void clearStack(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.stack.clear();
 	}
 	
@@ -229,7 +258,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Translator Controller id
 	 */
+<<<<<<< HEAD
 	public String getID() {
+=======
+	public String getID(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.id;
 	}
 	
@@ -240,7 +273,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Input Translation Strategy interface
 	 */
+<<<<<<< HEAD
 	public TranslationStrategyInterface getInputTranslationStrategy() {
+=======
+	public TranslationStrategyInterface getInputTranslationStrategy(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.inputTranslationStrategy;
 	}
 	
@@ -251,7 +288,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Interaction Module interface
 	 */
+<<<<<<< HEAD
 	public InteractionModuleInterface getInteractionModule() {
+=======
+	public InteractionModuleInterface getInteractionModule(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.interactionModule;
 	}
 	
@@ -262,7 +303,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Internal Language Parser interface
 	 */
+<<<<<<< HEAD
 	public LanguageFactory getInternalLanguage() {
+=======
+	public LanguageFactory getInternalLanguage(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.internalLanguage;
 	}
 	
@@ -273,7 +318,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Internal Query Language Name
 	 */
+<<<<<<< HEAD
 	public String getInternalLanguageName() {
+=======
+	public String getInternalLanguageName(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.internalLanguageName;
 	}
 	
@@ -284,7 +333,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Mapper Client interface
 	 */
+<<<<<<< HEAD
 	public MapperClientWebServiceInterface getMapperClient() {
+=======
+	public MapperClientWebServiceInterface getMapperClient(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.mapperClient;
 	}
 	
@@ -295,7 +348,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Ontology Interchange name
 	 */
+<<<<<<< HEAD
 	public String getOntInterchangeName() {
+=======
+	public String getOntInterchangeName(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.ontInterchangeName;
 	}
 	
@@ -306,7 +363,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Ontology Interchange version
 	 */
+<<<<<<< HEAD
 	public Integer getOntInterchangeVersion() {
+=======
+	public Integer getOntInterchangeVersion(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.ontInterchangeVersion;
 	}
 	
@@ -317,7 +378,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Ontology Native name
 	 */
+<<<<<<< HEAD
 	public String getOntNativeName() {
+=======
+	public String getOntNativeName(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.ontNativeName;
 	}
 	
@@ -328,7 +393,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Ontology Native version
 	 */
+<<<<<<< HEAD
 	public Integer getOntNativeVersion() {
+=======
+	public Integer getOntNativeVersion(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.ontNativeVersion;
 	}
 	
@@ -339,7 +408,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Output Translation Strategy interface
 	 */
+<<<<<<< HEAD
 	public TranslationStrategyInterface getOutputTranslationStrategy() {
+=======
+	public TranslationStrategyInterface getOutputTranslationStrategy(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.outputTranslationStrategy;
 	}
 	
@@ -350,7 +423,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Reputation Reasoner interface
 	 */
+<<<<<<< HEAD
 	public ReputationReasonerInterface getReputationReasoner() {
+=======
+	public ReputationReasonerInterface getReputationReasoner(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.reputationReasoner;
 	}
 	
@@ -361,7 +438,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Mapper Server URL
 	 */
+<<<<<<< HEAD
 	public String getURLMapperServer() {
+=======
+	public String getURLMapperServer(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.urlMapperServer;
 	}
 	
@@ -372,7 +453,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Concept associated to the Value Transformation
 	 */
+<<<<<<< HEAD
 	public String getValueTransformationConcept() {
+=======
+	public String getValueTransformationConcept(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.valueTransformationConcept;
 	}
 	
@@ -383,7 +468,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return Value Transformation interface
 	 */
+<<<<<<< HEAD
 	public ValueTransformationInterface getValueTransformation() {
+=======
+	public ValueTransformationInterface getValueTransformation(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.valueTransformationClass;
 	}
 	
@@ -394,7 +483,11 @@ public class TranslatorController implements TranslatorConstants {
 	 * @param none
 	 * @return true - if it is connected / false - otherwise
 	 */
+<<<<<<< HEAD
 	public Boolean isConnected() {
+=======
+	public Boolean isConnected(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.isConnected;
 	}
 	
@@ -420,7 +513,11 @@ public class TranslatorController implements TranslatorConstants {
 	 */
 	public synchronized ObjectInterface receiveReputationMessage(String sender,
 			String language, String ontology, Integer version, String message,
+<<<<<<< HEAD
 			String reply) throws LanguageException {
+=======
+			String reply) throws LanguageException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		ObjectInterface result = null;
 		ObjectInterface originalParsed = null;
@@ -428,7 +525,11 @@ public class TranslatorController implements TranslatorConstants {
 		
 		if((language.equals(this.internalLanguageName))
 				&& (ontology.equals(this.ontInterchangeName))
+<<<<<<< HEAD
 				&& (version.intValue() == this.ontInterchangeVersion.intValue())) {
+=======
+				&& (version.intValue() == this.ontInterchangeVersion.intValue())){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			LanguageInterface parser = this.internalLanguage.createParser(message);
 			
@@ -443,7 +544,11 @@ public class TranslatorController implements TranslatorConstants {
 			
 			// If a REQUEST message
 			if(parsed.getMessageType().intValue() == TranslatorConstants.REQUEST
+<<<<<<< HEAD
 					.intValue()) {
+=======
+					.intValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				
 				// Set sender
 				parsed.setSender(sender);
@@ -452,7 +557,11 @@ public class TranslatorController implements TranslatorConstants {
 				List<String> conceptsList = parsed.getConcepts();
 				
 				Map<String, String[]> concepts = null;
+<<<<<<< HEAD
 				if(conceptsList != null) {
+=======
+				if(conceptsList != null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					concepts = this.translateConcepts(conceptsList, INPUT);
 					
 					// Update the parsed object with the new concepts
@@ -488,7 +597,11 @@ public class TranslatorController implements TranslatorConstants {
 			}
 			// If an INFORM message
 			else if(parsed.getMessageType().intValue() == TranslatorConstants.INFORM
+<<<<<<< HEAD
 					.intValue()) {
+=======
+					.intValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				
 				// Set sender
 				parsed.setSender(sender);
@@ -496,7 +609,11 @@ public class TranslatorController implements TranslatorConstants {
 				// Translate Concepts
 				List<String> conceptsList = parsed.getConcepts();
 				Map<String, String[]> concepts = null;
+<<<<<<< HEAD
 				if(conceptsList != null) {
+=======
+				if(conceptsList != null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					concepts = this.translateConcepts(conceptsList, INPUT);
 					
 					// Update the parsed object with the new concepts
@@ -512,10 +629,17 @@ public class TranslatorController implements TranslatorConstants {
 				result = parsed;
 				
 				// RESULT
+<<<<<<< HEAD
 			} else if(parsed.getMessageType().intValue() == TranslatorConstants.RESULT
 					.intValue()) {
 				
 				if(this.stack.containsKey(reply)) {
+=======
+			}else if(parsed.getMessageType().intValue() == TranslatorConstants.RESULT
+					.intValue()){
+				
+				if(this.stack.containsKey(reply)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					originalParsed = this.stack.get(reply);
 					this.stack.remove(reply);
 					
@@ -532,15 +656,25 @@ public class TranslatorController implements TranslatorConstants {
 				}
 				
 				// FAULT
+<<<<<<< HEAD
 			} else if(parsed.getMessageType().intValue() == TranslatorConstants.FAULT
 					.intValue()) {
 				if(this.stack.containsKey(reply)) {
+=======
+			}else if(parsed.getMessageType().intValue() == TranslatorConstants.FAULT
+					.intValue()){
+				if(this.stack.containsKey(reply)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					this.stack.remove(reply);
 				}
 			}
 		}
 		
+<<<<<<< HEAD
 		if(result == null) {
+=======
+		if(result == null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			throw new LanguageException();
 		}
 		
@@ -571,13 +705,21 @@ public class TranslatorController implements TranslatorConstants {
 	 */
 	public synchronized ObjectInterface sendReputationMessage(String[] receivers,
 			String language, String ontology, Integer version, String message,
+<<<<<<< HEAD
 			String replyWith) throws LanguageException {
+=======
+			String replyWith) throws LanguageException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		ObjectInterface parsed = null;
 		
 		if((language.equals(this.internalLanguageName))
 				&& (ontology.equals(this.ontNativeName))
+<<<<<<< HEAD
 				&& (version.intValue() == this.ontNativeVersion.intValue())) {
+=======
+				&& (version.intValue() == this.ontNativeVersion.intValue())){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			// Creates a parser
 			LanguageInterface parser = this.internalLanguage.createParser(message);
@@ -595,7 +737,11 @@ public class TranslatorController implements TranslatorConstants {
 			// Translate Concepts
 			List<String> conceptsList = parsed.getConcepts();
 			Map<String, String[]> concepts = null;
+<<<<<<< HEAD
 			if(conceptsList != null) {
+=======
+			if(conceptsList != null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				concepts = this.translateConcepts(conceptsList, OUTPUT);
 			}
 			
@@ -603,24 +749,39 @@ public class TranslatorController implements TranslatorConstants {
 			parsed.updateValue(this.getValueTransformationConcept(),
 					this.getValueTransformation(), OUTPUT);
 			
+<<<<<<< HEAD
 			if(conceptsList != null) {
+=======
+			if(conceptsList != null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				// Update the parsed object with the new concepts
 				parsed.updateConcepts(concepts);
 			}
 			
 			// If an INFORM message
 			if(parsed.getMessageType().intValue() == TranslatorConstants.INFORM
+<<<<<<< HEAD
 					.intValue()) {
+=======
+					.intValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				
 				this.interactionModule.outMessage(receivers, this.internalLanguageName,
 						this.ontInterchangeName, this.ontInterchangeVersion,
 						parsed.getMessageType(), parsed.getMessage(), null);
 				
 				// If a REQUEST message
+<<<<<<< HEAD
 			} else if(parsed.getMessageType().intValue() == TranslatorConstants.REQUEST
 					.intValue()) {
 				
 				if(replyWith == null) {
+=======
+			}else if(parsed.getMessageType().intValue() == TranslatorConstants.REQUEST
+					.intValue()){
+				
+				if(replyWith == null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					replyWith = parsed.getSender()
 							+ (new Double(Math.random() * 100)).toString()
 							+ new Long(System.currentTimeMillis()).toString();
@@ -635,7 +796,11 @@ public class TranslatorController implements TranslatorConstants {
 			}
 		}
 		
+<<<<<<< HEAD
 		if(parsed == null) {
+=======
+		if(parsed == null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			throw new LanguageException();
 		}
 		
@@ -650,7 +815,11 @@ public class TranslatorController implements TranslatorConstants {
 	 *          Interaction Module interface
 	 * @return none
 	 */
+<<<<<<< HEAD
 	public void setInteractionModule(InteractionModuleInterface interactionModule) {
+=======
+	public void setInteractionModule(InteractionModuleInterface interactionModule){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.interactionModule = interactionModule;
 	}
 	
@@ -666,12 +835,20 @@ public class TranslatorController implements TranslatorConstants {
 	 * @return Translation Map of the concepts
 	 */
 	private synchronized Map<String, String[]> translateConcepts(
+<<<<<<< HEAD
 			List<String> conceptsList, Boolean inOut) {
+=======
+			List<String> conceptsList, Boolean inOut){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Map<String, String[]> result = new HashMap<String, String[]>();
 		Ontology ontFrom = new Ontology();
 		Ontology ontTo = new Ontology();
 		
+<<<<<<< HEAD
 		if(inOut) { // Incoming Message
+=======
+		if(inOut){ // Incoming Message
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			ontFrom.setType(Ontology.TYPE_INTERCHANGE);
 			ontFrom.setUri(this.ontInterchangeName);
 			ontFrom.setVersion(this.ontInterchangeVersion);
@@ -679,7 +856,11 @@ public class TranslatorController implements TranslatorConstants {
 			ontTo.setType(Ontology.TYPE_NATIVE);
 			ontTo.setUri(this.ontNativeName);
 			ontTo.setVersion(this.ontNativeVersion);
+<<<<<<< HEAD
 		} else { // Outgoing Message
+=======
+		}else{ // Outgoing Message
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			ontFrom.setType(Ontology.TYPE_NATIVE);
 			ontFrom.setUri(this.ontNativeName);
 			ontFrom.setVersion(this.ontNativeVersion);
@@ -689,6 +870,7 @@ public class TranslatorController implements TranslatorConstants {
 			ontTo.setVersion(this.ontInterchangeVersion);
 		}
 		
+<<<<<<< HEAD
 		if(!conceptsList.isEmpty()) {
 			List<String> t = new ArrayList<String>();
 			String[] toConcepts;
@@ -701,15 +883,36 @@ public class TranslatorController implements TranslatorConstants {
 						if(this.mapInterchangeNative.containsKey(fromConcept)) {
 							toConcepts = this.mapInterchangeNative.get(fromConcept);
 						} else {
+=======
+		if(!conceptsList.isEmpty()){
+			List<String> t = new ArrayList<String>();
+			String[] toConcepts;
+			for(String fromConcept : conceptsList){
+				
+				if(!t.contains(fromConcept)){
+					toConcepts = null;
+					
+					if(inOut){
+						if(this.mapInterchangeNative.containsKey(fromConcept)){
+							toConcepts = this.mapInterchangeNative.get(fromConcept);
+						}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							toConcepts = mapperClient.translateConcept(fromConcept, ontFrom,
 									ontTo);
 							
 							this.mapInterchangeNative.put(fromConcept, toConcepts);
 						}
+<<<<<<< HEAD
 					} else {
 						if(this.mapNativeInterchange.containsKey(fromConcept)) {
 							toConcepts = this.mapNativeInterchange.get(fromConcept);
 						} else {
+=======
+					}else{
+						if(this.mapNativeInterchange.containsKey(fromConcept)){
+							toConcepts = this.mapNativeInterchange.get(fromConcept);
+						}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							toConcepts = mapperClient.translateConcept(fromConcept, ontFrom,
 									ontTo);
 							
@@ -718,10 +921,17 @@ public class TranslatorController implements TranslatorConstants {
 					}
 					
 					String[] concepts;
+<<<<<<< HEAD
 					if(inOut) {
 						concepts = this.inputTranslationStrategy.run(fromConcept,
 								toConcepts);
 					} else {
+=======
+					if(inOut){
+						concepts = this.inputTranslationStrategy.run(fromConcept,
+								toConcepts);
+					}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						concepts = this.outputTranslationStrategy.run(fromConcept,
 								toConcepts);
 					}

@@ -17,7 +17,11 @@
  */
 package otservices.util.database;
 
+<<<<<<< HEAD
 public interface SQLExpressionInterface {
+=======
+public interface SQLExpressionInterface{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * Returns the SQL Expression stored
@@ -27,7 +31,11 @@ public interface SQLExpressionInterface {
 	 */
 	public String getSQLExpression();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Set the SQL expression to be validated
 	 * 
@@ -37,7 +45,11 @@ public interface SQLExpressionInterface {
 	 */
 	public void setSQLExpression(String expression);
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Determine if the expression is empty
 	 * 
@@ -46,7 +58,11 @@ public interface SQLExpressionInterface {
 	 */
 	public Boolean isEmpty();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Determine if the expression is a query (SELECT)
 	 * 
@@ -55,7 +71,11 @@ public interface SQLExpressionInterface {
 	 */
 	public Boolean isQuery();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Determines if the expression is an update (INSERT, UPDATE, DELETE)
 	 * 
@@ -64,7 +84,11 @@ public interface SQLExpressionInterface {
 	 */
 	public Boolean isUpdate();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Validates the SQL expression based on the SQL Statements supported by the
 	 * database system for which the implementation class was developed

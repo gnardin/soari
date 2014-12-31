@@ -17,6 +17,11 @@
  */
 package agents.jade;
 
+<<<<<<< HEAD
+=======
+import agents.jade.JADEAgentGUI;
+import agents.jade.JADEInteractionModule;
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.AMSService;
@@ -29,7 +34,11 @@ import otservices.translator.TranslatorController;
 import otservices.translator.language.LanguageException;
 import otservices.translator.language.ObjectInterface;
 
+<<<<<<< HEAD
 public class JADEAgent extends Agent {
+=======
+public class JADEAgent extends Agent{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	JADEInteractionModule	interaction						= null;
 	
@@ -46,7 +55,11 @@ public class JADEAgent extends Agent {
 	 * 
 	 */
 	@Override
+<<<<<<< HEAD
 	protected void setup() {
+=======
+	protected void setup(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Object[] args = this.getArguments();
 		
 		String xml = null;
@@ -57,6 +70,7 @@ public class JADEAgent extends Agent {
 		reputationType = (String) args[1];
 		System.out.println("translatorController " + reputationType);
 		
+<<<<<<< HEAD
 		if(reputationType.toUpperCase().equals("LIAR")) {
 			xml = path + "/conf/liar/translatorconfiguration.xml";
 			xsd = path + "/conf/liar/translatorconfiguration.xsd";
@@ -66,15 +80,32 @@ public class JADEAgent extends Agent {
 			xsd = path + "/conf/repage/translatorconfiguration.xsd";
 			log = path + "/conf/repage/log4j.properties";
 		} else if(reputationType.toUpperCase().equals("TYPOLOGY")) {
+=======
+		if(reputationType.toUpperCase().equals("LIAR")){
+			xml = path + "/conf/liar/translatorconfiguration.xml";
+			xsd = path + "/conf/liar/translatorconfiguration.xsd";
+			log = path + "/conf/liar/log4j.properties";
+		}else if(reputationType.toUpperCase().equals("REPAGE")){
+			xml = path + "/conf/repage/translatorconfiguration.xml";
+			xsd = path + "/conf/repage/translatorconfiguration.xsd";
+			log = path + "/conf/repage/log4j.properties";
+		}else if(reputationType.toUpperCase().equals("TYPOLOGY")){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			xml = path + "/conf/typology/translatorconfiguration.xml";
 			xsd = path + "/conf/typology/translatorconfiguration.xsd";
 			log = path + "/conf/typology/log4j.properties";
 		}
 		
 		// Error when create TranslatorController
+<<<<<<< HEAD
 		try {
 			this.translatorController = new TranslatorController(xml, xsd, log);
 		} catch(Exception e) {
+=======
+		try{
+			this.translatorController = new TranslatorController(xml, xsd, log);
+		}catch(Exception e){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			e.printStackTrace();
 		}
 		
@@ -86,16 +117,24 @@ public class JADEAgent extends Agent {
 		
 		Integer posX = null;
 		Integer posY = null;
+<<<<<<< HEAD
 		try {
 			posX = new Integer((String) args[2]);
 			posY = new Integer((String) args[3]);
 		} catch(NumberFormatException nfe) {
+=======
+		try{
+			posX = new Integer((String) args[2]);
+			posY = new Integer((String) args[3]);
+		}catch(NumberFormatException nfe){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		}
 		
 		gui = new JADEAgentGUI(this, this.getAID().getName(), posX, posY);
 		gui.setVisible(true);
 		
 		// Receiving Behaviour
+<<<<<<< HEAD
 		this.addBehaviour(new CyclicBehaviour() {
 			
 			@Override
@@ -111,6 +150,23 @@ public class JADEAgent extends Agent {
 					} else if(msg.getPerformative() == ACLMessage.REQUEST) {
 						msgType = TranslatorConstants.REQUEST;
 					} else if(msg.getPerformative() == ACLMessage.CONFIRM) {
+=======
+		this.addBehaviour(new CyclicBehaviour(){
+			
+			@Override
+			public void action(){
+				ACLMessage msg = myAgent.receive();
+				
+				if(msg != null){
+					gui.logWrite("RECEIVED = [" + msg.getContent() + "]");
+					
+					Integer msgType = TranslatorConstants.FAULT;
+					if(msg.getPerformative() == ACLMessage.INFORM){
+						msgType = TranslatorConstants.INFORM;
+					}else if(msg.getPerformative() == ACLMessage.REQUEST){
+						msgType = TranslatorConstants.REQUEST;
+					}else if(msg.getPerformative() == ACLMessage.CONFIRM){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						msgType = TranslatorConstants.RESULT;
 					}
 					
@@ -119,7 +175,11 @@ public class JADEAgent extends Agent {
 					if((token[0].toUpperCase().equals(translatorController
 							.getOntInterchangeName()))
 							&& (token[1].equals(translatorController
+<<<<<<< HEAD
 									.getOntInterchangeVersion().toString()))) {
+=======
+									.getOntInterchangeVersion().toString()))){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						
 						gui.logWrite("RECEIVED BEFORE TRANSLATE = [" + msg.getContent()
 								+ "]");
@@ -131,18 +191,30 @@ public class JADEAgent extends Agent {
 								translatorController.getOntInterchangeVersion(), msgType,
 								msg.getContent(), msg.getReplyWith());
 						
+<<<<<<< HEAD
 						if(rcvMsg != null) {
 							gui.logWrite("RECEIVED AFTER TRANSLATE = [" + rcvMsg + "]");
 						}
 					}
 				} else {
+=======
+						if(rcvMsg != null){
+							gui.logWrite("RECEIVED AFTER TRANSLATE = [" + rcvMsg + "]");
+						}
+					}
+				}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					block();
 				}
 			}
 		});
 	}
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Remove the graphical user from screen
 	 * 
@@ -150,12 +222,18 @@ public class JADEAgent extends Agent {
 	 * @return none
 	 */
 	@Override
+<<<<<<< HEAD
 	protected void takeDown() {
 		if(gui != null) {
+=======
+	protected void takeDown(){
+		if(gui != null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			gui.dispose();
 		}
 	}
 	
+<<<<<<< HEAD
 	
 	/**
 	 * 
@@ -163,6 +241,15 @@ public class JADEAgent extends Agent {
 	public void send(String targetAgent, String content) {
 		
 		try {
+=======
+
+	/**
+	 * 
+	 */
+	public void send(String targetAgent, String content){
+		
+		try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			String[] receivers = new String[1];
 			receivers[0] = targetAgent;
 			
@@ -174,28 +261,45 @@ public class JADEAgent extends Agent {
 							this.translatorController.getOntNativeName(),
 							this.translatorController.getOntNativeVersion(), content, null);
 			
+<<<<<<< HEAD
 			if(sentMsg != null) {
 				gui.logWrite("SENT AFTER TRANSLATE = [" + sentMsg.getMessage() + "]");
 			}
 		} catch(LanguageException le) {
+=======
+			if(sentMsg != null){
+				gui.logWrite("SENT AFTER TRANSLATE = [" + sentMsg.getMessage() + "]");
+			}
+		}catch(LanguageException le){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			le.printStackTrace();
 		}
 	}
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns the agents active in the system
 	 * 
 	 * @param none
 	 * @return Array of active agent names
 	 */
+<<<<<<< HEAD
 	public String[] getAgents() {
 		try {
+=======
+	public String[] getAgents(){
+		try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			SearchConstraints c = new SearchConstraints();
 			c.setMaxResults(new Long(-1));
 			AMSAgentDescription[] agentsList = AMSService.search(this,
 					new AMSAgentDescription(), c);
 			
+<<<<<<< HEAD
 			if(agentsList.length > 0) {
 				String[] list = new String[agentsList.length];
 				String name;
@@ -205,13 +309,28 @@ public class JADEAgent extends Agent {
 					if((!name.startsWith("ams@")) && (!name.startsWith("RMA@"))
 							&& (!name.startsWith("df@"))
 							&& (!name.equals(this.getAID().getName()))) {
+=======
+			if(agentsList.length > 0){
+				String[] list = new String[agentsList.length];
+				String name;
+				int j = 0;
+				for(int i = 0; i < agentsList.length; i++){
+					name = agentsList[i].getName().getName();
+					if((!name.startsWith("ams@")) && (!name.startsWith("RMA@"))
+							&& (!name.startsWith("df@"))
+							&& (!name.equals(this.getAID().getName()))){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						list[j] = name;
 						j++;
 					}
 				}
 				return list;
 			}
+<<<<<<< HEAD
 		} catch(FIPAException e) {
+=======
+		}catch(FIPAException e){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			e.printStackTrace();
 		}
 		return null;

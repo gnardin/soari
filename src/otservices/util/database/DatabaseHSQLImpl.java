@@ -26,11 +26,19 @@ import org.apache.log4j.Logger;
 import otservices.util.configuration.ConfigurationElementNotFoundException;
 import otservices.util.configuration.ConfigurationParser;
 
+<<<<<<< HEAD
 public class DatabaseHSQLImpl implements DatabaseInterface {
 	
 	// This is the shutdown "hook" which will be called when the JVM shuts
 	// down from exit, control-C, etc.
 	class ShutdownDB extends Thread {
+=======
+public class DatabaseHSQLImpl implements DatabaseInterface{
+	
+	// This is the shutdown "hook" which will be called when the JVM shuts
+	// down from exit, control-C, etc.
+	class ShutdownDB extends Thread{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		// Database connection
 		private Connection	conn;
@@ -43,7 +51,11 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 		 *          Database connection active
 		 * @return none
 		 */
+<<<<<<< HEAD
 		public ShutdownDB(Connection conn) {
+=======
+		public ShutdownDB(Connection conn){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.conn = conn;
 		}
 		
@@ -55,6 +67,7 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 		 * @return none
 		 */
 		@Override
+<<<<<<< HEAD
 		public void run() {
 			if(conn != null) {
 				try {
@@ -62,6 +75,15 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 					stmt.executeUpdate("SHUTDOWN");
 					conn.close();
 				} catch(SQLException sqle) {
+=======
+		public void run(){
+			if(conn != null){
+				try{
+					Statement stmt = conn.createStatement();
+					stmt.executeUpdate("SHUTDOWN");
+					conn.close();
+				}catch(SQLException sqle){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				}
 			}
 		}
@@ -88,7 +110,11 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 * @param none
 	 * @return none
 	 */
+<<<<<<< HEAD
 	public DatabaseHSQLImpl() {
+=======
+	public DatabaseHSQLImpl(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	}
 	
 	
@@ -99,8 +125,13 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 *          Configuration parameter content
 	 * @return none
 	 */
+<<<<<<< HEAD
 	public DatabaseHSQLImpl(ConfigurationParser conf) {
 		if(conf != null) {
+=======
+	public DatabaseHSQLImpl(ConfigurationParser conf){
+		if(conf != null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.setup(conf);
 		}
 	}
@@ -113,10 +144,17 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 * @return true - if it is connected; false - otherwise
 	 */
 	@Override
+<<<<<<< HEAD
 	public Boolean isConnected() {
 		if(this.connected.booleanValue()) {
 			logger.debug("HSQL database instance is connected");
 		} else {
+=======
+	public Boolean isConnected(){
+		if(this.connected.booleanValue()){
+			logger.debug("HSQL database instance is connected");
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("HSQL database instance is not connected");
 		}
 		
@@ -132,6 +170,7 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 * @return none
 	 */
 	@Override
+<<<<<<< HEAD
 	public void setup(Object configuration) {
 		logger.debug("Setting up the HSQL configuration");
 		
@@ -140,6 +179,16 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 			
 			logger.debug("HSQL configuration set");
 		} else {
+=======
+	public void setup(Object configuration){
+		logger.debug("Setting up the HSQL configuration");
+		
+		if(configuration instanceof ConfigurationParser){
+			this.conf = (ConfigurationParser) configuration;
+			
+			logger.debug("HSQL configuration set");
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger
 					.error("Configuration object is not a ConfigurationParser instance");
 		}
@@ -153,6 +202,7 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 * @return none
 	 */
 	@Override
+<<<<<<< HEAD
 	public void startup() {
 		if((!this.isConnected().booleanValue()) && (conf != null)) {
 			try {
@@ -160,6 +210,15 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 				
 				logger.debug("Trying to connect to HSQL database");
 				try {
+=======
+	public void startup(){
+		if((!this.isConnected().booleanValue()) && (conf != null)){
+			try{
+				Class.forName("org.hsqldb.jdbcDriver");
+				
+				logger.debug("Trying to connect to HSQL database");
+				try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					logger.debug("jdbc:hsqldb:file:" + ((String) conf.get("dbLocation"))
 							+ "/" + ((String) conf.get("dbName")) + ","
 							+ ((String) conf.get("dbUsername")));
@@ -172,7 +231,11 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 									+ ((String) conf.get("dbName")) + ";ifexists=true",
 							((String) conf.get("dbUsername")),
 							((String) conf.get("dbPassword")));
+<<<<<<< HEAD
 				} catch(ConfigurationElementNotFoundException cenfe) {
+=======
+				}catch(ConfigurationElementNotFoundException cenfe){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					logger
 							.error("ConfigurationElementNotFoundException Message " + cenfe);
 					
@@ -186,10 +249,17 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 				Runtime.getRuntime().addShutdownHook(new ShutdownDB(this.conn));
 				
 				logger.debug("Successfuly connected to HSQL database");
+<<<<<<< HEAD
 			} catch(ClassNotFoundException cnfe) {
 				logger.error("ClassNotFoundException Message" + cnfe);
 				cnfe.printStackTrace();
 			} catch(SQLException sqle) {
+=======
+			}catch(ClassNotFoundException cnfe){
+				logger.error("ClassNotFoundException Message" + cnfe);
+				cnfe.printStackTrace();
+			}catch(SQLException sqle){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.error("SQLException Message" + sqle);
 				sqle.printStackTrace();
 			}
@@ -204,9 +274,15 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 * @return none
 	 */
 	@Override
+<<<<<<< HEAD
 	public void shutdown() {
 		if(this.isConnected().booleanValue()) {
 			try {
+=======
+	public void shutdown(){
+		if(this.isConnected().booleanValue()){
+			try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Trying to shutdown HSQL database");
 				
 				Statement stmt = conn.createStatement();
@@ -215,7 +291,11 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 				this.connected = new Boolean(false);
 				
 				logger.debug("HSQL database shutdown successfuly");
+<<<<<<< HEAD
 			} catch(SQLException sqle) {
+=======
+			}catch(SQLException sqle){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.error("SQLExpression Message" + sqle);
 			}
 		}
@@ -230,6 +310,7 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 * @return none
 	 */
 	@Override
+<<<<<<< HEAD
 	public ResultSet query(SQLExpressionInterface expression) {
 		if((this.isConnected().booleanValue())
 				&& (expression instanceof SQLExpressionHSQLImpl)) {
@@ -237,6 +318,15 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 			if((expression.isValid().booleanValue())
 					&& (expression.isQuery().booleanValue())) {
 				try {
+=======
+	public ResultSet query(SQLExpressionInterface expression){
+		if((this.isConnected().booleanValue())
+				&& (expression instanceof SQLExpressionHSQLImpl)){
+			
+			if((expression.isValid().booleanValue())
+					&& (expression.isQuery().booleanValue())){
+				try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					Statement stmt = conn.createStatement();
 					
 					logger.debug("Query SQL Expression " + expression.getSQLExpression());
@@ -244,6 +334,7 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 					ResultSet rs = stmt.executeQuery(expression.getSQLExpression());
 					
 					return rs;
+<<<<<<< HEAD
 				} catch(SQLException sqle) {
 					logger.error("SQLExpression Message " + sqle);
 				}
@@ -252,6 +343,16 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 						.error("Expression is not valid and/or expression is not a Query");
 			}
 		} else {
+=======
+				}catch(SQLException sqle){
+					logger.error("SQLExpression Message " + sqle);
+				}
+			}else{
+				logger
+						.error("Expression is not valid and/or expression is not a Query");
+			}
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger
 					.error("HSQL database is not connected and/or expression is not a instance of HSQLDBExpression");
 		}
@@ -268,6 +369,7 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 	 * @return none
 	 */
 	@Override
+<<<<<<< HEAD
 	public Integer update(SQLExpressionInterface expression) {
 		Integer rs = new Integer(0);
 		
@@ -277,6 +379,17 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 			if((expression.isValid().booleanValue())
 					&& (expression.isUpdate().booleanValue())) {
 				try {
+=======
+	public Integer update(SQLExpressionInterface expression){
+		Integer rs = new Integer(0);
+		
+		if((this.isConnected().booleanValue())
+				&& (expression instanceof SQLExpressionHSQLImpl)){
+			
+			if((expression.isValid().booleanValue())
+					&& (expression.isUpdate().booleanValue())){
+				try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					Statement stmt = conn.createStatement();
 					
 					logger.debug("Update SQL Expression");
@@ -286,6 +399,7 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 					
 					logger.debug("Update Result = " + rs);
 					
+<<<<<<< HEAD
 				} catch(SQLException sqle) {
 					logger.error("SQLExpression Message " + sqle);
 				}
@@ -294,6 +408,16 @@ public class DatabaseHSQLImpl implements DatabaseInterface {
 						.error("Expression is not valid and/or expression is not a Query");
 			}
 		} else {
+=======
+				}catch(SQLException sqle){
+					logger.error("SQLExpression Message " + sqle);
+				}
+			}else{
+				logger
+						.error("Expression is not valid and/or expression is not a Query");
+			}
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger
 					.error("HSQL database is not connected and/or expression is not a instance of HSQLDBExpression");
 		}

@@ -20,7 +20,11 @@ package otservices.translator.mapperserverclient.ws;
 import java.util.Map;
 import otservices.mapper.translationrepository.Ontology;
 
+<<<<<<< HEAD
 public interface MapperClientWebServiceInterface {
+=======
+public interface MapperClientWebServiceInterface{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * Add an Ontology Translation into the Database

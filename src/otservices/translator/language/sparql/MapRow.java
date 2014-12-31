@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * Copyright (c) 2008 Luis Gustavo Nardin <gnardin@gmail.com>
+=======
+ * Copyright (c) 2008  Luis Gustavo Nardin <gnardin@gmail.com>
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -8,7 +12,11 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+<<<<<<< HEAD
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+=======
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -19,6 +27,7 @@ package otservices.translator.language.sparql;
 
 import java.io.Serializable;
 
+<<<<<<< HEAD
 public class MapRow implements Serializable {
 	
 	public enum FieldType {
@@ -117,6 +126,91 @@ public class MapRow implements Serializable {
 	 * 
 	 */
 	public void setTargetVar(String targetVar) {
+=======
+public class MapRow implements Serializable{
+
+	public enum FieldType {
+		SOURCEVAR, SOURCECONCEPT, TARGETVAR, TARGETCONCEPT
+	};
+
+	private String	sourceConcept;
+	private String	sourceVar;
+	private String	targetConcept;
+	private String	targetVar;
+
+	/**
+	 * 
+	 */
+	public String get(FieldType fieldType){
+		String result = null;
+
+		if(fieldType.equals(FieldType.SOURCECONCEPT)){
+			result = this.sourceConcept;
+		}else if(fieldType.equals(FieldType.SOURCEVAR)){
+			result = this.sourceVar;
+		}else if(fieldType.equals(FieldType.TARGETCONCEPT)){
+			result = this.targetConcept;
+		}else if(fieldType.equals(FieldType.TARGETVAR)){
+			result = this.targetVar;
+		}
+
+		return result;
+	}
+
+	/**
+	 * 
+	 */
+	public String getSourceConcept(){
+		return this.sourceConcept;
+	}
+
+	/**
+	 * 
+	 */
+	public String getSourceVar(){
+		return this.sourceVar;
+	}
+
+	/**
+	 * 
+	 */
+	public String getTargetConcept(){
+		return this.targetConcept;
+	}
+
+	/**
+	 * 
+	 */
+	public String getTargetVar(){
+		return this.targetVar;
+	}
+
+	/**
+	 * 
+	 */
+	public void setSourceConcept(String sourceConcept){
+		this.sourceConcept = sourceConcept;
+	}
+
+	/**
+	 * 
+	 */
+	public void setSourceVar(String sourceVar){
+		this.sourceVar = sourceVar;
+	}
+
+	/**
+	 * 
+	 */
+	public void setTargetConcept(String targetConcept){
+		this.targetConcept = targetConcept;
+	}
+
+	/**
+	 * 
+	 */
+	public void setTargetVar(String targetVar){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.targetVar = targetVar;
 	}
 }

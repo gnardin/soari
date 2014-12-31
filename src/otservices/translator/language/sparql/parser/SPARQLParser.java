@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import otservices.translator.language.LanguageException;
 import otservices.translator.language.LanguageInterface;
+<<<<<<< HEAD
 import otservices.translator.language.sparql.Filter;
 import otservices.translator.language.sparql.LogExpr;
 import otservices.translator.language.sparql.RegExpr;
@@ -15,6 +16,18 @@ import otservices.translator.language.sparql.Term;
 import otservices.translator.language.sparql.Where;
 
 public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
+=======
+import otservices.translator.language.sparql.SPARQLObject;
+import otservices.translator.language.sparql.LogExpr;
+import otservices.translator.language.sparql.RegExpr;
+import otservices.translator.language.sparql.RelExpr;
+import otservices.translator.language.sparql.Term;
+import otservices.translator.language.sparql.Result;
+import otservices.translator.language.sparql.Where;
+import otservices.translator.language.sparql.Filter;
+
+public class SPARQLParser implements LanguageInterface, SPARQLParserConstants{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	private List<String>	concepts			= new ArrayList<String>();
 	
@@ -34,7 +47,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	/**
 	 *
 	 */
+<<<<<<< HEAD
 	public SPARQLParser(String message) {
+=======
+	public SPARQLParser(String message){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.message = message;
 		this.testResult = new Boolean(true);
 	}
@@ -44,7 +61,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	 *
 	 */
 	@Override
+<<<<<<< HEAD
 	public Object getParsedObject() {
+=======
+	public Object getParsedObject(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.parsedObject;
 	}
 	
@@ -53,6 +74,7 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	 *
 	 */
 	@Override
+<<<<<<< HEAD
 	public void run() throws LanguageException {
 		if(testResult.booleanValue()) {
 			this.result.setXML(this.message);
@@ -60,13 +82,26 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 			this.parsedObject.addResult(this.result);
 		} else {
 			try {
+=======
+	public void run() throws LanguageException{
+		if(testResult.booleanValue()){
+			this.result.setXML(this.message);
+			this.parsedObject.setCommand(SPARQLObject.Command.RESULT);
+			this.parsedObject.addResult(this.result);
+		}else{
+			try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				this.parse();
 				
 				this.parsedObject.addConcepts(this.concepts);
 				this.parsedObject.addResult(this.result);
 				this.parsedObject.addWhere(this.where);
 				this.parsedObject.addFilter(this.filter);
+<<<<<<< HEAD
 			} catch(ParseException pe) {
+=======
+			}catch(ParseException pe){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				throw new LanguageException(pe.getMessage());
 			}
 		}
@@ -77,15 +112,25 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	 *
 	 */
 	@Override
+<<<<<<< HEAD
 	public void setParsedObject(Object parsedObject) {
 		if(parsedObject instanceof SPARQLObject) {
+=======
+	public void setParsedObject(Object parsedObject){
+		if(parsedObject instanceof SPARQLObject){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.parsedObject = (SPARQLObject) parsedObject;
 		}
 	}
 	
 	
+<<<<<<< HEAD
 	final public void parse() throws ParseException {
 		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void parse() throws ParseException{
+		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			case SELECT:
 				select();
 				this.parsedObject.setCommand(SPARQLObject.Command.SELECT);
@@ -103,19 +148,32 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void select() throws ParseException {
+=======
+	final public void select() throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_consume_token(SELECT);
 		vars();
 		where();
 	}
 	
 	
+<<<<<<< HEAD
 	final public void vars() throws ParseException {
 		Token var;
 		var = jj_consume_token(VAR);
 		this.result.addResult(var.image);
 		label_1: while(true) {
 			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void vars() throws ParseException{
+		Token var;
+		var = jj_consume_token(VAR);
+		this.result.addResult(var.image);
+		label_1: while(true){
+			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				case VAR:
 					;
 					break;
@@ -129,7 +187,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void where() throws ParseException {
+=======
+	final public void where() throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_consume_token(WHERE);
 		jj_consume_token(23);
 		triplesBlock();
@@ -137,8 +199,13 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void triplesBlock() throws ParseException {
 		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void triplesBlock() throws ParseException{
+		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			case VAR:
 				triplesSameSubject();
 				break;
@@ -150,8 +217,13 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				jj_consume_token(-1);
 				throw new ParseException();
 		}
+<<<<<<< HEAD
 		label_2: while(true) {
 			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+		label_2: while(true){
+			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				case FILTER:
 				case VAR:
 					;
@@ -165,7 +237,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void triplesSameSubject() throws ParseException {
+=======
+	final public void triplesSameSubject() throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Token concept;
 		Token var;
 		jj_consume_token(VAR);
@@ -179,14 +255,23 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void filter() throws ParseException {
+=======
+	final public void filter() throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_consume_token(FILTER);
 		constraint();
 	}
 	
 	
+<<<<<<< HEAD
 	final public void constraint() throws ParseException {
 		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void constraint() throws ParseException{
+		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			case 27:
 				brackettedExpression();
 				break;
@@ -201,18 +286,30 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void brackettedExpression() throws ParseException {
+=======
+	final public void brackettedExpression() throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_consume_token(27);
 		conditionalOrExpression();
 		jj_consume_token(28);
 	}
 	
 	
+<<<<<<< HEAD
 	final public void conditionalOrExpression() throws ParseException {
 		LogExpr logExpr;
 		conditionalAndExpression();
 		label_3: while(true) {
 			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void conditionalOrExpression() throws ParseException{
+		LogExpr logExpr;
+		conditionalAndExpression();
+		label_3: while(true){
+			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				case 29:
 					;
 					break;
@@ -229,11 +326,19 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void conditionalAndExpression() throws ParseException {
 		LogExpr logExpr;
 		valueLogical();
 		label_4: while(true) {
 			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void conditionalAndExpression() throws ParseException{
+		LogExpr logExpr;
+		valueLogical();
+		label_4: while(true){
+			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				case 30:
 					;
 					break;
@@ -250,9 +355,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void valueLogical() throws ParseException {
 		RelExpr relExpr;
 		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void valueLogical() throws ParseException{
+		RelExpr relExpr;
+		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			case 27:
 				brackettedExpression();
 				break;
@@ -269,8 +380,13 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 			case FLOATN:
 			case STRING:
 				term(1);
+<<<<<<< HEAD
 				label_5: while(true) {
 					switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+				label_5: while(true){
+					switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						case 31:
 						case 32:
 						case 33:
@@ -283,7 +399,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 							jj_la1[7] = jj_gen;
 							break label_5;
 					}
+<<<<<<< HEAD
 					switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+					switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						case 31:
 							jj_consume_token(31);
 							term(2);
@@ -341,18 +461,31 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void term(int position) throws ParseException {
 		Token t;
 		Term term = new Term();
 		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void term(int position) throws ParseException{
+		Token t;
+		Term term = new Term();
+		switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			case INT:
 				term = new Term();
 				t = jj_consume_token(INT);
 				term.setType(Term.TermType.INTEGER);
 				term.setTerm(new Integer(t.image));
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -361,9 +494,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(INTP);
 				term.setType(Term.TermType.INTEGER);
 				term.setTerm(new Integer(t.image));
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -372,9 +511,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(INTN);
 				term.setType(Term.TermType.INTEGER);
 				term.setTerm(new Integer(t.image));
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -383,9 +528,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(FLOAT);
 				term.setType(Term.TermType.FLOAT);
 				term.setTerm(new Float(t.image));
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -394,9 +545,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(FLOATP);
 				term.setType(Term.TermType.FLOAT);
 				term.setTerm(new Float(t.image));
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -405,9 +562,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(FLOATN);
 				term.setType(Term.TermType.FLOAT);
 				term.setTerm(new Float(t.image));
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -416,9 +579,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(BOOL);
 				term.setType(Term.TermType.BOOLEAN);
 				term.setTerm(new Boolean(t.image));
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -427,9 +596,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(STRING);
 				term.setType(Term.TermType.STRING);
 				term.setTerm(t.image);
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -438,9 +613,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 				t = jj_consume_token(VAR);
 				term.setType(Term.TermType.VARIABLE);
 				term.setTerm(t.image);
+<<<<<<< HEAD
 				if(position == 1) {
 					term.setPosition(Term.Position.FIRST);
 				} else if(position == 2) {
+=======
+				if(position == 1){
+					term.setPosition(Term.Position.FIRST);
+				}else if(position == 2){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					term.setPosition(Term.Position.SECOND);
 				}
 				this.filter.addItem(term);
@@ -453,7 +634,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void regex() throws ParseException {
+=======
+	final public void regex() throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Token var = null;
 		Token pattern = null;
 		RegExpr regExpr;
@@ -470,13 +655,18 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	final public void update() throws ParseException {
+=======
+	final public void update() throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_consume_token(UPDATE);
 		sets();
 		where();
 	}
 	
 	
+<<<<<<< HEAD
 	final public void sets() throws ParseException {
 		Token t;
 		Token v;
@@ -486,6 +676,17 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 			t = jj_consume_token(VAR);
 			jj_consume_token(33);
 			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+	final public void sets() throws ParseException{
+		Token t;
+		Token v;
+		Term term;
+		label_6: while(true){
+			term = new Term();
+			t = jj_consume_token(VAR);
+			jj_consume_token(33);
+			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				case INT:
 					v = jj_consume_token(INT);
 					term.setType(Term.TermType.INTEGER);
@@ -532,7 +733,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 					throw new ParseException();
 			}
 			this.result.addResult(t.image, term);
+<<<<<<< HEAD
 			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+=======
+			switch((jj_ntk == -1) ? jj_ntk() : jj_ntk){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				case VAR:
 					;
 					break;
@@ -563,36 +768,59 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	static private int[]						jj_la1_0;
 	
 	static private int[]						jj_la1_1;
+<<<<<<< HEAD
 	static {
+=======
+	static{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_la1_init_0();
 		jj_la1_init_1();
 	}
 	
 	
+<<<<<<< HEAD
 	private static void jj_la1_init_0() {
+=======
+	private static void jj_la1_init_0(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_la1_0 = new int[]{0x60, 0x800, 0x900, 0x900, 0x8000200, 0x20000000,
 				0x40000000, 0x80000000, 0x80000000, 0x81fce00, 0x1fcc00, 0x1fc400,
 				0x800,};
 	}
 	
 	
+<<<<<<< HEAD
 	private static void jj_la1_init_1() {
+=======
+	private static void jj_la1_init_1(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_la1_1 = new int[]{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1f, 0x1f, 0x0,
 				0x0, 0x0, 0x0,};
 	}
 	
 	
 	/** Constructor with InputStream. */
+<<<<<<< HEAD
 	public SPARQLParser(java.io.InputStream stream) {
+=======
+	public SPARQLParser(java.io.InputStream stream){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this(stream, null);
 	}
 	
 	
 	/** Constructor with InputStream and supplied encoding */
+<<<<<<< HEAD
 	public SPARQLParser(java.io.InputStream stream, String encoding) {
 		try {
 			jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1);
 		} catch(java.io.UnsupportedEncodingException e) {
+=======
+	public SPARQLParser(java.io.InputStream stream, String encoding){
+		try{
+			jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1);
+		}catch(java.io.UnsupportedEncodingException e){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			throw new RuntimeException(e);
 		}
 		token_source = new SPARQLParserTokenManager(jj_input_stream);
@@ -605,16 +833,27 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Reinitialise. */
+<<<<<<< HEAD
 	public void ReInit(java.io.InputStream stream) {
+=======
+	public void ReInit(java.io.InputStream stream){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		ReInit(stream, null);
 	}
 	
 	
 	/** Reinitialise. */
+<<<<<<< HEAD
 	public void ReInit(java.io.InputStream stream, String encoding) {
 		try {
 			jj_input_stream.ReInit(stream, encoding, 1, 1);
 		} catch(java.io.UnsupportedEncodingException e) {
+=======
+	public void ReInit(java.io.InputStream stream, String encoding){
+		try{
+			jj_input_stream.ReInit(stream, encoding, 1, 1);
+		}catch(java.io.UnsupportedEncodingException e){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			throw new RuntimeException(e);
 		}
 		token_source.ReInit(jj_input_stream);
@@ -627,7 +866,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Constructor. */
+<<<<<<< HEAD
 	public SPARQLParser(java.io.Reader stream) {
+=======
+	public SPARQLParser(java.io.Reader stream){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_input_stream = new SimpleCharStream(stream, 1, 1);
 		token_source = new SPARQLParserTokenManager(jj_input_stream);
 		token = new Token();
@@ -639,7 +882,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Reinitialise. */
+<<<<<<< HEAD
 	public void ReInit(java.io.Reader stream) {
+=======
+	public void ReInit(java.io.Reader stream){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		jj_input_stream.ReInit(stream, 1, 1);
 		token_source.ReInit(jj_input_stream);
 		token = new Token();
@@ -651,7 +898,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Constructor with generated Token Manager. */
+<<<<<<< HEAD
 	public SPARQLParser(SPARQLParserTokenManager tm) {
+=======
+	public SPARQLParser(SPARQLParserTokenManager tm){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		token_source = tm;
 		token = new Token();
 		jj_ntk = -1;
@@ -662,7 +913,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Reinitialise. */
+<<<<<<< HEAD
 	public void ReInit(SPARQLParserTokenManager tm) {
+=======
+	public void ReInit(SPARQLParserTokenManager tm){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		token_source = tm;
 		token = new Token();
 		jj_ntk = -1;
@@ -672,14 +927,22 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	private Token jj_consume_token(int kind) throws ParseException {
+=======
+	private Token jj_consume_token(int kind) throws ParseException{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Token oldToken;
 		if((oldToken = token).next != null)
 			token = token.next;
 		else
 			token = token.next = token_source.getNextToken();
 		jj_ntk = -1;
+<<<<<<< HEAD
 		if(token.kind == kind) {
+=======
+		if(token.kind == kind){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			jj_gen++;
 			return token;
 		}
@@ -690,7 +953,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Get the next Token. */
+<<<<<<< HEAD
 	final public Token getNextToken() {
+=======
+	final public Token getNextToken(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		if(token.next != null)
 			token = token.next;
 		else
@@ -702,9 +969,15 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Get the specific Token. */
+<<<<<<< HEAD
 	final public Token getToken(int index) {
 		Token t = token;
 		for(int i = 0; i < index; i++) {
+=======
+	final public Token getToken(int index){
+		Token t = token;
+		for(int i = 0; i < index; i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			if(t.next != null)
 				t = t.next;
 			else
@@ -714,7 +987,11 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	}
 	
 	
+<<<<<<< HEAD
 	private int jj_ntk() {
+=======
+	private int jj_ntk(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		if((jj_nt = token.next) == null)
 			return(jj_ntk = (token.next = token_source.getNextToken()).kind);
 		else
@@ -729,6 +1006,7 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Generate ParseException. */
+<<<<<<< HEAD
 	public ParseException generateParseException() {
 		jj_expentries.clear();
 		boolean[] la1tokens = new boolean[38];
@@ -743,20 +1021,45 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 						la1tokens[j] = true;
 					}
 					if((jj_la1_1[i] & (1 << j)) != 0) {
+=======
+	public ParseException generateParseException(){
+		jj_expentries.clear();
+		boolean[] la1tokens = new boolean[38];
+		if(jj_kind >= 0){
+			la1tokens[jj_kind] = true;
+			jj_kind = -1;
+		}
+		for(int i = 0; i < 13; i++){
+			if(jj_la1[i] == jj_gen){
+				for(int j = 0; j < 32; j++){
+					if((jj_la1_0[i] & (1 << j)) != 0){
+						la1tokens[j] = true;
+					}
+					if((jj_la1_1[i] & (1 << j)) != 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						la1tokens[32 + j] = true;
 					}
 				}
 			}
 		}
+<<<<<<< HEAD
 		for(int i = 0; i < 38; i++) {
 			if(la1tokens[i]) {
+=======
+		for(int i = 0; i < 38; i++){
+			if(la1tokens[i]){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				jj_expentry = new int[1];
 				jj_expentry[0] = i;
 				jj_expentries.add(jj_expentry);
 			}
 		}
 		int[][] exptokseq = new int[jj_expentries.size()][];
+<<<<<<< HEAD
 		for(int i = 0; i < jj_expentries.size(); i++) {
+=======
+		for(int i = 0; i < jj_expentries.size(); i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			exptokseq[i] = jj_expentries.get(i);
 		}
 		return new ParseException(token, exptokseq, tokenImage);
@@ -764,12 +1067,20 @@ public class SPARQLParser implements LanguageInterface, SPARQLParserConstants {
 	
 	
 	/** Enable tracing. */
+<<<<<<< HEAD
 	final public void enable_tracing() {
+=======
+	final public void enable_tracing(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	}
 	
 	
 	/** Disable tracing. */
+<<<<<<< HEAD
 	final public void disable_tracing() {
+=======
+	final public void disable_tracing(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	}
 	
 }

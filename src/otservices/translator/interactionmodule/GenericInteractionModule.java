@@ -18,22 +18,40 @@
 package otservices.translator.interactionmodule;
 
 import otservices.translator.TranslatorConstants;
+<<<<<<< HEAD
 
 public class GenericInteractionModule extends InteractionModuleInterface
 		implements TranslatorConstants {
+=======
+import otservices.translator.interactionmodule.InteractionModuleInterface;
+
+public class GenericInteractionModule extends InteractionModuleInterface
+		implements TranslatorConstants{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public GenericInteractionModule() {
 	}
 	
 	
+=======
+	public GenericInteractionModule(){
+	}
+	
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * 
 	 */
 	@Override
 	public void outMessage(String[] receivers, String language, String ontology,
+<<<<<<< HEAD
 			Integer version, Integer msgType, String message, String replyWith) {
+=======
+			Integer version, Integer msgType, String message, String replyWith){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	}
 }

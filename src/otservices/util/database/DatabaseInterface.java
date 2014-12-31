@@ -19,7 +19,11 @@ package otservices.util.database;
 
 import java.sql.ResultSet;
 
+<<<<<<< HEAD
 public interface DatabaseInterface {
+=======
+public interface DatabaseInterface{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * Returns if the connection to the database is established
@@ -29,7 +33,11 @@ public interface DatabaseInterface {
 	 */
 	public Boolean isConnected();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Setup the database parameter values
 	 * 
@@ -39,7 +47,11 @@ public interface DatabaseInterface {
 	 */
 	public void setup(Object configuration);
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Startup an database connection
 	 * 
@@ -48,7 +60,11 @@ public interface DatabaseInterface {
 	 */
 	public void startup();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Shutdown the database instance
 	 * 
@@ -57,7 +73,11 @@ public interface DatabaseInterface {
 	 */
 	public void shutdown();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns the rows that match to the query expression
 	 * 
@@ -67,7 +87,11 @@ public interface DatabaseInterface {
 	 */
 	public ResultSet query(SQLExpressionInterface expression);
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Updates the rows in the database
 	 * 

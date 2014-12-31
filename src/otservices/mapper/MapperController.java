@@ -39,7 +39,11 @@ import otservices.util.configuration.ConfigurationFileNotFoundException;
 import otservices.util.configuration.ConfigurationParser;
 import otservices.util.log.Log;
 
+<<<<<<< HEAD
 public class MapperController {
+=======
+public class MapperController{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	// Responsible for the logging
 	private static Logger						logger		= Logger
@@ -71,8 +75,13 @@ public class MapperController {
 	 * @return RMMController object
 	 */
 	public static synchronized MapperController getInstance(
+<<<<<<< HEAD
 			String configXMLFilename, String configXSDFilename, String logFilename) {
 		if(MapperController.instance == null) {
+=======
+			String configXMLFilename, String configXSDFilename, String logFilename){
+		if(MapperController.instance == null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			MapperController.instance = new MapperController(configXMLFilename,
 					configXSDFilename, logFilename);
 			
@@ -95,19 +104,32 @@ public class MapperController {
 	 * @return none
 	 */
 	private MapperController(String configXMLFilename, String configXSDFilename,
+<<<<<<< HEAD
 			String logFilename) {
 		
 		// Initialize the logging
 		try {
 			new Log(logFilename);
 		} catch(java.io.FileNotFoundException e) {
+=======
+			String logFilename){
+		
+		// Initialize the logging
+		try{
+			new Log(logFilename);
+		}catch(java.io.FileNotFoundException e){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			e.printStackTrace();
 		}
 		
 		logger.debug("Logging initialized");
 		logger.debug("Loaded log4j configuration file = " + logFilename);
 		
+<<<<<<< HEAD
 		try {
+=======
+		try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			// Load the Reputation Mapping configuration parameter values
 			this.mapperConfigurator = new ConfigurationParser(configXMLFilename,
 					configXSDFilename);
@@ -122,7 +144,11 @@ public class MapperController {
 					mapperDBConfigurator);
 			this.translationRepository.run();
 			
+<<<<<<< HEAD
 			if(translationRepository.isConnected().booleanValue()) {
+=======
+			if(translationRepository.isConnected().booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				// Classifies the ontologies and store it in the translation
 				// database
 				classifier = new Classifier(this.mapperConfigurator,
@@ -130,11 +156,19 @@ public class MapperController {
 			}
 			
 			mapperDBConfigurator = null;
+<<<<<<< HEAD
 		} catch(ConfigurationElementNotFoundException cenfe) {
 			logger.error("ConfigurationElementNotFoundException Message " + cenfe);
 		} catch(ConfigurationFileInvalidException cfie) {
 			logger.error("ConfigurationFileInvalidException Message " + cfie);
 		} catch(ConfigurationFileNotFoundException cfnfe) {
+=======
+		}catch(ConfigurationElementNotFoundException cenfe){
+			logger.error("ConfigurationElementNotFoundException Message " + cenfe);
+		}catch(ConfigurationFileInvalidException cfie){
+			logger.error("ConfigurationFileInvalidException Message " + cfie);
+		}catch(ConfigurationFileNotFoundException cfnfe){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("ConfigurationFileNotFoundException Message " + cfnfe);
 		}
 	}
@@ -157,7 +191,11 @@ public class MapperController {
 	 */
 	@SuppressWarnings("unchecked")
 	public Boolean addOntologyTranslation(Ontology ontInterchange,
+<<<<<<< HEAD
 			Ontology ontNative, String owlFile) {
+=======
+			Ontology ontNative, String owlFile){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = new Boolean(false);
 		
 		logger.debug("Ontology Interchange");
@@ -168,11 +206,19 @@ public class MapperController {
 		logger.debug("Description.: " + ontInterchange.getDescription());
 		
 		List<Ontology> ontA = this.translationRepository.select(ontInterchange);
+<<<<<<< HEAD
 		if(ontA.size() == 0) {
 			logger.debug("Adding the OntologyInterchange");
 			this.translationRepository.insert(ontInterchange);
 			ontA = this.translationRepository.select(ontInterchange);
 		} else {
+=======
+		if(ontA.size() == 0){
+			logger.debug("Adding the OntologyInterchange");
+			this.translationRepository.insert(ontInterchange);
+			ontA = this.translationRepository.select(ontInterchange);
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("Ontology Interchange already exists");
 		}
 		
@@ -184,6 +230,7 @@ public class MapperController {
 		logger.debug("Description.: " + ontNative.getDescription());
 		
 		List<Ontology> ontB = this.translationRepository.select(ontNative);
+<<<<<<< HEAD
 		if(ontB.size() == 0) {
 			logger.debug("Adding OntologyNative");
 			this.translationRepository.insert(ontNative);
@@ -193,6 +240,17 @@ public class MapperController {
 		}
 		
 		try {
+=======
+		if(ontB.size() == 0){
+			logger.debug("Adding OntologyNative");
+			this.translationRepository.insert(ontNative);
+			ontB = this.translationRepository.select(ontNative);
+		}else{
+			logger.debug("Ontology Native already exists");
+		}
+		
+		try{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			String filename = new File(owlFile).getName();
 			String directory = (String) this.mapperConfigurator.get("owlDirectory");
 			
@@ -204,7 +262,11 @@ public class MapperController {
 					owlFile));
 			
 			byte[] buffer = new byte[256];
+<<<<<<< HEAD
 			while(true) {
+=======
+			while(true){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				int bytesRead = in.read(buffer);
 				if(bytesRead == -1)
 					break;
@@ -226,23 +288,39 @@ public class MapperController {
 			ontAB.setNativeOntology(ontB.get(0).getId());
 			
 			List<OntRelation> ontRel = this.translationRepository.select(ontAB);
+<<<<<<< HEAD
 			if(ontRel.size() == 0) {
+=======
+			if(ontRel.size() == 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				ontAB.setFilename(new File(owlFile).getName());
 				this.translationRepository.insert(ontAB);
 				ontRel = this.translationRepository.select(ontAB);
 				
 				logger.debug("Classifying...");
 				this.classifier.classify(ontRel.get(0));
+<<<<<<< HEAD
 			} else {
+=======
+			}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology Relation already exists");
 			}
 			
 			result = new Boolean(true);
+<<<<<<< HEAD
 		} catch(ConfigurationElementNotFoundException cenfe) {
 			logger.error("ConfigurationElementNotFoundException Message " + cenfe);
 		} catch(FileNotFoundException fnfe) {
 			logger.error("FileNotFoundException Message " + fnfe);
 		} catch(IOException ioe) {
+=======
+		}catch(ConfigurationElementNotFoundException cenfe){
+			logger.error("ConfigurationElementNotFoundException Message " + cenfe);
+		}catch(FileNotFoundException fnfe){
+			logger.error("FileNotFoundException Message " + fnfe);
+		}catch(IOException ioe){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("IOException Message " + ioe);
 		}
 		
@@ -261,7 +339,11 @@ public class MapperController {
 	 *         relation
 	 */
 	@SuppressWarnings("unchecked")
+<<<<<<< HEAD
 	public String[] getFromMapping(Ontology ontInterchange, Ontology ontNative) {
+=======
+	public String[] getFromMapping(Ontology ontInterchange, Ontology ontNative){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		String[] result = null;
 		
 		logger.debug("Ontology Interchange");
@@ -281,7 +363,11 @@ public class MapperController {
 		List<Ontology> ontA = translationRepository.select(ontInterchange);
 		List<Ontology> ontB = translationRepository.select(ontNative);
 		
+<<<<<<< HEAD
 		if((ontA.size() > 0) && (ontB.size() > 0)) {
+=======
+		if((ontA.size() > 0) && (ontB.size() > 0)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			logger.debug("Ontology Interchange and Native exist");
 			
@@ -290,7 +376,11 @@ public class MapperController {
 			ontRel.setNativeOntology(ontB.get(0).getId());
 			
 			List<OntRelation> ontAB = translationRepository.select(ontRel);
+<<<<<<< HEAD
 			if(ontAB.size() > 0) {
+=======
+			if(ontAB.size() > 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				
 				logger.debug("Ontology Relation was found");
 				
@@ -298,12 +388,21 @@ public class MapperController {
 				ontTrans.setRelationID(ontAB.get(0).getId());
 				
 				List<OntTranslation> trans = translationRepository.select(ontTrans);
+<<<<<<< HEAD
 				if(trans.size() > 0) {
 					List<String> list = new ArrayList<String>();
 					
 					String fromConcept = trans.get(0).getFromConcept();
 					for(int i = 0; i < trans.size(); i++) {
 						if(!fromConcept.equals(trans.get(i).getFromConcept())) {
+=======
+				if(trans.size() > 0){
+					List<String> list = new ArrayList<String>();
+					
+					String fromConcept = trans.get(0).getFromConcept();
+					for(int i = 0; i < trans.size(); i++){
+						if(!fromConcept.equals(trans.get(i).getFromConcept())){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							list.add(fromConcept);
 							fromConcept = trans.get(i).getFromConcept();
 						}
@@ -313,12 +412,17 @@ public class MapperController {
 					// Transfer the values to the result
 					logger.debug("Results");
 					result = new String[list.size()];
+<<<<<<< HEAD
 					for(int i = 0; i < list.size(); i++) {
+=======
+					for(int i = 0; i < list.size(); i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						result[i] = (String) list.get(i);
 						
 						logger.debug(result[i]);
 					}
 				}
+<<<<<<< HEAD
 			} else {
 				logger.debug("Did not find an ontology relation");
 			}
@@ -327,6 +431,16 @@ public class MapperController {
 				logger.debug("Ontology Interchange does not exist");
 			}
 			if(ontB.size() <= 0) {
+=======
+			}else{
+				logger.debug("Did not find an ontology relation");
+			}
+		}else{
+			if(ontA.size() <= 0){
+				logger.debug("Ontology Interchange does not exist");
+			}
+			if(ontB.size() <= 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology Native does not exist");
 			}
 		}
@@ -339,7 +453,11 @@ public class MapperController {
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
+<<<<<<< HEAD
 	public String getOWLFile(Ontology ontInterchange, Ontology ontNative) {
+=======
+	public String getOWLFile(Ontology ontInterchange, Ontology ontNative){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		String result = null;
 		
 		logger.debug("Ontology Interchange");
@@ -359,7 +477,11 @@ public class MapperController {
 		List<Ontology> ontA = translationRepository.select(ontInterchange);
 		List<Ontology> ontB = translationRepository.select(ontNative);
 		
+<<<<<<< HEAD
 		if((ontA.size() > 0) && (ontB.size() > 0)) {
+=======
+		if((ontA.size() > 0) && (ontB.size() > 0)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			logger.debug("Ontology Interchange and Native exist");
 			
@@ -368,6 +490,7 @@ public class MapperController {
 			ontRel.setNativeOntology(ontB.get(0).getId());
 			
 			List<OntRelation> ontAB = translationRepository.select(ontRel);
+<<<<<<< HEAD
 			if(ontAB.size() > 0) {
 				
 				logger.debug("Ontology Relation was found");
@@ -387,6 +510,27 @@ public class MapperController {
 				logger.debug("Ontology Interchange does not exist");
 			}
 			if(ontB.size() <= 0) {
+=======
+			if(ontAB.size() > 0){
+				
+				logger.debug("Ontology Relation was found");
+				
+				try{
+					result = this.mapperConfigurator.get("owlDirectory") + "/"
+							+ ontAB.get(0).getFilename();
+				}catch(ConfigurationElementNotFoundException cenfe){
+					logger
+							.error("ConfigurationElementNotFoundException Message " + cenfe);
+				}
+			}else{
+				logger.debug("Did not find an ontology relation");
+			}
+		}else{
+			if(ontA.size() <= 0){
+				logger.debug("Ontology Interchange does not exist");
+			}
+			if(ontB.size() <= 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology Native does not exist");
 			}
 		}
@@ -402,6 +546,7 @@ public class MapperController {
 	 * @param none
 	 * @return Transfer directory path
 	 */
+<<<<<<< HEAD
 	public String getTransferDirectory() {
 		String tempDir = "";
 		
@@ -410,6 +555,16 @@ public class MapperController {
 			
 			logger.debug("transferDirectory = " + tempDir);
 		} catch(ConfigurationElementNotFoundException cenfe) {
+=======
+	public String getTransferDirectory(){
+		String tempDir = "";
+		
+		try{
+			tempDir = (String) this.mapperConfigurator.get("transferDirectory");
+			
+			logger.debug("transferDirectory = " + tempDir);
+		}catch(ConfigurationElementNotFoundException cenfe){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.error("ConfigurationElementNotFoundException Message " + cenfe);
 		}
 		
@@ -428,7 +583,11 @@ public class MapperController {
 	 */
 	@SuppressWarnings("unchecked")
 	public Boolean isOntologyTranslation(Ontology ontInterchange,
+<<<<<<< HEAD
 			Ontology ontNative) {
+=======
+			Ontology ontNative){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = new Boolean(false);
 		
 		logger.debug("Ontology Interchange");
@@ -449,7 +608,11 @@ public class MapperController {
 		List<Ontology> ontB = translationRepository.select(ontNative);
 		
 		// If exists both ontologies
+<<<<<<< HEAD
 		if((ontA.size() > 0) && (ontB.size() > 0)) {
+=======
+		if((ontA.size() > 0) && (ontB.size() > 0)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			logger.debug("Ontology Interchange and Native exist");
 			
@@ -460,6 +623,7 @@ public class MapperController {
 			
 			// Seek the OntRelation
 			List<OntRelation> ontAB = translationRepository.select(ontRel);
+<<<<<<< HEAD
 			if(ontAB.size() > 0) {
 				logger.debug("Ontology Relation was found");
 				result = new Boolean(true);
@@ -471,6 +635,19 @@ public class MapperController {
 				logger.debug("Ontology Interchange does not exist");
 			}
 			if(ontB.size() <= 0) {
+=======
+			if(ontAB.size() > 0){
+				logger.debug("Ontology Relation was found");
+				result = new Boolean(true);
+			}else{
+				logger.debug("Did not find an ontology relation");
+			}
+		}else{
+			if(ontA.size() <= 0){
+				logger.debug("Ontology Interchange does not exist");
+			}
+			if(ontB.size() <= 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology Native does not exist");
 			}
 		}
@@ -492,7 +669,11 @@ public class MapperController {
 	 */
 	@SuppressWarnings("unchecked")
 	public Boolean removeOntologyTranslation(Ontology ontInterchange,
+<<<<<<< HEAD
 			Ontology ontNative) {
+=======
+			Ontology ontNative){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = new Boolean(false);
 		
 		logger.debug("Ontology Interchange");
@@ -512,7 +693,11 @@ public class MapperController {
 		List<Ontology> ontA = translationRepository.select(ontInterchange);
 		List<Ontology> ontB = translationRepository.select(ontNative);
 		
+<<<<<<< HEAD
 		if((ontA.size() > 0) && (ontB.size() > 0)) {
+=======
+		if((ontA.size() > 0) && (ontB.size() > 0)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			logger.debug("Ontology Interchange and Native exist");
 			
@@ -524,7 +709,11 @@ public class MapperController {
 			ontAB.setNativeOntology(ontB.get(0).getId());
 			List<OntRelation> ontRel = translationRepository.select(ontAB);
 			
+<<<<<<< HEAD
 			if(ontRel.size() > 0) {
+=======
+			if(ontRel.size() > 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology Relation was found");
 				
 				ontRel = translationRepository.select(ontAB);
@@ -535,21 +724,36 @@ public class MapperController {
 				translationRepository.delete(ontTrans);
 				translationRepository.delete(ontRel.get(0));
 				
+<<<<<<< HEAD
 				try {
 					(new File(((String) this.mapperConfigurator.get("owlDirectory"))
 							+ "/" + ontRel.get(0).getFilename())).delete();
 				} catch(ConfigurationElementNotFoundException cenfe) {
+=======
+				try{
+					(new File(((String) this.mapperConfigurator.get("owlDirectory"))
+							+ "/" + ontRel.get(0).getFilename())).delete();
+				}catch(ConfigurationElementNotFoundException cenfe){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					logger
 							.error("ConfigurationElementNotFoundException Message " + cenfe);
 				}
 				
 				result = new Boolean(true);
 			}
+<<<<<<< HEAD
 		} else {
 			if(ontA.size() <= 0) {
 				logger.debug("Ontology Interchange does not exist");
 			}
 			if(ontB.size() <= 0) {
+=======
+		}else{
+			if(ontA.size() <= 0){
+				logger.debug("Ontology Interchange does not exist");
+			}
+			if(ontB.size() <= 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology Native does not exist");
 			}
 		}
@@ -564,6 +768,7 @@ public class MapperController {
 	 * @param none
 	 * @return none
 	 */
+<<<<<<< HEAD
 	public void shutdown() {
 		
 		logger.debug("Shutting down Translation Repository");
@@ -576,6 +781,20 @@ public class MapperController {
 				logger.debug("Translation Repository is not connected");
 			}
 		} else {
+=======
+	public void shutdown(){
+		
+		logger.debug("Shutting down Translation Repository");
+		if(translationRepository != null){
+			if(translationRepository.isConnected()){
+				translationRepository.shutdown();
+				
+				logger.debug("Translation Repository shutdown successfully");
+			}else{
+				logger.debug("Translation Repository is not connected");
+			}
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			logger.debug("Translation Repository is NULL");
 		}
 	}
@@ -595,7 +814,11 @@ public class MapperController {
 	 */
 	@SuppressWarnings("unchecked")
 	public MapperList translateConcept(Ontology ontFrom, Ontology ontTo,
+<<<<<<< HEAD
 			String fromConcept) {
+=======
+			String fromConcept){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		String[] result = null;
 		Boolean direction;
 		
@@ -616,59 +839,98 @@ public class MapperController {
 		List<Ontology> ontA = translationRepository.select(ontFrom);
 		List<Ontology> ontB = translationRepository.select(ontTo);
 		
+<<<<<<< HEAD
 		if((ontA.size() > 0) && (ontB.size() > 0)) {
+=======
+		if((ontA.size() > 0) && (ontB.size() > 0)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			OntRelation ontRel = new OntRelation();
 			
 			logger.debug("Ontologies From and To exist");
 			
 			if((ontA.get(0).getType() == Ontology.TYPE_INTERCHANGE.intValue())
+<<<<<<< HEAD
 					&& (ontB.get(0).getType() == Ontology.TYPE_NATIVE.intValue())) {
+=======
+					&& (ontB.get(0).getType() == Ontology.TYPE_NATIVE.intValue())){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				ontRel.setInterchangeOntology(ontA.get(0).getId());
 				ontRel.setNativeOntology(ontB.get(0).getId());
 				direction = new Boolean(true);
 				
 				logger.debug("Direction Ontology Interchange -> Ontology Native");
+<<<<<<< HEAD
 			} else if((ontA.get(0).getType() == Ontology.TYPE_NATIVE.intValue())
 					&& (ontB.get(0).getType() == Ontology.TYPE_INTERCHANGE.intValue())) {
+=======
+			}else if((ontA.get(0).getType() == Ontology.TYPE_NATIVE.intValue())
+					&& (ontB.get(0).getType() == Ontology.TYPE_INTERCHANGE.intValue())){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				ontRel.setInterchangeOntology(ontB.get(0).getId());
 				ontRel.setNativeOntology(ontA.get(0).getId());
 				direction = new Boolean(false);
 				
 				logger.debug("Direction Ontology Native -> Ontology Interchange");
+<<<<<<< HEAD
 			} else {
+=======
+			}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Both Ontologies of the same type");
 				
 				return new MapperList(result);
 			}
 			
 			List<OntRelation> ontAB = translationRepository.select(ontRel);
+<<<<<<< HEAD
 			if(ontAB.size() > 0) {
+=======
+			if(ontAB.size() > 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				
 				logger.debug("Ontology Relation exists");
 				
 				OntTranslation ontTrans = new OntTranslation();
 				ontTrans.setRelationID(ontAB.get(0).getId());
+<<<<<<< HEAD
 				if(direction.booleanValue()) {
 					ontTrans.setFromConcept(fromConcept.toLowerCase());
 				} else {
+=======
+				if(direction.booleanValue()){
+					ontTrans.setFromConcept(fromConcept.toLowerCase());
+				}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					ontTrans.setToConcept(fromConcept.toLowerCase());
 				}
 				
 				List<OntTranslation> trans = translationRepository.select(ontTrans);
+<<<<<<< HEAD
 				if(trans.size() > 0) {
 					result = new String[trans.size()];
 					for(int i = 0; i < trans.size(); i++) {
 						if(direction.booleanValue()) {
+=======
+				if(trans.size() > 0){
+					result = new String[trans.size()];
+					for(int i = 0; i < trans.size(); i++){
+						if(direction.booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							
 							logger.debug(i + " = " + trans.get(i).getToConcept());
 							
 							result[i] = trans.get(i).getToConcept();
+<<<<<<< HEAD
 						} else {
+=======
+						}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							logger.debug(i + " = " + trans.get(i).getFromConcept());
 							
 							result[i] = trans.get(i).getFromConcept();
 						}
 					}
+<<<<<<< HEAD
 				} else {
 					logger.debug("There is no translation");
 				}
@@ -680,6 +942,19 @@ public class MapperController {
 				logger.debug("Ontology From does not exist");
 			}
 			if(ontB.size() <= 0) {
+=======
+				}else{
+					logger.debug("There is no translation");
+				}
+			}else{
+				logger.debug("Ontology Relation does not exist");
+			}
+		}else{
+			if(ontA.size() <= 0){
+				logger.debug("Ontology From does not exist");
+			}
+			if(ontB.size() <= 0){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				logger.debug("Ontology To does not exist");
 			}
 		}

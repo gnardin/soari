@@ -18,11 +18,16 @@
 package otservices.util.configuration;
 
 @SuppressWarnings("serial")
+<<<<<<< HEAD
 public class ConfigurationFileNotFoundException extends Exception {
+=======
+public class ConfigurationFileNotFoundException extends Exception{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public ConfigurationFileNotFoundException() {
 	}
 	
@@ -39,6 +44,24 @@ public class ConfigurationFileNotFoundException extends Exception {
 	 * 
 	 */
 	public ConfigurationFileNotFoundException(String msg, Exception cause) {
+=======
+	public ConfigurationFileNotFoundException(){
+	}
+	
+
+	/**
+	 * 
+	 */
+	public ConfigurationFileNotFoundException(String msg){
+		super(msg);
+	}
+	
+
+	/**
+	 * 
+	 */
+	public ConfigurationFileNotFoundException(String msg, Exception cause){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		super(msg);
 		initCause(cause);
 	}

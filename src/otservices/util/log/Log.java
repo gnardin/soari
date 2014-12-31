@@ -21,7 +21,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import org.apache.log4j.PropertyConfigurator;
 
+<<<<<<< HEAD
 public class Log {
+=======
+public class Log{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * Constructor that initializes the logging
@@ -30,10 +34,17 @@ public class Log {
 	 *          Name of the logging configuration file
 	 * @return none
 	 */
+<<<<<<< HEAD
 	public Log(String logFilename) throws FileNotFoundException {
 		if((new File(logFilename)).exists()) {
 			PropertyConfigurator.configure(logFilename);
 		} else {
+=======
+	public Log(String logFilename) throws FileNotFoundException{
+		if((new File(logFilename)).exists()){
+			PropertyConfigurator.configure(logFilename);
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			throw new FileNotFoundException();
 		}
 	}

@@ -3,16 +3,26 @@ package test;
 import otservices.mapper.translationrepository.Ontology;
 import otservices.translator.mapperserverclient.ws.MapperClientWebService;
 
+<<<<<<< HEAD
 public class WebServiceClientTest {
 	
 	public static void main(String[] args) {
+=======
+public class WebServiceClientTest{
+	
+	public static void main(String[] args){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		MapperClientWebService a = new MapperClientWebService();
 		a.setURL("http://localhost:8080/axis2/services/MapperServerWebService");
 		a.connect();
 		
 		System.out.println("Connected = " + a.isConnected());
 		
+<<<<<<< HEAD
 		if(a.isConnected().booleanValue()) {
+=======
+		if(a.isConnected().booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			
 			Ontology ontInterchange = new Ontology();
 			ontInterchange.setType(Ontology.TYPE_INTERCHANGE);
@@ -55,11 +65,19 @@ public class WebServiceClientTest {
 			
 			String[] r = a.translateConcept("imagebyrepage", ontNative,
 					ontInterchange);
+<<<<<<< HEAD
 			if(r != null) {
 				for(int i = 0; i < r.length; i++) {
 					System.out.println(r[i]);
 				}
 			} else {
+=======
+			if(r != null){
+				for(int i = 0; i < r.length; i++){
+					System.out.println(r[i]);
+				}
+			}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				System.out.println("Resultado Nulo");
 			}
 			

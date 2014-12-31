@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * Copyright (c) 2008 Luis Gustavo Nardin <gnardin@gmail.com>
+=======
+ * Copyright (c) 2008  Luis Gustavo Nardin <gnardin@gmail.com>
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -8,7 +12,11 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+<<<<<<< HEAD
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+=======
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -19,15 +27,28 @@ package otservices.mapper.webservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+<<<<<<< HEAD
 import javax.activation.DataHandler;
 import otservices.mapper.translationrepository.Ontology;
 
 public interface MapperServerWebServiceInterface extends Remote {
 	
+=======
+
+import javax.activation.DataHandler;
+
+import otservices.mapper.translationrepository.Ontology;
+import otservices.mapper.webservice.MapperList;
+import otservices.mapper.webservice.MapperServerWebServiceInterface;
+
+public interface MapperServerWebServiceInterface extends Remote{
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Add an Ontology Translation into the Database
 	 * 
 	 * @param ontInterchange
+<<<<<<< HEAD
 	 *          Interchange ontology
 	 * @param ontNative
 	 *          Native ontology
@@ -35,6 +56,15 @@ public interface MapperServerWebServiceInterface extends Remote {
 	 *          Ontology filename
 	 * @param dh
 	 *          File data handler
+=======
+	 *            Interchange ontology
+	 * @param ontNative
+	 *            Native ontology
+	 * @param ontFile
+	 *            Ontology filename
+	 * @param dh
+	 *            File data handler
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	 * @return true - if the ontology translation was performed / false -
 	 *         otherwise
 	 * @throws RemoteException
@@ -42,72 +72,124 @@ public interface MapperServerWebServiceInterface extends Remote {
 	public Boolean addOntologyTranslation(Ontology ontInterchange,
 			Ontology ontNative, String ontFile, DataHandler dataHandler)
 			throws RemoteException;
+<<<<<<< HEAD
 	
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns all From concepts for the ontology relation
 	 * 
 	 * @param ontInterchange
+<<<<<<< HEAD
 	 *          Interchange ontology
 	 * @param ontNative
 	 *          Native ontology
+=======
+	 *            Interchange ontology
+	 * @param ontNative
+	 *            Native ontology
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	 * @return Returns a list containing all the From concepts for the ontology
 	 *         relation
 	 */
 	public String[] getFromMapping(Ontology ontInterchange, Ontology ontNative);
+<<<<<<< HEAD
 	
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns a data handler representing the ontology relation file
 	 * 
 	 * @param ontInterchange
+<<<<<<< HEAD
 	 *          Interchange ontology
 	 * @param ontNative
 	 *          Native ontology
+=======
+	 *            Interchange ontology
+	 * @param ontNative
+	 *            Native ontology
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	 * @return Returns file containing all the concepts for those ontology
 	 *         relation in OWL format
 	 */
 	public DataHandler getOWLFile(Ontology ontInterchange, Ontology ontNative);
+<<<<<<< HEAD
 	
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Verify if there is an Ontology Relation between the interchange ontology
 	 * and the native ontology
 	 * 
 	 * @param ontInterchange
+<<<<<<< HEAD
 	 *          Intechange ontology
 	 * @param ontNative
 	 *          Native ontology
+=======
+	 *            Intechange ontology
+	 * @param ontNative
+	 *            Native ontology
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	 * @return true - if there is an ontology relation / false - otherwise
 	 */
 	public Boolean isOntologyTranslation(Ontology ontInterchange,
 			Ontology ontNative);
+<<<<<<< HEAD
 	
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Remove an ontology translation from the translation repository
 	 * 
 	 * @param ontInterchange
+<<<<<<< HEAD
 	 *          Intechange ontology
 	 * @param ontNative
 	 *          Native ontology
+=======
+	 *            Intechange ontology
+	 * @param ontNative
+	 *            Native ontology
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	 * @return true - if translation exists and it was removed / false -
 	 *         otherwise
 	 */
 	public Boolean removeOntologyTranslation(Ontology ontInterchange,
 			Ontology ontNative);
+<<<<<<< HEAD
 	
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns a list of all the concepts that translate from fromConcept in
 	 * ontFrom to ontTo
 	 * 
 	 * @param fromConcept
+<<<<<<< HEAD
 	 *          Concept to be translated
 	 * @param ontFrom
 	 *          Source ontology
 	 * @param ontTo
 	 *          Target ontology
+=======
+	 *            Concept to be translated
+	 * @param ontFrom
+	 *            Source ontology
+	 * @param ontTo
+	 *            Target ontology
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	 * @return List of concepts related to the fromConcept
 	 */
 	public MapperList translateConcept(String fromConcept, Ontology ontFrom,

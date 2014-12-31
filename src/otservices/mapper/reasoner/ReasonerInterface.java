@@ -19,7 +19,11 @@ package otservices.mapper.reasoner;
 
 import java.util.Collection;
 
+<<<<<<< HEAD
 public interface ReasonerInterface {
+=======
+public interface ReasonerInterface{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	/**
 	 * Returns the OWL filename
@@ -29,7 +33,11 @@ public interface ReasonerInterface {
 	 */
 	public String getOWL();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Set the OWL filename
 	 * 
@@ -39,7 +47,11 @@ public interface ReasonerInterface {
 	 */
 	public Boolean setOWL(String owlFilename);
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Connect the module to the reasoner
 	 * 
@@ -48,7 +60,11 @@ public interface ReasonerInterface {
 	 */
 	public void connect();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Return the reasoner connection status
 	 * 
@@ -57,7 +73,11 @@ public interface ReasonerInterface {
 	 */
 	public Boolean isConnected();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Disconnects the module to the reasoner
 	 * 
@@ -66,7 +86,11 @@ public interface ReasonerInterface {
 	 */
 	public void disconnect();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Classify the ontology uploaded from the OWL file
 	 * 
@@ -75,7 +99,11 @@ public interface ReasonerInterface {
 	 */
 	public Boolean classify();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Returns a list of inferred classes under a specific class
 	 * 
@@ -85,7 +113,11 @@ public interface ReasonerInterface {
 	 */
 	public Collection<String> getInferredClasses(String forClass);
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Return a list of all asserted classes under this class
 	 * 
@@ -94,7 +126,11 @@ public interface ReasonerInterface {
 	 */
 	public Collection<String> getAllAssertedClasses();
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	/**
 	 * Return a list of asserted classes under this class
 	 * 

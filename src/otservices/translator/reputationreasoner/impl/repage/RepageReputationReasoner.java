@@ -33,7 +33,11 @@ import otservices.translator.reputationreasoner.ReputationReasonerInterface;
 import otservices.translator.reputationreasoner.impl.ARTDecision;
 import reputationreasoners.repage.RepageModule;
 
+<<<<<<< HEAD
 public class RepageReputationReasoner implements ReputationReasonerInterface {
+=======
+public class RepageReputationReasoner implements ReputationReasonerInterface{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	private ARTDecision					decision						= new ARTDecision();
 	
@@ -50,13 +54,21 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	 * 
 	 */
 	@Override
+<<<<<<< HEAD
 	public synchronized ObjectInterface processInMessage(Object parsedObject) {
+=======
+	public synchronized ObjectInterface processInMessage(Object parsedObject){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.sparqlMsg = (SPARQLObject) parsedObject;
 		
 		this.elementList = new ArrayList<RepageElement>();
 		
 		// SELECT
+<<<<<<< HEAD
 		if(this.sparqlMsg.getCommand() == SPARQLObject.Command.SELECT) {
+=======
+		if(this.sparqlMsg.getCommand() == SPARQLObject.Command.SELECT){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.getElements(this.isImage(), this.isReputation());
 			
 			Result newResult = new Result();
@@ -71,16 +83,26 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			Term term;
 			RepageElement element;
 			for(Iterator<RepageElement> iElement = this.elementList.iterator(); iElement
+<<<<<<< HEAD
 					.hasNext();) {
 				element = iElement.next();
 				if(element.getValue() != null) {
 					
 					for(Iterator<String> iResult = result.getResults().keySet()
 							.iterator(); iResult.hasNext();) {
+=======
+					.hasNext();){
+				element = iElement.next();
+				if(element.getValue() != null){
+					
+					for(Iterator<String> iResult = result.getResults().keySet()
+							.iterator(); iResult.hasNext();){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						var = iResult.next();
 						concept = where.getConcept(var);
 						term = new Term();
 						
+<<<<<<< HEAD
 						if(element.isImage().booleanValue()) {
 							if(concept.equalsIgnoreCase("agentimagebyrepage")) {
 								term.setType(Term.TermType.STRING);
@@ -124,6 +146,51 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 							} else {
 								term = filter.getValue(var);
 								if(term != null) {
+=======
+						if(element.isImage().booleanValue()){
+							if(concept.equalsIgnoreCase("agentimagebyrepage")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.getAgentFacet());
+								newResult.addResult(var, term);
+							}else if(concept.equalsIgnoreCase("agentname")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.getAgentName());
+								newResult.addResult(var, term);
+							}else if(concept.equalsIgnoreCase("imagebyrepage")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.isImage().toString());
+								newResult.addResult(var, term);
+							}else if(concept.equalsIgnoreCase("valuebyrepage")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.getValue());
+								newResult.addResult(var, term);
+							}else{
+								term = filter.getValue(var);
+								if(term != null){
+									newResult.addResult(var, term);
+								}
+							}
+						}else if(element.isReputation().booleanValue()){
+							if(concept.equalsIgnoreCase("agentreputationbyrepage")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.getAgentFacet());
+								newResult.addResult(var, term);
+							}else if(concept.equalsIgnoreCase("agentname")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.getAgentName());
+								newResult.addResult(var, term);
+							}else if(concept.equalsIgnoreCase("reputationbyrepage")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.isReputation().toString());
+								newResult.addResult(var, term);
+							}else if(concept.equalsIgnoreCase("valuebyrepage")){
+								term.setType(Term.TermType.STRING);
+								term.setTerm(element.getValue());
+								newResult.addResult(var, term);
+							}else{
+								term = filter.getValue(var);
+								if(term != null){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 									newResult.addResult(var, term);
 								}
 							}
@@ -135,9 +202,15 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			
 			return this.sparqlMsg;
 			
+<<<<<<< HEAD
 		} else if(this.sparqlMsg.getCommand() == SPARQLObject.Command.UPDATE) {
 			this.setElements();
 		} else if(this.sparqlMsg.getCommand() == SPARQLObject.Command.RESULT) {
+=======
+		}else if(this.sparqlMsg.getCommand() == SPARQLObject.Command.UPDATE){
+			this.setElements();
+		}else if(this.sparqlMsg.getCommand() == SPARQLObject.Command.RESULT){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.setElements();
 		}
 		
@@ -149,7 +222,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	 * 
 	 */
 	@Override
+<<<<<<< HEAD
 	public String getID() {
+=======
+	public String getID(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.id;
 	}
 	
@@ -158,7 +235,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	 * 
 	 */
 	@Override
+<<<<<<< HEAD
 	public void setID(String id) {
+=======
+	public void setID(String id){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.id = id;
 	}
 	
@@ -166,7 +247,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public RepageModule getReputationReasoner() {
+=======
+	public RepageModule getReputationReasoner(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.reputationReasoner;
 	}
 	
@@ -174,7 +259,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public void setReputationReasoner(RepageModule reputationReasoner) {
+=======
+	public void setReputationReasoner(RepageModule reputationReasoner){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.reputationReasoner = reputationReasoner;
 	}
 	
@@ -182,7 +271,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	private Boolean isImage() {
+=======
+	private Boolean isImage(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = new Boolean(false);
 		
 		Filter filter = this.sparqlMsg.getFilter();
@@ -192,6 +285,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 		String var;
 		String concept;
 		Object item;
+<<<<<<< HEAD
 		while(i.hasNext()) {
 			var = i.next();
 			concept = where.getConcept(var);
@@ -200,18 +294,36 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 					item = filter.getItem(var);
 					
 					if(item instanceof RelExpr) {
+=======
+		while(i.hasNext()){
+			var = i.next();
+			concept = where.getConcept(var);
+			if(concept != null){
+				if(concept.equalsIgnoreCase("imagebyrepage")){
+					item = filter.getItem(var);
+					
+					if(item instanceof RelExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						RelExpr rel = (RelExpr) item;
 						
 						Term term = new Term();
 						term.setType(Term.TermType.BOOLEAN);
 						term.setTerm(new Boolean(true));
+<<<<<<< HEAD
 						if(rel.evaluate(term).booleanValue()) {
+=======
+						if(rel.evaluate(term).booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							result = new Boolean(true);
 							break;
 						}
 						break;
 					}
+<<<<<<< HEAD
 				} else if(concept.equalsIgnoreCase("agentimagebyrepage")) {
+=======
+				}else if(concept.equalsIgnoreCase("agentimagebyrepage")){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					result = new Boolean(true);
 				}
 			}
@@ -224,7 +336,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	private Boolean isReputation() {
+=======
+	private Boolean isReputation(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Boolean result = new Boolean(false);
 		
 		Filter filter = this.sparqlMsg.getFilter();
@@ -234,6 +350,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 		String var;
 		String concept;
 		Object item;
+<<<<<<< HEAD
 		while(i.hasNext()) {
 			var = i.next();
 			concept = where.getConcept(var);
@@ -242,18 +359,36 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 					item = filter.getItem(var);
 					
 					if(item instanceof RelExpr) {
+=======
+		while(i.hasNext()){
+			var = i.next();
+			concept = where.getConcept(var);
+			if(concept != null){
+				if(concept.equalsIgnoreCase("reputationbyrepage")){
+					item = filter.getItem(var);
+					
+					if(item instanceof RelExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						RelExpr rel = (RelExpr) item;
 						
 						Term term = new Term();
 						term.setType(Term.TermType.BOOLEAN);
 						term.setTerm(new Boolean(true));
+<<<<<<< HEAD
 						if(rel.evaluate(term).booleanValue()) {
+=======
+						if(rel.evaluate(term).booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							result = new Boolean(true);
 							break;
 						}
 						break;
 					}
+<<<<<<< HEAD
 				} else if(concept.equalsIgnoreCase("agentreputationbyrepage")) {
+=======
+				}else if(concept.equalsIgnoreCase("agentreputationbyrepage")){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					result = new Boolean(true);
 				}
 			}
@@ -266,7 +401,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	private void getElements(Boolean isImage, Boolean isReputation) {
+=======
+	private void getElements(Boolean isImage, Boolean isReputation){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		Where where = this.sparqlMsg.getWhere();
 		Filter filter = this.sparqlMsg.getFilter();
 		
@@ -275,7 +414,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 		RepageElement element;
 		
 		// Image
+<<<<<<< HEAD
 		if(isImage.booleanValue()) {
+=======
+		if(isImage.booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			Boolean imageByRepage = isImage;
 			String varAgentImageByRepage = where.getVariable("agentimagebyrepage")[0];
 			String agentImageByRepage = null;
@@ -284,29 +427,50 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			String varValueByRepage = where.getVariable("valuebyrepage")[0];
 			
 			if((varAgentImageByRepage != null) && (varAgentName != null)
+<<<<<<< HEAD
 					&& (varValueByRepage != null)) {
 				
 				// Get target
 				item = filter.getItem(varAgentName);
 				if(item != null) {
 					if(item instanceof RegExpr) {
+=======
+					&& (varValueByRepage != null)){
+				
+				// Get target
+				item = filter.getItem(varAgentName);
+				if(item != null){
+					if(item instanceof RegExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						reg = (RegExpr) item;
 						agentNameByRepage = reg.getPattern();
 					}
 					
 					// Get facet
 					item = filter.getItem(varAgentImageByRepage);
+<<<<<<< HEAD
 					if(item != null) {
 						if(item instanceof RegExpr) {
+=======
+					if(item != null){
+						if(item instanceof RegExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							reg = (RegExpr) item;
 							agentImageByRepage = reg.getPattern();
 						}
 					}
 					
+<<<<<<< HEAD
 					if((agentNameByRepage != null) && (agentImageByRepage != null)) {
 						
 						if(this.reputationReasoner.exists(agentNameByRepage,
 								agentImageByRepage)) {
+=======
+					if((agentNameByRepage != null) && (agentImageByRepage != null)){
+						
+						if(this.reputationReasoner.exists(agentNameByRepage,
+								agentImageByRepage)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							
 							String value = this.getImage(agentNameByRepage,
 									agentImageByRepage);
@@ -318,6 +482,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 							element.setValue(value);
 							this.elementList.add(element);
 						}
+<<<<<<< HEAD
 					} else if(agentNameByRepage != null) {
 						String[] facets = this.reputationReasoner
 								.getFacets(agentNameByRepage);
@@ -325,6 +490,15 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 						if(facets != null) {
 							String value;
 							for(int i = 0; i < facets.length; i++) {
+=======
+					}else if(agentNameByRepage != null){
+						String[] facets = this.reputationReasoner
+								.getFacets(agentNameByRepage);
+						
+						if(facets != null){
+							String value;
+							for(int i = 0; i < facets.length; i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								value = this.getImage(agentNameByRepage, facets[i]);
 								
 								element = new RepageElement();
@@ -335,6 +509,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 								this.elementList.add(element);
 							}
 						}
+<<<<<<< HEAD
 					} else if(agentImageByRepage != null) {
 						String[] targets = this.reputationReasoner
 								.getTargets(agentImageByRepage);
@@ -342,6 +517,15 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 						if(targets != null) {
 							String value;
 							for(int i = 0; i < targets.length; i++) {
+=======
+					}else if(agentImageByRepage != null){
+						String[] targets = this.reputationReasoner
+								.getTargets(agentImageByRepage);
+						
+						if(targets != null){
+							String value;
+							for(int i = 0; i < targets.length; i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								value = this.getImage(targets[i], agentImageByRepage);
 								
 								element = new RepageElement();
@@ -358,7 +542,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 		}
 		
 		// Reputation
+<<<<<<< HEAD
 		if(isReputation.booleanValue()) {
+=======
+		if(isReputation.booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			Boolean reputationByRepage = isReputation;
 			String varAgentReputationByRepage = where
 					.getVariable("agentreputationbyrepage")[0];
@@ -368,29 +556,50 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			String varValueByRepage = where.getVariable("valuebyrepage")[0];
 			
 			if((varAgentReputationByRepage != null) && (varAgentName != null)
+<<<<<<< HEAD
 					&& (varValueByRepage != null)) {
 				
 				// Get target
 				item = filter.getItem(varAgentName);
 				if(item != null) {
 					if(item instanceof RegExpr) {
+=======
+					&& (varValueByRepage != null)){
+				
+				// Get target
+				item = filter.getItem(varAgentName);
+				if(item != null){
+					if(item instanceof RegExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 						reg = (RegExpr) item;
 						agentNameByRepage = reg.getPattern();
 					}
 					
 					// Get facet
 					item = filter.getItem(varAgentReputationByRepage);
+<<<<<<< HEAD
 					if(item != null) {
 						if(item instanceof RegExpr) {
+=======
+					if(item != null){
+						if(item instanceof RegExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							reg = (RegExpr) item;
 							agentReputationByRepage = reg.getPattern();
 						}
 					}
 					
+<<<<<<< HEAD
 					if((agentNameByRepage != null) && (agentReputationByRepage != null)) {
 						
 						if(this.reputationReasoner.exists(agentNameByRepage,
 								agentReputationByRepage)) {
+=======
+					if((agentNameByRepage != null) && (agentReputationByRepage != null)){
+						
+						if(this.reputationReasoner.exists(agentNameByRepage,
+								agentReputationByRepage)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							
 							String value = this.getReputation(agentNameByRepage,
 									agentReputationByRepage);
@@ -402,6 +611,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 							element.setValue(value);
 							this.elementList.add(element);
 						}
+<<<<<<< HEAD
 					} else if(agentNameByRepage != null) {
 						String[] facets = this.reputationReasoner
 								.getFacets(agentNameByRepage);
@@ -409,6 +619,15 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 						if(facets != null) {
 							String value;
 							for(int i = 0; i < facets.length; i++) {
+=======
+					}else if(agentNameByRepage != null){
+						String[] facets = this.reputationReasoner
+								.getFacets(agentNameByRepage);
+						
+						if(facets != null){
+							String value;
+							for(int i = 0; i < facets.length; i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								value = this.getReputation(agentNameByRepage, facets[i]);
 								
 								element = new RepageElement();
@@ -419,6 +638,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 								this.elementList.add(element);
 							}
 						}
+<<<<<<< HEAD
 					} else if(agentReputationByRepage != null) {
 						String[] targets = this.reputationReasoner
 								.getTargets(agentReputationByRepage);
@@ -426,6 +646,15 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 						if(targets != null) {
 							String value;
 							for(int i = 0; i < targets.length; i++) {
+=======
+					}else if(agentReputationByRepage != null){
+						String[] targets = this.reputationReasoner
+								.getTargets(agentReputationByRepage);
+						
+						if(targets != null){
+							String value;
+							for(int i = 0; i < targets.length; i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								value = this.getReputation(targets[i], agentReputationByRepage);
 								
 								element = new RepageElement();
@@ -446,7 +675,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	private void setElements() {
+=======
+	private void setElements(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		
 		Where where = this.sparqlMsg.getWhere();
 		Filter filter = this.sparqlMsg.getFilter();
@@ -457,11 +690,16 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 		Term term;
 		RepageElement element;
 		
+<<<<<<< HEAD
 		for(int i = 0; i < this.sparqlMsg.getResult().getLength().intValue(); i++) {
+=======
+		for(int i = 0; i < this.sparqlMsg.getResult().getLength().intValue(); i++){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			element = new RepageElement();
 			Map<String, List<Term>> r = this.sparqlMsg.getResult().getResults();
 			Iterator<String> iResult = r.keySet().iterator();
 			
+<<<<<<< HEAD
 			while(iResult.hasNext()) {
 				var = iResult.next();
 				listTerm = r.get(var);
@@ -492,6 +730,38 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 							}
 						} else if(concept.equalsIgnoreCase("valuebyrepage")) {
 							if(term.getType() == Term.TermType.STRING) {
+=======
+			while(iResult.hasNext()){
+				var = iResult.next();
+				listTerm = r.get(var);
+				if(i < listTerm.size()){
+					term = listTerm.get(i);
+					concept = where.getConcept(var);
+					
+					if(term != null){
+						if(concept.equalsIgnoreCase("imagebyrepage")){
+							if(term.getType() == Term.TermType.BOOLEAN){
+								element.setImage(((Boolean) term.getTerm()));
+							}
+						}else if(concept.equalsIgnoreCase("reputationbyrepage")){
+							if(term.getType() == Term.TermType.BOOLEAN){
+								element.setReputation((Boolean) term.getTerm());
+							}
+						}else if(concept.equalsIgnoreCase("agentimagebyrepage")){
+							if(term.getType() == Term.TermType.STRING){
+								element.setAgentFacet((String) term.getTerm());
+							}
+						}else if(concept.equalsIgnoreCase("agentreputationbyrepage")){
+							if(term.getType() == Term.TermType.STRING){
+								element.setAgentFacet((String) term.getTerm());
+							}
+						}else if(concept.equalsIgnoreCase("agentname")){
+							if(term.getType() == Term.TermType.STRING){
+								element.setAgentName((String) term.getTerm());
+							}
+						}else if(concept.equalsIgnoreCase("valuebyrepage")){
+							if(term.getType() == Term.TermType.STRING){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 								element.setValue((String) term.getTerm());
 							}
 						}
@@ -501,6 +771,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			
 			Object item;
 			String[] values;
+<<<<<<< HEAD
 			if(element.getAgentName() == null) {
 				values = where.getVariable("agentname");
 				if(values != null) {
@@ -508,12 +779,22 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 					
 					if(item != null) {
 						if(item instanceof RegExpr) {
+=======
+			if(element.getAgentName() == null){
+				values = where.getVariable("agentname");
+				if(values != null){
+					item = filter.getItem(values[0]);
+					
+					if(item != null){
+						if(item instanceof RegExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							element.setAgentName(((RegExpr) item).getPattern());
 						}
 					}
 				}
 			}
 			
+<<<<<<< HEAD
 			if(element.getAgentFacet() == null) {
 				values = where.getVariable("agentimagebyrepage");
 				if(values != null) {
@@ -521,6 +802,15 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 					
 					if(item != null) {
 						if(item instanceof RegExpr) {
+=======
+			if(element.getAgentFacet() == null){
+				values = where.getVariable("agentimagebyrepage");
+				if(values != null){
+					item = filter.getItem(values[0]);
+					
+					if(item != null){
+						if(item instanceof RegExpr){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							element.setAgentFacet(((RegExpr) item).getPattern());
 						}
 					}
@@ -529,6 +819,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			
 			// isImage
 			values = where.getVariable("imagebyrepage");
+<<<<<<< HEAD
 			if(values != null) {
 				item = filter.getItem(values[0]);
 				if(item != null) {
@@ -539,6 +830,18 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 							element.setImage((Boolean) rel.getTerm2().getTerm());
 						} else if((rel.getTerm2().getType() == Term.TermType.VARIABLE)
 								&& (rel.getTerm1().getType() == Term.TermType.BOOLEAN)) {
+=======
+			if(values != null){
+				item = filter.getItem(values[0]);
+				if(item != null){
+					if(item instanceof RelExpr){
+						RelExpr rel = (RelExpr) item;
+						if((rel.getTerm1().getType() == Term.TermType.VARIABLE)
+								&& (rel.getTerm2().getType() == Term.TermType.BOOLEAN)){
+							element.setImage((Boolean) rel.getTerm2().getTerm());
+						}else if((rel.getTerm2().getType() == Term.TermType.VARIABLE)
+								&& (rel.getTerm1().getType() == Term.TermType.BOOLEAN)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							element.setImage((Boolean) rel.getTerm1().getTerm());
 						}
 					}
@@ -547,6 +850,7 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			
 			// isReputation
 			values = where.getVariable("reputationbyrepage");
+<<<<<<< HEAD
 			if(values != null) {
 				item = filter.getItem(values[0]);
 				
@@ -558,25 +862,52 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 							element.setReputation((Boolean) rel.getTerm2().getTerm());
 						} else if((rel.getTerm2().getType() == Term.TermType.VARIABLE)
 								&& (rel.getTerm1().getType() == Term.TermType.BOOLEAN)) {
+=======
+			if(values != null){
+				item = filter.getItem(values[0]);
+				
+				if(item != null){
+					if(item instanceof RelExpr){
+						RelExpr rel = (RelExpr) item;
+						if((rel.getTerm1().getType() == Term.TermType.VARIABLE)
+								&& (rel.getTerm2().getType() == Term.TermType.BOOLEAN)){
+							element.setReputation((Boolean) rel.getTerm2().getTerm());
+						}else if((rel.getTerm2().getType() == Term.TermType.VARIABLE)
+								&& (rel.getTerm1().getType() == Term.TermType.BOOLEAN)){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 							element.setReputation((Boolean) rel.getTerm1().getTerm());
 						}
 					}
 				}
 			}
 			
+<<<<<<< HEAD
 			if((element.getAgentName() != null) && (element.getAgentFacet() != null)) {
 				
 				if(!this.reputationReasoner.exists(element.getAgentName(),
 						element.getAgentFacet())) {
+=======
+			if((element.getAgentName() != null) && (element.getAgentFacet() != null)){
+				
+				if(!this.reputationReasoner.exists(element.getAgentName(),
+						element.getAgentFacet())){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					
 					this.reputationReasoner.setRepageMemory(element.getAgentName(),
 							element.getAgentFacet());
 				}
 				
+<<<<<<< HEAD
 				if(element.isImage().booleanValue()) {
 					this.reputationReasoner.calculateTPImage(element.getAgentName(),
 							element.getAgentFacet(), element.getValue());
 				} else if(element.isReputation().booleanValue()) {
+=======
+				if(element.isImage().booleanValue()){
+					this.reputationReasoner.calculateTPImage(element.getAgentName(),
+							element.getAgentFacet(), element.getValue());
+				}else if(element.isReputation().booleanValue()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 					this.reputationReasoner.calculateReputation(element.getAgentName(),
 							element.getAgentFacet(), element.getValue());
 				}
@@ -622,10 +953,17 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	private String getImage(String agentNameByRepage, String agentImageByRepage) {
 		String value;
 		
 		if(this.decision.isLie()) {
+=======
+	private String getImage(String agentNameByRepage, String agentImageByRepage){
+		String value;
+		
+		if(this.decision.isLie()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			double image = this.decision.lie(this.reputationReasoner.getImage(
 					agentNameByRepage, agentImageByRepage));
 			
@@ -635,7 +973,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 			value = this.reputationReasoner
 					.convertRealToString(new Double(image).floatValue(), strength)
 					.substring(1, 22).replace(",", ";");
+<<<<<<< HEAD
 		} else {
+=======
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			value = this.reputationReasoner
 					.getImageText(agentNameByRepage, agentImageByRepage).substring(1, 22)
 					.replace(",", ";");
@@ -649,11 +991,19 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	 * 
 	 */
 	private String getReputation(String agentNameByRepage,
+<<<<<<< HEAD
 			String agentReputationByRepage) {
 		String value;
 		
 		if(this.decision != null) {
 			if(this.decision.isLie()) {
+=======
+			String agentReputationByRepage){
+		String value;
+		
+		if(this.decision != null){
+			if(this.decision.isLie()){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				double reputation = this.decision.lie(this.reputationReasoner
 						.getReputation(agentNameByRepage, agentReputationByRepage));
 				
@@ -664,12 +1014,20 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 						.convertRealToString(new Double(reputation).floatValue(), strength)
 						.substring(1, 22).replace(",", ";");
 				
+<<<<<<< HEAD
 			} else {
+=======
+			}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 				value = this.reputationReasoner
 						.getReputationText(agentNameByRepage, agentReputationByRepage)
 						.substring(1, 22).replace(",", ";");
 			}
+<<<<<<< HEAD
 		} else {
+=======
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			value = this.reputationReasoner
 					.getReputationText(agentNameByRepage, agentReputationByRepage)
 					.substring(1, 22).replace(",", ";");
@@ -683,7 +1041,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	 * 
 	 */
 	@Override
+<<<<<<< HEAD
 	public Object getObject() {
+=======
+	public Object getObject(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.decision;
 	}
 	
@@ -692,8 +1054,13 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 	 * 
 	 */
 	@Override
+<<<<<<< HEAD
 	public void setObject(Object object) {
 		if(object instanceof ARTDecision) {
+=======
+	public void setObject(Object object){
+		if(object instanceof ARTDecision){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.decision = (ARTDecision) object;
 		}
 	}
@@ -703,7 +1070,11 @@ public class RepageReputationReasoner implements ReputationReasonerInterface {
 /**
  * 
  */
+<<<<<<< HEAD
 class RepageElement {
+=======
+class RepageElement{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 	
 	private String	agentFacet;
 	
@@ -719,7 +1090,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public String getAgentFacet() {
+=======
+	public String getAgentFacet(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.agentFacet;
 	}
 	
@@ -727,7 +1102,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public String getAgentName() {
+=======
+	public String getAgentName(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.agentName;
 	}
 	
@@ -735,7 +1114,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public String getValue() {
+=======
+	public String getValue(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.value;
 	}
 	
@@ -743,7 +1126,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public Boolean isImage() {
+=======
+	public Boolean isImage(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.image;
 	}
 	
@@ -751,7 +1138,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public Boolean isReputation() {
+=======
+	public Boolean isReputation(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		return this.reputation;
 	}
 	
@@ -759,7 +1150,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public void setAgentFacet(String agentFacet) {
+=======
+	public void setAgentFacet(String agentFacet){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.agentFacet = agentFacet;
 	}
 	
@@ -767,7 +1162,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public void setAgentName(String agentName) {
+=======
+	public void setAgentName(String agentName){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.agentName = agentName;
 	}
 	
@@ -775,11 +1174,19 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public void setImage(Boolean image) {
 		this.image = image;
 		if(image.booleanValue()) {
 			this.reputation = new Boolean(false);
 		} else {
+=======
+	public void setImage(Boolean image){
+		this.image = image;
+		if(image.booleanValue()){
+			this.reputation = new Boolean(false);
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.reputation = new Boolean(true);
 		}
 	}
@@ -788,11 +1195,19 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public void setReputation(Boolean reputation) {
 		this.reputation = reputation;
 		if(reputation.booleanValue()) {
 			this.image = new Boolean(false);
 		} else {
+=======
+	public void setReputation(Boolean reputation){
+		this.reputation = reputation;
+		if(reputation.booleanValue()){
+			this.image = new Boolean(false);
+		}else{
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 			this.image = new Boolean(true);
 		}
 	}
@@ -801,7 +1216,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public void setValue(String value) {
+=======
+	public void setValue(String value){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		this.value = value;
 	}
 	
@@ -809,7 +1228,11 @@ class RepageElement {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	public void print() {
+=======
+	public void print(){
+>>>>>>> 181e5e943b8d63ecfeef46d9e31900f14099ac05
 		System.out.println(" ========== Repage Element Information ==========");
 		System.out.println("Agent Name = " + this.agentName);
 		System.out.println("Agent Image = " + this.agentFacet);
